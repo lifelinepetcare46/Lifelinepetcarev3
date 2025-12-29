@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+
 export default function Footer() {
   return (
     <footer style={footer}>
@@ -53,9 +56,9 @@ export default function Footer() {
 
       {/* ✅ LEGAL LINKS (ADDED – NOTHING REMOVED) */}
       <div style={legal}>
-        <a href="/terms" style={legalLink}>Terms & Conditions</a>
+        <Link href="/terms" style={legalLink}>Terms & Conditions</Link>
         <span style={{ margin: "0 8px" }}>|</span>
-        <a href="/privacy" style={legalLink}>Privacy Policy</a>
+        <Link href="/privacy" style={legalLink}>Privacy Policy</Link>
       </div>
 
       {/* SEO KEYWORDS */}
