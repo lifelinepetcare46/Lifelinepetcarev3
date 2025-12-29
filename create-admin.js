@@ -1,26 +1,46 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-mongoose.connect("mongodb+srv://lifelinepetcare46_db_user:UblLCYZqABuM1EXQ@cluster0.1qpqkdd.mongodb.net/lifeline?retryWrites=true&w=majority");
+(async () => {
+  if (!process.env.MONGODB_URI) {
+    console.error("❌ MONGODB_URI missing");
+    process.exit(1);
+  }
 
-const Admin = mongoose.model(
-  "AdminUser",
-  new mongoose.Schema({
+  console.log("Connecting to MongoDB...");
+
+  await mongoose.connect(process.env.MONGODB_URI, {
+    serverSelectionTimeoutMS: 30000,
+  });
+
+  console.log("✅ MongoDB connected");
+
+  const AdminSchema = new mongoose.Schema({
     username: String,
     password: String,
     role: String,
-  })
-);
-
-(async () => {
-  const hash = await bcrypt.hash("admin@123", 10);
-
-  await Admin.create({
-    username: "admin",
-    password: hash,
-    role: "superadmin",
   });
 
-  console.log("Super Admin created");
+  const Admin =
+    mongoose.models.AdminUser ||
+    mongoose.model("AdminUser", AdminSchema);
+
+  const USERNAME = "jatin@lucie";        // tumhara new username
+  const PASSWORD = "rjcybrx010@jatin";   // tumhara new password
+
+  const hash = await bcrypt.hash(PASSWORD, 10);
+
+  await Admin.findOneAndUpdate(
+    { role: "superadmin" },
+    {
+      username: USERNAME,
+      password: hash,
+      role: "superadmin",
+    },
+    { upsert: true }
+  );
+
+  console.log("✅ Admin created / updated successfully");
   process.exit();
 })();
