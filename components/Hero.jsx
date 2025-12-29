@@ -73,9 +73,12 @@ export default function Hero({ onBook }) {
             <a   
             href="tel:+918800813462"
             onClick={() => {
-              window.dataLayer = window.dataLayer || [];
-              window.dataLayer.push({ event: "call_click" });
-                }}
+                 if (typeof window !== "undefined" && window.gtag_report_conversion) {
+                  window.gtag_report_conversion();
+                }
+              }}
+               className="callBtn"
+              
               style={{
                 background: "#ffffff",
                 color: "#2c237d",
