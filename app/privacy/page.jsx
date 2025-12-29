@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Terms & Conditions | Life Line Pet Care",
+  title: "Privacy-Policy | Life Line Pet Care",
 };
 
 export default function TermsPage() {
