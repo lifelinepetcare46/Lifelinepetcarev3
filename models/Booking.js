@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+/* ✅ SCHEMA DEFINITION (UNCHANGED FIELDS) */
 const BookingSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -10,8 +11,18 @@ const BookingSchema = new mongoose.Schema(
     slot: { type: String },
     status: { type: String, default: "confirmed" },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+
+    /* ✅ ADDITIONS (VERCEL / SERVERLESS SAFE) */
+    collection: "bookings", // explicit collection
+    strict: true,
+  }
 );
 
-export default mongoose.models.Booking ||
+/* ✅ MODEL SAFE EXPORT (HOT-RELOAD + VERCEL FIX) */
+const Booking =
+  mongoose.models.Booking ||
   mongoose.model("Booking", BookingSchema);
+
+export default Booking;
