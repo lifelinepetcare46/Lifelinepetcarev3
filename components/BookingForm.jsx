@@ -33,6 +33,15 @@ export default function BookingForm({ selectedService = "" }) {
         setSuccess(true);
         setMsg("Booking submitted successfully!");
         e.target.reset();
+
+        // ✅ GOOGLE ADS / GTM TRACKING (EXACT PLACE)
+        if (typeof window !== "undefined") {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: "booking_success",
+          });
+        }
+
       } else {
         setMsg("Something went wrong. Please try again.");
       }
@@ -50,44 +59,25 @@ export default function BookingForm({ selectedService = "" }) {
       <form onSubmit={handleSubmit}>
         {/* NAME */}
         <div className={styles.field}>
-          <input
-            name="name"
-            type="text"
-            required
-            placeholder=" "
-          />
+          <input name="name" type="text" required placeholder=" " />
           <label>Your Name</label>
         </div>
 
         {/* PHONE */}
         <div className={styles.field}>
-          <input
-            name="phone"
-            type="tel"
-            required
-            placeholder=" "
-          />
+          <input name="phone" type="tel" required placeholder=" " />
           <label>Phone Number</label>
         </div>
 
         {/* EMAIL */}
         <div className={styles.field}>
-          <input
-            name="email"
-            type="email"
-            required
-            placeholder=" "
-          />
+          <input name="email" type="email" required placeholder=" " />
           <label>Email Address</label>
         </div>
 
-        {/* SERVICE (AUTO-SELECT READY) */}
+        {/* SERVICE */}
         <div className={styles.field}>
-          <select
-            name="service"
-            required
-            defaultValue={selectedService || ""}
-          >
+          <select name="service" required defaultValue={selectedService || ""}>
             <option value="" disabled hidden></option>
             <option value="Veterinary">Veterinary</option>
             <option value="Vaccination">Vaccination</option>

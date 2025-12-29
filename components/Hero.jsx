@@ -70,8 +70,12 @@ export default function Hero({ onBook }) {
               Book Appointment
             </button>
 
-            <a
-              href="tel:+918800813462"
+            <a   
+            href="tel:+918800813462"
+            onClick={() => {
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({ event: "call_click" });
+                }}
               style={{
                 background: "#ffffff",
                 color: "#2c237d",

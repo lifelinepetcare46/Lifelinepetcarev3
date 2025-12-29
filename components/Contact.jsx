@@ -50,9 +50,16 @@ export default function Contact() {
 
           <p style={item}>
             📞 Call:
-            <a href="tel:+918800813462" style={link}>
-              +91 88008 13462
+            <a
+              href="tel:+918800813462"
+              onClick={() => {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ event: "call_click" });
+               }}
+            >
+               Call Now
             </a>
+
           </p>
 
           <p style={item}>
