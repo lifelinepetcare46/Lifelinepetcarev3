@@ -51,6 +51,13 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* ✅ LEGAL LINKS (ADDED – NOTHING REMOVED) */}
+      <div style={legal}>
+        <a href="/terms" style={legalLink}>Terms & Conditions</a>
+        <span style={{ margin: "0 8px" }}>|</span>
+        <a href="/privacy" style={legalLink}>Privacy Policy</a>
+      </div>
+
       {/* SEO KEYWORDS */}
       <div style={seo}>
         <p>
@@ -122,6 +129,19 @@ const seo = {
   fontSize: "13px",
   textAlign: "center",
   color: "#c7d2fe",
+};
+
+/* ✅ ADDED STYLES */
+const legal = {
+  textAlign: "center",
+  padding: "14px",
+  background: "#241c6d",
+  fontSize: "14px",
+};
+
+const legalLink = {
+  color: "#c7d2fe",
+  textDecoration: "none",
 };
 
 const copyright = {
