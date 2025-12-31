@@ -83,13 +83,29 @@ export default function AdminDashboard() {
     }
 
     fetch("/api/admin/bookings", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setBookings(data);
-        setLoading(false);
-      });
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+})
+  .then(async (res) => {
+    if (res.status === 401) {
+      // 🔐 Token invalid or expired
+      localStorage.removeItem("admin_token");
+      localStorage.removeItem("admin_role");
+      window.location.href = "/admin/login";
+      return [];
+    }
+    return res.json();
+  })
+  .then((data) => {
+    if (Array.isArray(data)) {
+      setBookings(data);
+    } else {
+      setBookings([]);
+    }
+    setLoading(false);
+  });
+
   }, []);
 
   /* =========================
@@ -151,12 +167,15 @@ export default function AdminDashboard() {
   /* =========================
      GROUP BOOKINGS BY MONTH
   ========================= */
-  const groupedBookings = bookings.reduce((acc, booking) => {
-    const month = getMonthKey(booking.createdAt);
-    if (!acc[month]) acc[month] = [];
-    acc[month].push(booking);
-    return acc;
-  }, {});
+  const groupedBookings = Array.isArray(bookings)
+  ? bookings.reduce((acc, booking) => {
+      const month = getMonthKey(booking.createdAt);
+      if (!acc[month]) acc[month] = [];
+      acc[month].push(booking);
+      return acc;
+    }, {})
+  : {};
+
 
   if (loading) {
     return <p style={{ padding: 30 }}>Loading bookings...</p>;
