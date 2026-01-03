@@ -93,6 +93,38 @@ export default function Hero({ onBook }) {
             </a>
           </div>
 
+          {/* ✅ NEW CONVERSION-FOCUSED HERO CTA (ADDED) */}
+          <div
+  style={{
+    marginTop: "28px",
+    display: "flex",
+    gap: "14px",
+    alignItems: "center",
+    flexWrap: "wrap",
+  }}
+>
+
+  {/* WHATSAPP BUTTON (GREEN – NEW POSITION) */}
+  <a
+    href="https://wa.me/918800813462?text=Hi%20I%20need%20a%20vet%20home%20visit"
+    target="_blank"
+    style={{
+      background: "#22c55e",
+      color: "#ffffff",
+      padding: "14px 22px",
+      borderRadius: "8px",
+      fontWeight: "600",
+      textDecoration: "none",
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "8px",
+    }}
+  >
+    WhatsApp
+  </a>
+</div>
+
+
           {/* TRUST BADGES */}
           <div
             style={{
@@ -101,7 +133,7 @@ export default function Hero({ onBook }) {
               gap: "18px",
               flexWrap: "wrap",
               fontSize: "14px",
-              color: "#374151",
+              color: "#375139ff",
             }}
           >
             <span>✅ Experienced Vets</span>
