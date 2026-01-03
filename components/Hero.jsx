@@ -3,6 +3,7 @@
 export default function Hero({ onBook }) {
   return (
     <section
+      suppressHydrationWarning={true}
       style={{
         padding: "90px 40px",
         background: "linear-gradient(135deg,#eef2ff,#f6f7ff)",

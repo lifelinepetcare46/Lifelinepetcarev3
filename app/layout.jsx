@@ -1,4 +1,6 @@
 // app/layout.jsx
+import "./globals.css";
+
 import StickyCallBar from "@/components/StickyCallBar";
 
 export default function RootLayout({ children }) {
