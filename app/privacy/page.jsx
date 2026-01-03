@@ -1,167 +1,203 @@
-export const metadata = {
-  title: "Privacy-Policy | Life Line Pet Care",
-};
+"use client";
 
-export default function TermsPage() {
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+export default function PrivacyPolicy() {
   return (
-    <main
-      style={{
-        padding: "40px",
-        maxWidth: "900px",
-        margin: "auto",
-        lineHeight: "1.7",
-      }}
-    >
-      <h1>Terms & Conditions</h1>
+    <>
+      <Navbar />
 
-      <p>
-        <strong>Last Updated:</strong> {new Date().toLocaleDateString("en-IN")}
-      </p>
+      {/* ✅ SEO SCHEMA */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": ["LegalPage", "PrivacyPolicy"],
+            "name": "Privacy Policy - Lifeline Pet Care",
+            "url": "https://www.lifelinepetcare.in/privacy",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Lifeline Pet Care",
+              "url": "https://www.lifelinepetcare.in",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.lifelinepetcare.in/logo3.png",
+              },
+            },
+            "inLanguage": "en-IN",
+            "dateModified": new Date().toISOString(),
+            "description":
+              "Privacy Policy of Lifeline Pet Care explaining how personal information is collected, used, and protected for veterinary, vaccination, grooming, and home visit services in India.",
+          }),
+        }}
+      />
 
-      <p>
-        Welcome to <strong>Life Line Pet Care</strong>. By accessing or using our
-        website, booking services, or contacting us through any medium (website,
-        phone, email, or social media), you agree to comply with and be bound by
-        the following Terms & Conditions. Please read them carefully before using
-        our services.
-      </p>
+      <section
+        className="container"
+        style={{
+          padding: "90px 24px",
+          maxWidth: "900px",
+        }}
+      >
+        <h1 style={title}>Privacy Policy</h1>
 
-      <h3>1. About Life Line Pet Care</h3>
-      <p>
-        Life Line Pet Care provides pet-related services including but not
-        limited to veterinary consultations, pet grooming, vaccination
-        assistance, general pet care guidance, and appointment booking services.
-        Our goal is to ensure the well-being, safety, and comfort of pets while
-        offering reliable support to pet owners.
-      </p>
+        <p style={muted}>
+          Last Updated: {new Date().toLocaleDateString("en-IN")}
+        </p>
 
-      <h3>2. Acceptance of Terms</h3>
-      <p>
-        By using our website or booking any service, you acknowledge that you
-        have read, understood, and agreed to these Terms & Conditions. If you do
-        not agree with any part of these terms, you should discontinue use of our
-        website and services immediately.
-      </p>
+        <p style={para}>
+          Life Line Pet Care respects your privacy and is committed to protecting
+          the personal information of pet owners who visit our website or use
+          our veterinary, vaccination, grooming, and home visit services. This
+          Privacy Policy explains how we collect, use, safeguard, and disclose
+          information when you interact with our platform through our website,
+          phone, WhatsApp, or in-person consultations.
+        </p>
 
-      <h3>3. Services & Appointments</h3>
-      <ul>
-        <li>All services are provided based on availability and prior appointment confirmation.</li>
-        <li>
-          Appointment booking through the website or other channels does not
-          guarantee service until confirmation is provided by Life Line Pet Care.
-        </li>
-        <li>
-          We reserve the right to reschedule, cancel, or refuse any appointment
-          in case of emergencies, staff unavailability, incorrect information,
-          or safety concerns.
-        </li>
-        <li>
-          Services provided are for animal care and assistance purposes only and
-          do not replace emergency veterinary treatment unless explicitly stated.
-        </li>
-      </ul>
+        <h3 style={heading}>1. Information We Collect</h3>
+        <p style={para}>
+          We may collect personal and non-personal information when you
+          voluntarily provide it to us. This includes your name, phone number,
+          email address, pet details, service preferences, medical history
+          shared during consultation, and appointment-related information.
+        </p>
+        <ul style={list}>
+          <li>Booking appointments through our website or phone</li>
+          <li>Contacting us via WhatsApp, email, or social platforms</li>
+          <li>Requesting emergency or home visit services</li>
+        </ul>
+        <p style={para}>
+          We do not collect or store sensitive financial information unless
+          explicitly required for future secure payment integrations.
+        </p>
 
-      <h3>4. User Responsibilities</h3>
-      <ul>
-        <li>Provide accurate and complete information while booking appointments.</li>
-        <li>
-          Ensure that your pet is handled safely and does not pose a threat to
-          staff, other animals, or property.
-        </li>
-        <li>
-          Inform us in advance about any known medical conditions, aggressive
-          behavior, allergies, or special care requirements of your pet.
-        </li>
-        <li>
-          Follow the instructions and guidance provided by our staff during
-          service delivery.
-        </li>
-      </ul>
+        <h3 style={heading}>2. How We Use Your Information</h3>
+        <p style={para}>
+          Information collected is used strictly for legitimate operational and
+          service-related purposes, including:
+        </p>
+        <ul style={list}>
+          <li>Managing and confirming veterinary appointments</li>
+          <li>Providing vaccination, grooming, and medical services</li>
+          <li>Emergency communication and follow-up care</li>
+          <li>Improving service quality and user experience</li>
+          <li>Internal record keeping and legal compliance</li>
+        </ul>
+        <p style={para}>
+          We do not sell, misuse, or exploit your personal information for
+          unrelated marketing or spam.
+        </p>
 
-      <h3>5. Payments & Charges</h3>
-      <ul>
-        <li>Service charges, if applicable, will be communicated clearly.</li>
-        <li>
-          Any future payment integrations (UPI, cards, online gateways) will
-          follow secure and standard payment practices.
-        </li>
-        <li>
-          Life Line Pet Care reserves the right to modify service pricing at any
-          time without prior notice.
-        </li>
-        <li>
-          No refunds will be provided once a service has been delivered, except
-          in cases of service failure from our end.
-        </li>
-      </ul>
+        <h3 style={heading}>3. Veterinary & Medical Data Disclaimer</h3>
+        <p style={para}>
+          Any medical or health-related information shared about your pet is
+          used solely for providing accurate veterinary care. Such data is
+          handled confidentially and is never shared without consent unless
+          required by law or critical medical emergencies.
+        </p>
 
-      <h3>6. Cancellations & No-Show Policy</h3>
-      <ul>
-        <li>Users are requested to inform us in advance for cancellations.</li>
-        <li>
-          Repeated no-shows or last-minute cancellations may result in refusal
-          of future bookings.
-        </li>
-        <li>
-          Life Line Pet Care holds the right to cancel appointments if false or
-          misleading information is provided.
-        </li>
-      </ul>
+        <h3 style={heading}>4. Cookies & Analytics</h3>
+        <p style={para}>
+          Our website may use cookies and analytics tools such as Google
+          Analytics to understand visitor behavior, improve performance, and
+          optimize marketing campaigns. These tools collect anonymized data and
+          do not personally identify users.
+        </p>
 
-      <h3>7. Limitation of Liability</h3>
-      <p>
-        Life Line Pet Care shall not be held responsible for any injury, illness,
-        loss, or damage caused due to unforeseen circumstances, natural behavior
-        of animals, or incomplete information provided by the pet owner.
-      </p>
-      <p>
-        While we take all reasonable safety measures, animal behavior can be
-        unpredictable, and users acknowledge this inherent risk.
-      </p>
-      <p>
-        Our liability, if any, shall be limited strictly to the service fee paid.
-      </p>
+        <h3 style={heading}>5. Data Protection & Security</h3>
+        <p style={para}>
+          We implement reasonable technical and administrative safeguards to
+          protect your information from unauthorized access, misuse, or loss.
+          However, no digital platform is completely secure, and users
+          acknowledge inherent online risks.
+        </p>
 
-      <h3>8. Website Usage & Content</h3>
-      <p>
-        All content on this website, including text, logos, images, and design,
-        is the intellectual property of Life Line Pet Care. Unauthorized copying,
-        modification, distribution, or commercial use is strictly prohibited.
-      </p>
+        <h3 style={heading}>6. Data Sharing & Disclosure</h3>
+        <p style={para}>
+          Life Line Pet Care does not sell, rent, or trade your personal data.
+          Information may only be shared to comply with legal obligations, to
+          protect safety, or with trusted communication tools required to
+          operate our services.
+        </p>
 
-      <h3>9. Privacy & Data Protection</h3>
-      <p>
-        Personal information collected through the website is used only for
-        service-related communication. We do not sell, rent, or misuse user
-        data. More details are available in our Privacy Policy.
-      </p>
+        <h3 style={heading}>7. Third-Party Platforms</h3>
+        <p style={para}>
+          Our website may contain links to third-party services such as
+          WhatsApp, Instagram, or Google platforms. We are not responsible for
+          the privacy practices or content of these external websites.
+        </p>
 
-      <h3>10. Third-Party Links</h3>
-      <p>
-        Our website may contain links to third-party platforms. Life Line Pet
-        Care is not responsible for the content or practices of such websites.
-      </p>
+        <h3 style={heading}>8. User Rights</h3>
+        <p style={para}>
+          You have the right to request access, correction, or deletion of your
+          personal data at any time by contacting us directly.
+        </p>
 
-      <h3>11. Changes to Terms</h3>
-      <p>
-        Life Line Pet Care reserves the right to update or modify these Terms &
-        Conditions at any time without prior notice. Continued use implies
-        acceptance of updated terms.
-      </p>
+        <h3 style={heading}>9. Policy Updates</h3>
+        <p style={para}>
+          We reserve the right to update this Privacy Policy without prior
+          notice. Continued use of our website or services implies acceptance
+          of the updated policy.
+        </p>
 
-      <h3>12. Governing Law</h3>
-      <p>
-        These Terms & Conditions shall be governed and interpreted in accordance
-        with the laws of India. Any disputes shall be subject to local
-        jurisdiction.
-      </p>
+        <h3 style={heading}>10. Contact Information</h3>
+        <p style={para}>
+          For any privacy-related concerns or questions, you may contact us at:
+        </p>
 
-      <h3>13. Contact Information</h3>
-      <p>
-        For any questions or clarifications, contact us at:
-        <br />
-        📧 <strong>lifelinepetcares@gmail.com</strong>
-      </p>
-    </main>
+        <p style={contact}>
+          📧 lifelinepetcares@gmail.com <br />
+          📞 +91 88008 13462
+        </p>
+      </section>
+
+      <Footer />
+    </>
   );
 }
+
+/* ================= STYLES ================= */
+
+const title = {
+  fontSize: "42px",
+  fontWeight: "700",
+  color: "#2c237d",
+  marginBottom: "16px",
+};
+
+const para = {
+  fontSize: "17px",
+  lineHeight: "1.8",
+  color: "#374151",
+  marginBottom: "18px",
+};
+
+const heading = {
+  fontSize: "22px",
+  fontWeight: "600",
+  color: "#2c237d",
+  marginTop: "32px",
+  marginBottom: "12px",
+};
+
+const muted = {
+  color: "#6b7280",
+  fontSize: "14px",
+  marginBottom: "30px",
+};
+
+const list = {
+  paddingLeft: "20px",
+  marginBottom: "18px",
+  color: "#374151",
+  lineHeight: "1.7",
+};
+
+const contact = {
+  marginTop: "10px",
+  fontSize: "17px",
+  fontWeight: "500",
+  color: "#1f2937",
+};
