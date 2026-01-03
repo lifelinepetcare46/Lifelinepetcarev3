@@ -1,7 +1,9 @@
 // app/layout.jsx
+import StickyCallBar from "@/components/StickyCallBar";
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <head>
         {/* Google tag (gtag.js) */}
         <script
@@ -28,7 +30,11 @@ export default function RootLayout({ children }) {
       </head>
 
       <body>
+        {/* SITE CONTENT */}
         {children}
+
+        {/* ✅ STICKY MOBILE CALL BAR (ADDED, NON-BREAKING) */}
+        <StickyCallBar />
 
         {/* Google Ads Conversion Function (GLOBAL, SAFE) */}
         <script
