@@ -1,6 +1,6 @@
 "use client";
 
-export default function Hero({ onBook }) {
+export default function Hero({ onBook, ads = false }) {
   return (
     <section
       suppressHydrationWarning={true}
@@ -9,9 +9,9 @@ export default function Hero({ onBook }) {
         background: "linear-gradient(135deg,#eef2ff,#f6f7ff)",
       }}
     >
-      {/* ✅ container CLEAN – no layout styles */}
+      {/* ✅ container CLEAN */}
       <div className="container">
-        {/* ✅ INNER WRAPPER – layout styles shifted here */}
+        {/* ✅ INNER WRAPPER */}
         <div
           style={{
             display: "flex",
@@ -49,7 +49,7 @@ export default function Hero({ onBook }) {
               vaccinations, and grooming — right at your doorstep.
             </p>
 
-            {/* CTA BUTTONS */}
+            {/* ================= CTA BLOCK (MODIFIED, NOT DUPLICATED) ================= */}
             <div
               style={{
                 marginTop: "28px",
@@ -59,7 +59,11 @@ export default function Hero({ onBook }) {
               }}
             >
               <button
-                onClick={() => onBook("General Consultation")}
+                onClick={() =>
+                  onBook(
+                    ads ? "Free Consultation" : "General Consultation"
+                  )
+                }
                 style={{
                   background: "#2c237d",
                   color: "#fff",
@@ -70,7 +74,9 @@ export default function Hero({ onBook }) {
                   cursor: "pointer",
                 }}
               >
-                Book Appointment
+                {ads
+                  ? "Book Free Vet Consultation in 60 sec"
+                  : "Book Appointment"}
               </button>
 
               <a
@@ -98,32 +104,30 @@ export default function Hero({ onBook }) {
               </a>
             </div>
 
-            {/* ✅ WHATSAPP CTA (GREEN, ALIGNED) */}
+            {/* ================= WHATSAPP CTA (CONDITIONAL TEXT & LINK) ================= */}
             <div
               style={{
-                marginTop: "28px",
                 display: "flex",
                 gap: "14px",
-                alignItems: "center",
                 flexWrap: "wrap",
+                marginTop: "8px",
               }}
             >
               <a
-                href="https://wa.me/918800813462?text=Hi%20I%20need%20a%20vet%20home%20visit"
+                href={
+                  ads
+                    ? "https://wa.me/918800813462?text=Hi%20I%20want%20a%20₹99%20vet%20checkup"
+                    : "https://wa.me/918800813462"
+                }
                 target="_blank"
+                className="btn-outline"
                 style={{
-                  background: "#22c55e",
-                  color: "#ffffff",
-                  padding: "14px 22px",
-                  borderRadius: "8px",
+                  borderColor: "#22c55e",
+                  color: "#16a34a",
                   fontWeight: "600",
-                  textDecoration: "none",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
                 }}
               >
-                WhatsApp
+                {ads ? "WhatsApp Now – ₹99 Checkup" : "WhatsApp"}
               </a>
             </div>
 
@@ -138,9 +142,9 @@ export default function Hero({ onBook }) {
                 color: "#375139ff",
               }}
             >
-              <span>✅ Experienced Vets</span>
-              <span>✅ Home Visit</span>
-              <span>✅ 24×7 Support</span>
+              <span>⭐ 4.8/5 Pet Parent Rating</span>
+              <span>🐾 1000+ Home Visits</span>
+              <span>🕒 Avg Response: 10 mins</span>
             </div>
           </div>
 

@@ -1,18 +1,33 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 export default function StickyCallBar() {
+  const [isClient, setIsClient] = useState(false);
+
+  // ✅ Ensure browser-only execution
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // ✅ Safe conversion handler (NO SSR access)
+  const handleCallClick = () => {
+    if (
+      typeof window !== "undefined" &&
+      window.gtag_report_conversion
+    ) {
+      window.gtag_report_conversion();
+    }
+  };
+
+  // ✅ Prevent hydration mismatch
+  if (!isClient) return null;
+
   return (
     <div className="stickyCallBar">
-         <a
+      <a
         href="tel:+918800813462"
-        onClick={() => {
-          if (
-            typeof window !== "undefined" &&
-            window.gtag_report_conversion
-          ) {
-            window.gtag_report_conversion();
-          }
-        }}
+        onClick={handleCallClick}
         className="callBtn"
       >
         📞 Call

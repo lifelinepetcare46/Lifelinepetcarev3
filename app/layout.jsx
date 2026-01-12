@@ -2,6 +2,9 @@
 import "./globals.css";
 
 import StickyCallBar from "@/components/StickyCallBar";
+import VetAIIcon from "@/components/VetAIIcon";
+import SeasonalTips from "@/components/SeasonalTips";
+
 
 export default function RootLayout({ children }) {
   return (
@@ -29,14 +32,49 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+
+        {/* ✅ SEO SCHEMA – VeterinaryCare (ADDED, NON-BREAKING) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "VeterinaryCare",
+              "name": "Lifeline Pet Care",
+              "url": "https://www.lifelinepetcare.in",
+              "logo": "https://www.lifelinepetcare.in/logo3.png",
+              "image": "https://www.lifelinepetcare.in/logo3.png",
+              "telephone": "+91-8800813462",
+              "priceRange": "₹99 – ₹6499",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Delhi NCR",
+                "addressCountry": "IN"
+              },
+              "areaServed": {
+                "@type": "AdministrativeArea",
+                "name": "Delhi NCR"
+              },
+              "openingHours": "Mo-Su 00:00-23:59",
+              "sameAs": [
+                "https://www.instagram.com/_lifeline_pet_care/"
+              ],
+              "description":
+                "Lifeline Pet Care provides doorstep veterinary services, pet vaccination, grooming, emergency vet support, and home visits across Delhi NCR."
+            }),
+          }}
+        />
       </head>
 
       <body>
         {/* SITE CONTENT */}
         {children}
 
-        {/* ✅ STICKY MOBILE CALL BAR (ADDED, NON-BREAKING) */}
+        {/* ✅ STICKY MOBILE CALL BAR */}
         <StickyCallBar />
+
+        <SeasonalTips />
+         <VetAIIcon />
 
         {/* Google Ads Conversion Function (GLOBAL, SAFE) */}
         <script
