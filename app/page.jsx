@@ -1,6 +1,8 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import dynamic from "next/dynamic";
 
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
@@ -9,23 +11,39 @@ import Services from "../components/Services";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import BookingModal from "../components/BookingModal";
-import GalleryStories from "../components/GalleryStories";
 
-/* ✅ NEW SECTIONS */
+/* ✅ STATIC SECTIONS (SAFE) */
 import PetCareTips from "../components/PetCareTips";
 import FAQs from "../components/FAQs";
 
-/* ✅ SEASONAL COMPONENTS (ADDED) */
-import SeasonalBanner from "@/components/SeasonalBanner";
-import SeasonalPopup from "@/components/SeasonalPopup";
+/* ✅ CLIENT-ONLY COMPONENTS (SSR OFF – VERY IMPORTANT) */
+const GalleryStories = dynamic(
+  () => import("../components/GalleryStories"),
+  { ssr: false }
+);
+
+const SeasonalBanner = dynamic(
+  () => import("@/components/SeasonalBanner"),
+  { ssr: false }
+);
+
+const SeasonalPopup = dynamic(
+  () => import("@/components/SeasonalPopup"),
+  { ssr: false }
+);
 
 export default function Home() {
   const [open, setOpen] = useState(false);
   const [service, setService] = useState("");
 
-  /* ✅ ADS QUERY DETECTION (EXISTING) */
+  /* ✅ ADS MODE (SAFE DETECTION) */
   const searchParams = useSearchParams();
-  const isAds = searchParams.get("ads") === "1";
+  const [isAds, setIsAds] = useState(false);
+
+  useEffect(() => {
+    if (!searchParams) return;
+    setIsAds(searchParams.get("ads") === "1");
+  }, [searchParams]);
 
   const openBooking = (serviceName) => {
     setService(serviceName);
@@ -40,7 +58,7 @@ export default function Home() {
       {/* ✅ SEASONAL BANNER (HERO KE UPAR) */}
       <SeasonalBanner onBook={openBooking} />
 
-      {/* HERO (ADS MODE PASSED) */}
+      {/* HERO (ADS MODE SAFE) */}
       <Hero onBook={openBooking} ads={isAds} />
 
       {/* ABOUT */}
@@ -64,7 +82,7 @@ export default function Home() {
       {/* FOOTER */}
       <Footer />
 
-      {/* ✅ SEASONAL POPUP (PAGE LOAD ME EK BAAR) */}
+      {/* ✅ SEASONAL POPUP (PAGE LOAD PER SHOW) */}
       <SeasonalPopup onBook={openBooking} />
 
       {/* BOOKING MODAL */}
