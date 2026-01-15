@@ -5,38 +5,40 @@ import styles from "../styles/navbar.module.css";
 export default function Navbar({ onBook }) {
   return (
     <nav className={styles.nav}>
-      {/* LOGO + NAME */}
+      {/* LOGO */}
       <div className={styles.brand}>
-        <Link href={"https://lifelinepetcare.in"}>
-          <img
-            src="/logo3.png"
-            alt="Lifeline Pet Care"
-            className={styles.logo}
-          />
+        <Link href="/">
+          <img src="/logo3.png" alt="Lifeline Pet Care" className={styles.logo} />
         </Link>
         <h1>Lifeline Pet Care</h1>
       </div>
 
       {/* LINKS */}
       <div className={styles.links}>
-        {/* SERVICES → NEW PAGE */}
-        <Link href="/services" target="_blank">
-          Services
-        </Link>
+        {/* SERVICES DROPDOWN */}
+        <div className={styles.dropdown}>
+          <span className={styles.dropTrigger}>
+            Services ▾
+          </span>
 
-        {/* CONTACT → NEW PAGE */}
-        <Link href="/contact" target="_blank">
-          Contact
-        </Link>
+          <div className={styles.dropdownMenu}>
+            <Link href="/vet-services">Vet Services</Link>
+            <Link href="/vaccination-services">Vaccination</Link>
+            <Link href="/grooming-services">Grooming</Link>
+            <Link href="/lab-test-services">Lab Tests</Link>
+            <Link href="/boarding-services">Boarding</Link>
+            <Link href="/pet-walking-sitting">Pet Walking & Sitting</Link>
+            <Link href="/emergency-services" className={styles.emergency}>
+              🚨 Emergency Services
+            </Link>
+          </div>
+        </div>
 
-        {/* BOOK APPOINTMENT → MODAL OPEN */}
+        <Link href="/contact">Contact</Link>
+
         <button
           className={styles.bookBtn}
-          onClick={() => {
-            if (typeof onBook === "function") {
-              onBook("General Consultation");
-            }
-          }}
+          onClick={() => onBook?.("General Consultation")}
         >
           Book Appointment
         </button>

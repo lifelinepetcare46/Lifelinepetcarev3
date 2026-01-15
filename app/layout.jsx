@@ -5,16 +5,15 @@ import StickyCallBar from "@/components/StickyCallBar";
 import VetAIIcon from "@/components/VetAIIcon";
 import SeasonalTips from "@/components/SeasonalTips";
 
-
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Google tag (gtag.js) */}
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-S5R5JZQ9Y4"
-        ></script>
+        />
 
         {/* Google Analytics + Google Ads Config */}
         <script
@@ -24,59 +23,56 @@ export default function RootLayout({ children }) {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
-              // Google Analytics
               gtag('config', 'G-S5R5JZQ9Y4');
-
-              // Google Ads
               gtag('config', 'AW-17766232863');
             `,
           }}
         />
 
-        {/* ✅ SEO SCHEMA – VeterinaryCare (ADDED, NON-BREAKING) */}
+        {/* ✅ SEO SCHEMA – VeterinaryCare */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "VeterinaryCare",
-              "name": "Lifeline Pet Care",
-              "url": "https://www.lifelinepetcare.in",
-              "logo": "https://www.lifelinepetcare.in/logo3.png",
-              "image": "https://www.lifelinepetcare.in/logo3.png",
-              "telephone": "+91-8800813462",
-              "priceRange": "₹99 – ₹6499",
-              "address": {
+              name: "Lifeline Pet Care",
+              url: "https://www.lifelinepetcare.in",
+              logo: "https://www.lifelinepetcare.in/logo3.png",
+              image: "https://www.lifelinepetcare.in/logo3.png",
+              telephone: "+91-8800813462",
+              priceRange: "₹99 – ₹6499",
+              address: {
                 "@type": "PostalAddress",
-                "addressLocality": "Delhi NCR",
-                "addressCountry": "IN"
+                addressLocality: "Delhi NCR",
+                addressCountry: "IN",
               },
-              "areaServed": {
+              areaServed: {
                 "@type": "AdministrativeArea",
-                "name": "Delhi NCR"
+                name: "Delhi NCR",
               },
-              "openingHours": "Mo-Su 00:00-23:59",
-              "sameAs": [
-                "https://www.instagram.com/_lifeline_pet_care/"
+              openingHours: "Mo-Su 00:00-23:59",
+              sameAs: [
+                "https://www.instagram.com/_lifeline_pet_care/",
               ],
-              "description":
-                "Lifeline Pet Care provides doorstep veterinary services, pet vaccination, grooming, emergency vet support, and home visits across Delhi NCR."
+              description:
+                "Lifeline Pet Care provides doorstep veterinary services, pet vaccination, grooming, emergency vet support, and home visits across Delhi NCR.",
             }),
           }}
         />
       </head>
 
-      <body>
+      {/* ✅ body me suppressHydrationWarning ADD kiya (IMPORTANT FIX) */}
+      <body suppressHydrationWarning>
         {/* SITE CONTENT */}
         {children}
 
-        {/* ✅ STICKY MOBILE CALL BAR */}
+        {/* GLOBAL FLOATING COMPONENTS */}
         <StickyCallBar />
-
         <SeasonalTips />
-         <VetAIIcon />
+        <VetAIIcon />
 
-        {/* Google Ads Conversion Function (GLOBAL, SAFE) */}
+        {/* Google Ads Conversion Function */}
         <script
           dangerouslySetInnerHTML={{
             __html: `

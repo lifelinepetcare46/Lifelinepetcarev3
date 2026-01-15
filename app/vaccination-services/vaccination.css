@@ -1,0 +1,155 @@
+.service-intro {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.service-list li {
+  margin-bottom: 8px;
+  font-size: 14.5px;
+}
+
+.package-box {
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.package-box h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.package-box .price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f766e;
+}
+
+.package-box .price span {
+  font-size: 13px;
+  color: #666;
+}
+
+.package-box .offer {
+  font-size: 13px;
+  color: #dc2626;
+  margin: 6px 0 10px;
+}
+
+.package-box ul {
+  padding-left: 16px;
+  font-size: 14px;
+  color: #444;
+}
+
+.package-box ul li {
+  margin-bottom: 6px;
+}
+.package-box ul li::marker {
+  color: #0f766e;
+}
+.package-box .note {
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+}
+
+.button-primary {
+  display: inline-block;
+  background-color: #0f766e;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+  background-color: #115e59;
+}
+.package-comparison {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.package-comparison th,
+.package-comparison td {
+  border: 1px solid #e0e0e0;
+  padding: 12px;
+  text-align: center;
+}
+.package-comparison th {
+  background-color: #f9f9f9;
+  font-weight: 600;
+}
+.package-comparison td {
+  font-size: 14px;
+  color: #444;
+}
+.package-comparison .included {
+  color: #0f766e;
+  font-weight: 600;
+}
+
+.package-comparison .not-included {
+  color: #dc2626;
+  font-weight: 600;
+}
+.package-comparison caption {
+  caption-side: top;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #222;
+}
+.package-comparison tbody tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+.package-comparison tbody tr:nth-child(odd) {
+  background-color: #fafafa;
+}
+
+ @media (max-width: 600px) {
+    .package-box {
+        padding: 12px;
+    }
+    
+    .package-box h4 {
+        font-size: 15px;
+    }
+    
+    .package-box .price {
+        font-size: 16px;
+    }
+    
+    .button-primary {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+    
+    .package-comparison th,
+    .package-comparison td {
+        padding: 8px;
+        font-size: 13px;
+    }
+}
