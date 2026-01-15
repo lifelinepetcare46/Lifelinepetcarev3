@@ -1,8 +1,24 @@
 "use client";
+import { useState, useEffect } from "react";
 import BookingForm from "./BookingForm";
 import styles from "../styles/bookingModal.module.css";
 
+/* ✅ ALREADY IMPORTED – KEEP */
+import { servicesData } from "@/lib/servicesData";
+
 export default function BookingModal({ onClose, service = "" }) {
+  /* ✅ EXISTING STATE */
+  const [category, setCategory] = useState("");
+  const [subService, setSubService] = useState("");
+
+  /* ✅ FIX: SYNC SERVICE → CATEGORY (NON-BREAKING) */
+  useEffect(() => {
+    if (service) {
+      setCategory(service);
+      setSubService("");
+    }
+  }, [service]);
+
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
@@ -16,7 +32,17 @@ export default function BookingModal({ onClose, service = "" }) {
         </button>
 
         {/* BOOKING FORM */}
-        <BookingForm selectedService={service} />
+        <BookingForm
+          /* ✅ EXISTING */
+          selectedService={service}
+
+          /* ✅ PASSED SAFELY */
+          servicesData={servicesData}
+          category={category}
+          setCategory={setCategory}
+          subService={subService}
+          setSubService={setSubService}
+        />
       </div>
     </div>
   );

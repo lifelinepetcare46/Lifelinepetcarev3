@@ -23,6 +23,7 @@ export default function Hero({ onBook, ads = false }) {
         >
           {/* LEFT CONTENT */}
           <div style={{ flex: "1 1 520px" }}>
+            {/* 🔴 FIXED H1 (NO <br />, NO HYDRATION ISSUE) */}
             <h1
               style={{
                 fontSize: "48px",
@@ -31,9 +32,12 @@ export default function Hero({ onBook, ads = false }) {
                 fontWeight: "700",
               }}
             >
-              Compassionate Care for Your
-              <br />
-              Beloved Pets 🐶🐱
+              <span style={{ display: "block" }}>
+                Compassionate Care for Your
+              </span>
+              <span style={{ display: "block" }}>
+                Beloved Pets 🐶🐱
+              </span>
             </h1>
 
             <p
@@ -49,7 +53,7 @@ export default function Hero({ onBook, ads = false }) {
               vaccinations, and grooming — right at your doorstep.
             </p>
 
-            {/* ================= CTA BLOCK (MODIFIED, NOT DUPLICATED) ================= */}
+            {/* ================= CTA BLOCK ================= */}
             <div
               style={{
                 marginTop: "28px",
@@ -104,7 +108,7 @@ export default function Hero({ onBook, ads = false }) {
               </a>
             </div>
 
-            {/* ================= WHATSAPP CTA (CONDITIONAL TEXT & LINK) ================= */}
+            {/* ================= WHATSAPP CTA ================= */}
             <div
               style={{
                 display: "flex",
