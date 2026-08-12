@@ -1,48 +1,60 @@
 "use client";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import ServiceLayout from "@/components/ServiceLayout";
 
-export default function Page() {
+import Link from "next/link";
+
+export default function BoardingServicesPage() {
   return (
-    <>
-      <Navbar />
+    <div className="min-h-screen bg-[#FDFBF7] text-gray-900 font-sans antialiased">
+      <nav className="flex justify-between items-center px-6 md:px-16 py-4 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <Link href="/" className="font-extrabold text-xl text-[#00685f]">Lifeline Pet Care</Link>
+        <Link href="/" className="text-xs font-bold text-[#00685f] border border-[#00685f] px-4 py-1.5 rounded-full">
+          ← Back to Home
+        </Link>
+      </nav>
 
-      <ServiceLayout title="Pet Boarding Services">
-        <p style={{ fontSize: "15px", lineHeight: "1.6", color: "#444" }}>
-          We provide <b>safe, hygienic & comfortable pet boarding services</b>
-          where your pet is cared for personally in a stress-free environment.
-          Your pet’s routine, hygiene, and emotional comfort are our top
-          priorities.
-        </p>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 space-y-12">
+        <div className="glass-card rounded-[36px] p-6 sm:p-12 space-y-6 bg-white/80 shadow-2xl">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 text-[#0D9488] font-bold text-xs sm:text-sm border border-teal-200">
+            <span>🏡 Luxury Pet Boarding & Daycare</span>
+          </div>
 
-        <ul style={{ marginTop: "16px" }}>
-          <li>✔ Personal handling & supervision</li>
-          <li>✔ 3 times fresh meals (as per pet routine)</li>
-          <li>✔ Clean & hygienic stay area</li>
-          <li>✔ Regular walk & play time (for dogs)</li>
-          <li>✔ Separate space for puppies, adults & cats</li>
-          <li>✔ Basic health & behavior monitoring</li>
-          <li>✔ Daily updates via WhatsApp</li>
-          <li>✔ <b>2 video calls per day</b> for pet parents</li>
-        </ul>
+          <h1 className="text-3xl sm:text-5xl font-black text-gray-900 tracking-tight leading-tight">
+            Safe & Hygienic <span className="text-[#0D9488]">Pet Boarding 🐾</span>
+          </h1>
 
-        <h3 style={{ marginTop: "28px" }}>💰 Boarding Charges (Per Day)</h3>
+          <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-3xl">
+            We provide safe, hygienic & comfortable pet boarding services where your pet is cared for personally in a stress-free environment. 3 fresh meals, regular walks, and 2 daily WhatsApp video calls included!
+          </p>
 
-        <ul>
-          <li><b>Adult Dog</b> – ₹849 / day</li>
-          <li><b>Puppy</b> – ₹649 / day</li>
-          <li><b>Adult Cat</b> – ₹500 / day</li>
-          <li><b>Kitten</b> – ₹449 / day</li>
-        </ul>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+            <div className="p-5 rounded-2xl bg-teal-50 border border-teal-200 text-center">
+              <p className="text-xs text-gray-500 font-bold">Adult Dog</p>
+              <p className="text-2xl font-black text-[#0D9488]">₹849 / day</p>
+            </div>
+            <div className="p-5 rounded-2xl bg-teal-50 border border-teal-200 text-center">
+              <p className="text-xs text-gray-500 font-bold">Puppy</p>
+              <p className="text-2xl font-black text-[#0D9488]">₹649 / day</p>
+            </div>
+            <div className="p-5 rounded-2xl bg-teal-50 border border-teal-200 text-center">
+              <p className="text-xs text-gray-500 font-bold">Adult Cat</p>
+              <p className="text-2xl font-black text-[#0D9488]">₹500 / day</p>
+            </div>
+            <div className="p-5 rounded-2xl bg-teal-50 border border-teal-200 text-center">
+              <p className="text-xs text-gray-500 font-bold">Kitten</p>
+              <p className="text-2xl font-black text-[#0D9488]">₹449 / day</p>
+            </div>
+          </div>
 
-        <p style={{ marginTop: "16px", fontSize: "14px", color: "#555" }}>
-          <b>Note:</b> Meals can be adjusted as per your pet’s diet instructions.
-          Vaccination records are recommended for boarding safety.
-        </p>
-      </ServiceLayout>
-
-      <Footer />
-    </>
+          <div className="pt-4 flex flex-wrap gap-4">
+            <a
+              href="tel:+918800813462"
+              className="bg-[#0D9488] hover:bg-[#0f766e] text-white px-8 py-4 rounded-full font-bold text-sm shadow-lg hover:scale-105 transition-all"
+            >
+              📞 Book Boarding Stay (+91 88008 13462)
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }

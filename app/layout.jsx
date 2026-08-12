@@ -1,14 +1,21 @@
 // app/layout.jsx
 import "./globals.css";
 
-import StickyCallBar from "@/components/StickyCallBar";
-import VetAIIcon from "@/components/VetAIIcon";
-import SeasonalTips from "@/components/SeasonalTips";
+import Preloader from "@/components/Preloader";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
+        {/* TAILWIND CSS CDN FOR RELIABLE RENDERING */}
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        {/* GOOGLE FONTS & MATERIAL SYMBOLS */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
         {/* Google tag (gtag.js) */}
         <script
           async
@@ -62,15 +69,12 @@ export default function RootLayout({ children }) {
         />
       </head>
 
-      {/* ✅ body me suppressHydrationWarning ADD kiya (IMPORTANT FIX) */}
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className="font-sans antialiased">
+        {/* GLOBAL SITE PRELOADER */}
+        <Preloader />
+
         {/* SITE CONTENT */}
         {children}
-
-        {/* GLOBAL FLOATING COMPONENTS */}
-        <StickyCallBar />
-        <SeasonalTips />
-        <VetAIIcon />
 
         {/* Google Ads Conversion Function */}
         <script
