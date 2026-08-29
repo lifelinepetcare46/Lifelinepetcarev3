@@ -21,8 +21,9 @@ export default function BookingModal({ service = "Veterinary Home Visit (₹449)
     setLoading(true);
 
     try {
+      const endpoint = typeof window !== "undefined" ? `${window.location.origin}/api/book` : "/api/book";
       // Call backend booking endpoint
-      await fetch("/api/book", {
+      await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -36,8 +37,8 @@ export default function BookingModal({ service = "Veterinary Home Visit (₹449)
           notes,
         }),
       });
-    } catch {
-      // Ignore API errors, fallback smoothly to confirmation screen
+    } catch (err) {
+      console.warn("Modal API fetch error:", err);
     } finally {
       setLoading(false);
       setSubmitted(true);

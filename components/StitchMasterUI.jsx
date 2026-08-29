@@ -152,8 +152,9 @@ export default function StitchMasterUI() {
     setHeroFormSubmitted(true);
 
     try {
+      const endpoint = typeof window !== "undefined" ? `${window.location.origin}/api/book` : "/api/book";
       // 1. Send API payload to trigger Nodemailer email to lifelinepetcare46@gmail.com
-      await fetch("/api/book", {
+      await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

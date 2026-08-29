@@ -3,10 +3,34 @@ import { connectDB } from "@/lib/db";
 import Booking from "@/models/Booking";
 import nodemailer from "nodemailer";
 
+export async function OPTIONS() {
+  return NextResponse.json(
+    {},
+    {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+    }
+  );
+}
+
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, phone, email, service, date, slot, pet, area, message, notes } = body;
+
+    // Robust field normalization across all frontend forms
+    const name = body.name || body.parentName || "Pet Parent";
+    const phone = body.phone || body.phoneNumber || "Not Provided";
+    const email = body.email || "Not Provided";
+    const service = body.service || body.selectedService || "Veterinary Home Visit";
+    const date = body.date || "Today";
+    const slot = body.slot || body.time || "As soon as possible";
+    const pet = body.pet || body.petType || "Dog / Cat";
+    const area = body.area || body.address || body.location || "Delhi NCR";
+    const notes = body.notes || body.message || "";
 
     const targetUser = (process.env.EMAIL_USER || "lifelinepetcare46@gmail.com").trim();
     const targetPass = (process.env.EMAIL_PASS || "ollwcplijmvmtsix").replace(/\s+/g, "").trim();
@@ -26,24 +50,24 @@ export async function POST(req) {
       from: `"Lifeline Pet Care" <${targetUser}>`,
       replyTo: email && email.includes("@") ? email : targetUser,
       to: adminEmail,
-      subject: `NEW BOOKING LEAD: ${service || "Doorstep Vet Visit"} - ${name || "Pet Parent"} (${phone || "No Phone"})`,
-      text: `NEW DOORSTEP VET BOOKING LEAD\n\nPet Parent: ${name || "Not Provided"}\nPhone: ${phone || "Not Provided"}\nEmail: ${email || "Not Provided"}\nPet: ${pet || "Dog / Cat"}\nService: ${service || "Veterinary Home Visit"}\nArea: ${area || "Delhi NCR"}\nDate: ${date || "Today"}\nSlot: ${slot || "ASAP"}\nMessage: ${message || notes || "None"}`,
+      subject: `NEW BOOKING LEAD: ${service} - ${name} (${phone})`,
+      text: `NEW DOORSTEP VET BOOKING LEAD\n\nPet Parent: ${name}\nPhone: ${phone}\nEmail: ${email}\nPet: ${pet}\nService: ${service}\nArea: ${area}\nDate: ${date}\nSlot: ${slot}\nNotes: ${notes}`,
       html: `
-        <div style="font-family: Arial, sans-serif; padding: 24px; background-color: #FAF9F5; border-radius: 16px; border: 2px solid #006E1C; max-w: 600px;">
+        <div style="font-family: Arial, sans-serif; padding: 24px; background-color: #FAF9F5; border-radius: 16px; border: 2px solid #006E1C; max-width: 600px;">
           <h2 style="color: #006E1C; margin-top: 0;">🐾 New Booking / Contact Lead Received</h2>
           <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
-            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold; width: 140px;">Pet Parent:</td><td style="padding: 10px; font-size: 16px; font-weight: bold;">${name || "Not Provided"}</td></tr>
-            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Phone Number:</td><td style="padding: 10px;"><a href="tel:${phone}" style="color: #006E1C; font-weight: bold; font-size: 16px;">${phone || "Not Provided"}</a></td></tr>
-            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Email Address:</td><td style="padding: 10px;">${email || "Not Provided"}</td></tr>
-            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Pet / Species:</td><td style="padding: 10px;">${pet || "Dog / Cat"}</td></tr>
-            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Required Service:</td><td style="padding: 10px; font-weight: bold; color: #006E1C;">${service || "Veterinary Home Visit"}</td></tr>
-            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Area / City:</td><td style="padding: 10px;">${area || "Delhi NCR"}</td></tr>
-            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Preferred Date:</td><td style="padding: 10px;">${date || "Today"}</td></tr>
-            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Preferred Slot:</td><td style="padding: 10px;">${slot || "As soon as possible"}</td></tr>
-            ${(message || notes) ? `<tr><td style="padding: 10px; font-weight: bold;">Customer Message:</td><td style="padding: 10px; color: #333;">${message || notes}</td></tr>` : ''}
+            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold; width: 140px;">Pet Parent:</td><td style="padding: 10px; font-size: 16px; font-weight: bold;">${name}</td></tr>
+            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Phone Number:</td><td style="padding: 10px;"><a href="tel:${phone}" style="color: #006E1C; font-weight: bold; font-size: 16px;">${phone}</a></td></tr>
+            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Email Address:</td><td style="padding: 10px;">${email}</td></tr>
+            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Pet / Species:</td><td style="padding: 10px;">${pet}</td></tr>
+            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Required Service:</td><td style="padding: 10px; font-weight: bold; color: #006E1C;">${service}</td></tr>
+            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Area / City:</td><td style="padding: 10px;">${area}</td></tr>
+            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Preferred Date:</td><td style="padding: 10px;">${date}</td></tr>
+            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Preferred Slot:</td><td style="padding: 10px;">${slot}</td></tr>
+            ${notes ? `<tr><td style="padding: 10px; font-weight: bold;">Customer Notes:</td><td style="padding: 10px; color: #333;">${notes}</td></tr>` : ''}
           </table>
           <div style="margin-top: 24px; padding: 14px; background-color: #E8F5E9; border-radius: 8px; text-align: center;">
-            <a href="https://wa.me/91${(phone || "").replace(/\D/g, "")}" style="color: #006E1C; font-weight: bold; text-decoration: none; font-size: 15px;">💬 Click here to reply to ${name || "Customer"} on WhatsApp</a>
+            <a href="https://wa.me/91${(phone || "").replace(/\D/g, "")}" style="color: #006E1C; font-weight: bold; text-decoration: none; font-size: 15px;">💬 Click here to reply to ${name} on WhatsApp</a>
           </div>
         </div>
       `,
