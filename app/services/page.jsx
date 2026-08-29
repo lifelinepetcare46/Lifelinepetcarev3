@@ -1,159 +1,222 @@
 "use client";
 
 import { useState } from "react";
-import { useGSAP } from "@/hooks/useGSAP";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
+import QuickLeadBar from "@/components/QuickLeadBar";
 
 const services = [
   {
-    icon: "🩺", accent: "#059669", accentBg: "#ecfdf5", border: "#a7f3d0",
-    label: "Vet Visit", title: "Veterinary Home Visit", price: "₹449", tag: "Most Booked",
-    desc: "Our licensed vets travel directly to your home for a comprehensive examination, diagnosis and prescription.",
-    features: ["Full head-to-tail physical examination", "Fever, vomiting & diarrhea diagnosis", "Skin, coat, eye & ear assessment", "Officially signed digital prescription", "WhatsApp follow-up support", "Available 7 days a week"],
-    booking: "Veterinary Home Visit",
+    icon: "stethoscope",
+    bg: "bg-[#006E1C]/10",
+    color: "#006E1C",
+    tag: "Most Booked",
+    label: "Vet Visit",
+    title: "Home Consultation",
+    price: "₹449",
+    desc: "Comprehensive nose-to-tail clinical examination in the comfort of your living room.",
+    features: [
+      "Full head-to-tail physical examination",
+      "Fever, vomiting & diarrhea diagnosis",
+      "Skin, coat, eye & ear assessment",
+      "Officially signed digital prescription",
+      "WhatsApp follow-up support",
+      "Available 7 days a week",
+    ],
+    booking: "Veterinary Home Visit (₹449)",
   },
   {
-    icon: "💉", accent: "#ea580c", accentBg: "#fff7ed", border: "#fed7aa",
-    label: "Vaccination", title: "Core Vaccination", price: "from ₹999", tag: "Cold-Chain Certified",
-    desc: "Genuine cold-chain vaccines delivered to your pet at home — no travel, no stress, no compromise.",
-    features: ["Anti-Rabies Shot — ₹999", "Adult Dog Annual Booster (9-in-1) — ₹3,899", "Puppy 5-Vaccine Schedule — ₹6,799", "Cat Triple FVRCP — ₹2,499", "Digital vaccination record issued", "2°C–8°C cold chain always maintained"],
-    booking: "Vaccination",
+    icon: "vaccines",
+    bg: "bg-[#E8F5E9]",
+    color: "#006E1C",
+    tag: "Cold-Chain Certified",
+    label: "Vaccination",
+    title: "Core Vaccination Drive",
+    price: "from ₹999",
+    desc: "Genuine cold-chain vaccines delivered to your pet at home — no travel, no stress.",
+    features: [
+      "Anti-Rabies Shot — ₹999",
+      "Adult Dog Annual Booster (9-in-1) — ₹3,899",
+      "Puppy 5-Vaccine Schedule — ₹6,799",
+      "Cat Triple FVRCP — ₹2,499",
+      "Digital vaccination record issued",
+      "2°C–8°C cold chain always maintained",
+    ],
+    booking: "Anti-Rabies Core Vaccine (₹999)",
   },
   {
-    icon: "✂️", accent: "#7c3aed", accentBg: "#f5f3ff", border: "#ddd6fe",
-    label: "Grooming", title: "Doorstep Spa", price: "from ₹799", tag: "Organic & Safe",
-    desc: "Celebrity-grade pet grooming in your home — no cages, no strangers, just expert certified groomers.",
-    features: ["Bath & Blow Dry — ₹799", "Medicated Therapeutic Bath — ₹899", "Mini Groom (Bath+Nails+Ears) — ₹1,100", "Full Breed Haircut & Style — ₹1,799", "Tick & Flea treatment available", "Post-groom sanitation included"],
-    booking: "Grooming Spa",
+    icon: "content_cut",
+    bg: "bg-[#FFFDE7]",
+    color: "#1B1C1A",
+    tag: "Organic & Safe",
+    label: "Grooming",
+    title: "Doorstep Medical Grooming",
+    price: "from ₹799",
+    desc: "Prescription baths, nail clipping & breed trims by certified professionals.",
+    features: [
+      "Bath & Blow Dry — ₹799",
+      "Medicated Therapeutic Bath — ₹899",
+      "Mini Groom (Bath+Nails+Ears) — ₹1,100",
+      "Full Breed Haircut & Style — ₹1,799",
+      "Tick & Flea treatment available",
+      "Post-groom sanitation included",
+    ],
+    booking: "Doorstep Grooming Bath (₹799)",
   },
   {
-    icon: "🚑", accent: "#dc2626", accentBg: "#fef2f2", border: "#fecaca",
-    label: "Emergency", title: "Emergency ICU Care", price: "On Call", tag: "24/7 SOS",
-    desc: "Round-the-clock emergency veterinary care dispatched within 30–60 minutes for life-threatening situations.",
-    features: ["Rapid vet dispatch Delhi NCR", "IV fluid therapy administration", "Seizure & shock stabilization", "Trauma & accident first response", "On-site oxygen support", "Hospital referral if required"],
-    booking: "Emergency ICU",
+    icon: "emergency",
+    bg: "bg-[#FFEBEE]",
+    color: "#BA1A1A",
+    tag: "24/7 SOS",
+    label: "Emergency",
+    title: "Emergency ICU Triage",
+    price: "On Call 🚨",
+    desc: "Round-the-clock emergency veterinary care dispatched within 35 minutes.",
+    features: [
+      "Rapid vet dispatch Delhi NCR",
+      "IV fluid therapy administration",
+      "Seizure & shock stabilization",
+      "Trauma & accident first response",
+      "On-site oxygen support",
+      "Hospital referral if required",
+    ],
+    booking: "Emergency ICU Support",
   },
   {
-    icon: "🧪", accent: "#2563eb", accentBg: "#eff6ff", border: "#bfdbfe",
-    label: "Lab Tests", title: "Lab Tests at Home", price: "from ₹399", tag: "NABL Certified",
-    desc: "Full blood panel, urinalysis and cytology samples collected at home and processed in certified labs.",
-    features: ["Complete Blood Count (CBC)", "Liver & Kidney Function Tests", "Blood Glucose & Thyroid Panel", "Urinalysis & Stool Tests", "Sample pickup within 2 hours", "Digital WhatsApp reports"],
-    booking: "Lab Test at Home",
+    icon: "science",
+    bg: "bg-[#E3F2FD]",
+    color: "#0284C7",
+    tag: "NABL Certified",
+    label: "Lab Tests",
+    title: "Doorstep Lab Sample Pickup",
+    price: "from ₹399",
+    desc: "Full blood panel, urinalysis & cytology samples collected safely at home.",
+    features: [
+      "Complete Blood Count (CBC)",
+      "Liver & Kidney Function Tests",
+      "Blood Glucose & Thyroid Panel",
+      "Urinalysis & Stool Tests",
+      "Sample pickup within 2 hours",
+      "Digital WhatsApp reports",
+    ],
+    booking: "Lab Test at Home (₹399)",
   },
   {
-    icon: "🏨", accent: "#0d9488", accentBg: "#f0fdfa", border: "#99f6e4",
-    label: "Boarding", title: "Pet Boarding", price: "from ₹499/night", tag: "Vet-Supervised",
-    desc: "Safe, medically supervised overnight pet boarding with 24/7 vet monitoring and daily care.",
-    features: ["Vet-certified boarding facility", "Individual air-conditioned kennels", "3 meals + exercise daily", "24/7 health monitoring", "Live WhatsApp photo updates", "Emergency care on-site"],
-    booking: "Pet Boarding",
+    icon: "apartment",
+    bg: "bg-[#F4F4F0]",
+    color: "#1B1C1A",
+    tag: "Vet-Supervised",
+    label: "Boarding",
+    title: "Luxury Pet Boarding",
+    price: "from ₹499/night",
+    desc: "Medically supervised overnight pet boarding with 24/7 vet monitoring.",
+    features: [
+      "Vet-certified boarding facility",
+      "Individual air-conditioned kennels",
+      "3 meals + exercise daily",
+      "24/7 health monitoring",
+      "Live WhatsApp photo updates",
+      "Emergency care on-site",
+    ],
+    booking: "Pet Boarding Stay (₹499)",
   },
 ];
 
 export default function ServicesPage() {
   const [openModal, setOpenModal] = useState(false);
-  const [sel, setSel] = useState("");
+  const [sel, setSel] = useState("Veterinary Home Visit (₹449)");
 
-  const book = (s) => { setSel(s); setOpenModal(true); };
-
-  useGSAP([
-    { selector: ".anim-hero", from: { opacity: 0, y: 40 }, duration: 0.8, ease: "power3.out" },
-    { selector: ".anim-svc",  from: { opacity: 0, y: 50 }, duration: 0.65, ease: "power3.out", stagger: 0.1 },
-    { selector: ".anim-why",  from: { opacity: 0, y: 30 }, duration: 0.55, ease: "power2.out", stagger: 0.08 },
-  ]);
+  const book = (s) => {
+    setSel(s);
+    setOpenModal(true);
+  };
 
   return (
-    <div style={{ background: "var(--grad-services)", minHeight: "100vh", fontFamily: "var(--ff-body)" }}>
+    <div className="bg-[#FAF9F5] text-[#1B1C1A] font-sans antialiased min-h-screen relative flex flex-col justify-between">
       <Navbar />
-      <main style={{ paddingTop: 64 }}>
 
-        {/* HERO */}
-        <section style={{ background: "linear-gradient(135deg, #047857 0%, #059669 50%, #0d9488 100%)", padding: "5rem 2rem", position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "absolute", width: 500, height: 500, top: "-150px", right: "-100px", borderRadius: "50%", background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 65%)" }} />
-          <div className="anim-hero" style={{ maxWidth: 720, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
-            <span className="chip" style={{ background: "rgba(255,255,255,0.2)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)" }}>Complete Veterinary Care at Home</span>
-            <h1 style={{ fontFamily: "var(--ff-display)", fontWeight: 900, fontSize: "clamp(2.2rem,5vw,3.6rem)", color: "#fff", margin: "1.25rem 0 1rem", letterSpacing: "-0.03em" }}>
-              Our Services 🐾
-            </h1>
-            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 500, margin: "0 auto" }}>
-              From routine checkups to life-saving emergencies — certified vets deliver every service to your doorstep across Delhi NCR.
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", justifyContent: "center", marginTop: "2rem" }}>
-              {["✅ 15,000+ Pets Served", "⭐ 4.9 Rating", "🕐 Same-Day Booking"].map(t => (
-                <span key={t} style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.25)", color: "#fff", padding: "0.5rem 1.25rem", borderRadius: 999, fontSize: "0.82rem", fontWeight: 600, fontFamily: "var(--ff-display)" }}>{t}</span>
-              ))}
-            </div>
-          </div>
-        </section>
+      <main className="pt-32 pb-24 px-6 md:px-16 max-w-7xl mx-auto w-full">
+        {/* EDITORIAL HEADER (STITCH SPEC) */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-extrabold uppercase tracking-wider border border-[#006E1C]/30">
+            Comprehensive Veterinary Care
+          </span>
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-[#1B1C1A] tracking-tight leading-none">
+            Delivered to your <span className="text-[#006E1C] italic font-serif">door</span>.
+          </h1>
+          <p className="text-base sm:text-lg text-[#3F4A3C] leading-relaxed">
+            Experience veterinary excellence with our spatial-first approach. Advanced diagnostics, certified doctors, and compassionate care in your home.
+          </p>
+        </div>
 
-        {/* SERVICES GRID */}
-        <section style={{ maxWidth: 1280, margin: "0 auto", padding: "5rem 2rem" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <span className="chip">Everything Your Pet Needs</span>
-            <h2 style={{ fontFamily: "var(--ff-display)", fontWeight: 900, fontSize: "clamp(1.8rem,3vw,2.4rem)", color: "var(--clr-ink-900)", marginTop: "1rem" }}>
-              All Services & Pricing
-            </h2>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem" }}>
-            {services.map((svc, i) => (
-              <div key={i} className="anim-svc card" style={{ padding: "2.25rem", border: `1.5px solid ${svc.border}`, display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.25rem" }}>
-                  <div style={{ width: 56, height: 56, background: svc.accentBg, borderRadius: "var(--r-lg)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.6rem" }}>{svc.icon}</div>
-                  <span style={{ fontFamily: "var(--ff-display)", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em", textTransform: "uppercase", background: svc.accentBg, color: svc.accent, border: `1px solid ${svc.border}`, padding: "4px 12px", borderRadius: 999 }}>{svc.tag}</span>
+        {/* BENTO SERVICES GRID (STITCH SPEC) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((svc, i) => (
+            <div
+              key={i}
+              className="glass-panel rounded-[3rem] p-8 md:p-10 space-y-6 flex flex-col justify-between hover:-translate-y-2 transition-all duration-500 ambient-shadow"
+            >
+              <div className="space-y-6">
+                <div className="flex justify-between items-start">
+                  <div
+                    className={`w-16 h-16 rounded-3xl ${svc.bg} flex items-center justify-center`}
+                  >
+                    <span className="material-symbols-outlined text-3xl" style={{ color: svc.color }}>
+                      {svc.icon}
+                    </span>
+                  </div>
+                  <span className="bg-white/80 border border-black/5 px-4 py-1.5 rounded-full text-xs font-bold text-[#1B1C1A] shadow-xs">
+                    {svc.tag}
+                  </span>
                 </div>
-                <p style={{ fontFamily: "var(--ff-display)", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: svc.accent, marginBottom: "0.3rem" }}>{svc.label}</p>
-                <h3 style={{ fontFamily: "var(--ff-display)", fontWeight: 900, fontSize: "1.35rem", color: "var(--clr-ink-900)", marginBottom: "0.3rem" }}>{svc.title}</h3>
-                <p style={{ fontFamily: "var(--ff-display)", fontWeight: 800, fontSize: "1.8rem", color: svc.accent, marginBottom: "0.75rem", lineHeight: 1 }}>{svc.price}</p>
-                <p style={{ fontSize: "0.875rem", color: "var(--clr-ink-300)", lineHeight: 1.65, marginBottom: "1.5rem" }}>{svc.desc}</p>
-                <ul style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.6rem", marginBottom: "1.75rem" }}>
+
+                <div>
+                  <span className="text-xs font-bold text-[#6F7A6B] uppercase tracking-widest">
+                    {svc.label}
+                  </span>
+                  <h3 className="text-2xl font-bold text-[#1B1C1A] mt-1">
+                    {svc.title}
+                  </h3>
+                  <p className="text-2xl font-extrabold text-[#006E1C] mt-2">
+                    {svc.price}
+                  </p>
+                  <p className="text-xs text-[#3F4A3C] mt-3 leading-relaxed">
+                    {svc.desc}
+                  </p>
+                </div>
+
+                <ul className="space-y-2 pt-2 border-t border-black/5">
                   {svc.features.map((f, j) => (
-                    <li key={j} style={{ display: "flex", gap: "0.6rem", fontSize: "0.85rem", color: "var(--clr-ink-500)" }}>
-                      <span style={{ color: svc.accent, fontWeight: 700, flexShrink: 0 }}>✓</span>{f}
+                    <li key={j} className="text-xs text-[#1B1C1A] flex items-center gap-2">
+                      <span className="text-[#006E1C] font-bold">✓</span>
+                      <span>{f}</span>
                     </li>
                   ))}
                 </ul>
-                <button onClick={() => book(svc.booking)} style={{
-                  width: "100%", background: svc.accent, color: "#fff",
-                  fontFamily: "var(--ff-display)", fontWeight: 700, fontSize: "0.875rem",
-                  padding: "0.875rem 1.5rem", borderRadius: "var(--r-pill)", border: "none",
-                  cursor: "pointer", boxShadow: `0 6px 20px ${svc.accent}35`,
-                  transition: "all 0.2s",
-                }}
-                  onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = `0 10px 30px ${svc.accent}45`; }}
-                  onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = `0 6px 20px ${svc.accent}35`; }}>
-                  Book {svc.label}
-                </button>
               </div>
-            ))}
-          </div>
-        </section>
 
-        {/* WHY SECTION */}
-        <section style={{ background: "rgba(255,255,255,0.85)", padding: "5rem 0" }}>
-          <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem" }}>
-            <h2 className="anim-hero" style={{ fontFamily: "var(--ff-display)", fontWeight: 900, fontSize: "clamp(1.6rem,3vw,2.2rem)", color: "var(--clr-ink-900)", textAlign: "center", marginBottom: "3rem" }}>
-              Why Pet Parents Trust Lifeline
-            </h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.5rem" }}>
-              {[
-                { icon: "🏠", title: "Doorstep Service", desc: "No travel stress. We come to you anywhere in Delhi NCR." },
-                { icon: "🎓", title: "Qualified Vets", desc: "BVSc & AH licensed, background-verified veterinary doctors." },
-                { icon: "❄️", title: "Cold-Chain Vaccines", desc: "2°C–8°C temperature maintained from manufacturer to your home." },
-                { icon: "📱", title: "WhatsApp Updates", desc: "Real-time updates, prescription & lab reports on WhatsApp." },
-              ].map((item, i) => (
-                <div key={i} className="anim-why card" style={{ padding: "1.75rem", textAlign: "center" }}>
-                  <div style={{ fontSize: "2.5rem", marginBottom: "0.75rem" }}>{item.icon}</div>
-                  <h4 style={{ fontFamily: "var(--ff-display)", fontWeight: 800, color: "var(--clr-ink-900)", marginBottom: "0.4rem" }}>{item.title}</h4>
-                  <p style={{ fontSize: "0.85rem", color: "var(--clr-ink-300)", lineHeight: 1.65 }}>{item.desc}</p>
-                </div>
-              ))}
+              <button
+                onClick={() => book(svc.booking)}
+                className="w-full bg-[#006E1C] hover:bg-[#005313] text-white font-extrabold py-3.5 rounded-full text-xs shadow-md hover:scale-[1.02] active:scale-95 transition-all"
+              >
+                Book {svc.label} ⚡
+              </button>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
       </main>
+
+      <QuickLeadBar onBookClick={(s) => book(s)} />
+
+      {openModal && (
+        <BookingModal
+          service={sel}
+          onClose={() => setOpenModal(false)}
+        />
+      )}
+
       <Footer />
-      {openModal && <BookingModal service={sel} onClose={() => setOpenModal(false)} />}
     </div>
   );
 }

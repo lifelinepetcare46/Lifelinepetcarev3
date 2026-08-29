@@ -9,7 +9,10 @@ import PetPriceCalculator from "@/components/PetPriceCalculator";
 
 const cats = [
   {
-    title: "Veterinary Doctor Home Visits", icon: "🩺", color: "#059669", bg: "#ecfdf5", bdr: "#a7f3d0",
+    title: "Veterinary Doctor Home Visits",
+    icon: "stethoscope",
+    color: "#006E1C",
+    bg: "bg-[#E8F5E9]",
     rows: [
       { name: "Clinical Doctor Visit & Exam", price: "₹449", desc: "Physical clinical examination, fever/illness diagnosis & signed prescription." },
       { name: "Follow-Up Doctor Review (within 7 days)", price: "₹299", desc: "Post-treatment review and recovery check." },
@@ -17,7 +20,10 @@ const cats = [
     ],
   },
   {
-    title: "Vaccination Packages", icon: "💉", color: "#ea580c", bg: "#fff7ed", bdr: "#fed7aa",
+    title: "Vaccination Packages",
+    icon: "vaccines",
+    color: "#006E1C",
+    bg: "bg-[#E8F5E9]",
     rows: [
       { name: "Anti-Rabies Core Shot", price: "₹999", desc: "Mandatory annual rabies vaccine with digital card." },
       { name: "Adult Dog Annual Booster (9-in-1)", price: "₹3,899", desc: "Protects against Parvovirus, Distemper, Hepatitis & Leptospirosis." },
@@ -26,7 +32,10 @@ const cats = [
     ],
   },
   {
-    title: "Doorstep Grooming Spa", icon: "✂️", color: "#7c3aed", bg: "#f5f3ff", bdr: "#ddd6fe",
+    title: "Doorstep Grooming Spa",
+    icon: "content_cut",
+    color: "#1B1C1A",
+    bg: "bg-[#FFFDE7]",
     rows: [
       { name: "Bath & Blow Dry Spa", price: "₹799", desc: "Shampoo bath, blow dry, coat brushing & fragrance spray." },
       { name: "Mini Grooming Package", price: "₹1,100", desc: "Spa bath, blow dry, nail clipping, ear & eye cleaning." },
@@ -34,7 +43,10 @@ const cats = [
     ],
   },
   {
-    title: "Lab Diagnostics at Home", icon: "🧪", color: "#2563eb", bg: "#eff6ff", bdr: "#bfdbfe",
+    title: "Lab Diagnostics at Home",
+    icon: "science",
+    color: "#0284C7",
+    bg: "bg-[#E3F2FD]",
     rows: [
       { name: "Complete Blood Count (CBC)", price: "₹850", desc: "Hemoglobin, WBC, platelet count & infection screening." },
       { name: "Liver & Kidney Function Panel (LFT/KFT)", price: "₹1,499", desc: "Detailed biochemical organ health report." },
@@ -53,63 +65,71 @@ export default function PackagesPage() {
   };
 
   return (
-    <div className="bg-[#FDFBF7] min-h-screen font-sans text-slate-700 antialiased">
+    <div className="bg-[#FAF9F5] text-[#1B1C1A] font-sans antialiased min-h-screen relative flex flex-col justify-between">
       <Navbar />
 
-      <main className="pt-16">
-        {/* HERO */}
-        <section className="bg-gradient-to-r from-emerald-950 via-slate-900 to-teal-950 text-white py-16 px-6 text-center relative overflow-hidden">
-          <div className="max-w-4xl mx-auto space-y-4 relative z-10">
-            <span className="px-4 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
-              Transparent Pricing • Zero Hidden Fees
-            </span>
-            <h1 className="text-4xl sm:text-5xl font-black tracking-tight">
-              Pricing & Service Packages 💰
-            </h1>
-            <p className="text-sm text-slate-300 max-w-xl mx-auto font-medium">
-              Transparent rates for all doorstep services across Delhi NCR. Pay after your appointment via UPI, Card, or Cash.
-            </p>
-          </div>
-        </section>
+      <main className="pt-32 pb-24 px-6 md:px-16 max-w-7xl mx-auto w-full space-y-12">
+        {/* EDITORIAL HEADER */}
+        <div className="text-center max-w-3xl mx-auto space-y-4">
+          <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-extrabold uppercase tracking-wider border border-[#006E1C]/30">
+            Transparent Pricing • Zero Hidden Fees
+          </span>
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-[#1B1C1A] tracking-tight leading-none">
+            Pricing & <span className="text-[#006E1C] italic font-serif">Packages</span> 💰
+          </h1>
+          <p className="text-base sm:text-lg text-[#3F4A3C] leading-relaxed">
+            Transparent rates for all doorstep services across Delhi NCR. Pay after your appointment via UPI, Card, or Cash.
+          </p>
+        </div>
 
         {/* INTERACTIVE PRICE CALCULATOR */}
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-8">
+        <section>
           <PetPriceCalculator onBook={(p) => book(p)} />
         </section>
 
-        {/* CATEGORY TABLES */}
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-8 space-y-8">
+        {/* CATEGORY TABLES (STITCH GLASS PANELS) */}
+        <section className="space-y-8">
           {cats.map((cat, ci) => (
             <div
               key={ci}
-              className="glass-luxury rounded-[32px] overflow-hidden border shadow-xl"
-              style={{ borderColor: cat.bdr }}
+              className="glass-panel rounded-[3rem] overflow-hidden border border-[rgba(26,26,26,0.08)] shadow-lg"
             >
-              <div className="px-8 py-5 flex items-center gap-3 text-white" style={{ background: cat.color }}>
-                <span className="text-2xl">{cat.icon}</span>
-                <h2 className="text-xl font-black">{cat.title}</h2>
+              <div
+                className="px-8 py-5 flex items-center gap-3 text-white"
+                style={{ background: cat.color }}
+              >
+                <span className="material-symbols-outlined text-2xl">
+                  {cat.icon}
+                </span>
+                <h2 className="text-xl font-bold tracking-tight">{cat.title}</h2>
               </div>
 
-              <div className="divide-y divide-slate-100">
+              <div className="divide-y divide-black/5">
                 {cat.rows.map((row, ri) => (
                   <div
                     key={ri}
-                    className="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:bg-slate-50/60 transition-colors"
+                    className="p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:bg-black/2 transition-colors"
                   >
                     <div className="space-y-1">
-                      <h3 className="text-base font-black text-slate-900">{row.name}</h3>
-                      <p className="text-xs text-slate-500">{row.desc}</p>
+                      <h3 className="text-lg font-bold text-[#1B1C1A]">
+                        {row.name}
+                      </h3>
+                      <p className="text-xs text-[#3F4A3C]">{row.desc}</p>
                     </div>
+
                     <div className="flex items-center gap-4 shrink-0">
-                      <span className="text-xl font-black" style={{ color: cat.color }}>
+                      <span
+                        className="text-2xl font-extrabold"
+                        style={{ color: cat.color }}
+                      >
                         {row.price}
                       </span>
                       <button
                         onClick={() => book(`${row.name} (${row.price})`)}
-                        className="text-white font-bold text-xs px-5 py-2.5 rounded-full shadow-md transition-all hover:scale-105"
+                        className="text-white font-extrabold text-xs px-6 py-3 rounded-full shadow-md hover:scale-105 transition-all"
                         style={{ background: cat.color }}
                       >
-                        Book Now
+                        Book Now ⚡
                       </button>
                     </div>
                   </div>

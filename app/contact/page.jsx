@@ -8,17 +8,17 @@ import QuickLeadBar from "@/components/QuickLeadBar";
 
 const faqs = [
   { q: "Do you serve all areas in Delhi NCR?", a: "Yes! We cover all zones in South, West, East & North Delhi, Noida, Greater Noida, Gurgaon, Faridabad, and Ghaziabad." },
-  { q: "How quickly does the doctor arrive after booking?", a: "For scheduled visits, doctors arrive in your chosen time slot. For 24/7 emergency calls, average dispatch time is 30–45 minutes." },
+  { q: "How quickly does the doctor arrive after booking?", a: "For scheduled visits, doctors arrive in your chosen time slot. For 24/7 emergency calls, average dispatch time is 35 minutes." },
   { q: "Are your vaccines genuine and cold-chain maintained?", a: "Yes. Sourced directly from Zoetis, Virbac, and Intervet. Maintained at 2°C–8°C in insulated cold-boxes with temperature logs." },
   { q: "What payment methods do you accept?", a: "UPI (GPay, PhonePe, Paytm), Cards, Net Banking, and Cash. You pay after service completion." },
   { q: "Do you provide a signed prescription?", a: "Yes. Every visit includes a signed digital doctor prescription delivered directly on WhatsApp." },
 ];
 
 const contactInfo = [
-  { icon: "📞", label: "24/7 Vet SOS", value: "+91 88008 13462", sub: "Always live for emergency dispatch", href: "tel:+918800813462", color: "#dc2626" },
-  { icon: "💬", label: "WhatsApp Chat", value: "+91 88008 13462", sub: "Instant 2-min response", href: "https://wa.me/918800813462", color: "#059669" },
-  { icon: "📷", label: "Instagram", value: "@_lifeline_pet_care", sub: "Follow for pet tips", href: "https://instagram.com/_lifeline_pet_care/", color: "#7c3aed" },
-  { icon: "📍", label: "Service Area", value: "Delhi NCR", sub: "Delhi, Noida, Gurgaon, Ghaziabad", color: "#2563eb" },
+  { icon: "call", label: "24/7 Vet SOS", value: "+91 88008 13462", sub: "Always live for emergency dispatch", href: "tel:+918800813462", color: "#BA1A1A" },
+  { icon: "chat", label: "WhatsApp Chat", value: "+91 88008 13462", sub: "Instant 2-min response", href: "https://wa.me/918800813462", color: "#006E1C" },
+  { icon: "photo_camera", label: "Instagram", value: "@_lifeline_pet_care", sub: "Follow for pet tips", href: "https://instagram.com/_lifeline_pet_care/", color: "#1B1C1A" },
+  { icon: "location_on", label: "Service Area", value: "Delhi NCR", sub: "Delhi, Noida, Gurgaon, Ghaziabad", color: "#0284C7" },
 ];
 
 export default function ContactPage() {
@@ -33,67 +33,65 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-[#FDFBF7] min-h-screen font-sans text-slate-700 antialiased">
+    <div className="bg-[#FAF9F5] text-[#1B1C1A] font-sans antialiased min-h-screen relative flex flex-col justify-between">
       <Navbar />
 
-      <main className="pt-16">
-        {/* HERO */}
-        <section className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white py-16 px-6 text-center">
-          <div className="max-w-3xl mx-auto space-y-3">
-            <span className="px-4 py-1.5 rounded-full bg-white/20 text-white text-xs font-bold uppercase tracking-wider border border-white/30 backdrop-blur-md">
-              We're Here 24/7 For Your Pet
-            </span>
-            <h1 className="text-4xl sm:text-5xl font-black tracking-tight">
-              Get in Touch with Us 📞
-            </h1>
-            <p className="text-sm text-emerald-100 font-medium">
-              Call, WhatsApp, or fill out the lead request below. For emergency calls, dial +91 88008 13462 directly.
-            </p>
-          </div>
-        </section>
+      <main className="pt-32 pb-24 px-6 md:px-16 max-w-7xl mx-auto w-full space-y-16">
+        {/* EDITORIAL HERO (STITCH SPEC) */}
+        <div className="text-center max-w-3xl mx-auto space-y-4">
+          <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-extrabold uppercase tracking-wider border border-[#006E1C]/30">
+            We're Live 24/7 For Your Pet
+          </span>
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-[#1B1C1A] tracking-tight leading-none">
+            Get in <span className="text-[#006E1C] italic font-serif">Touch</span> 📞
+          </h1>
+          <p className="text-base sm:text-lg text-[#3F4A3C] leading-relaxed">
+            Call, WhatsApp, or fill out the inquiry form below. For emergency SOS calls, dial +91 88008 13462 directly.
+          </p>
+        </div>
 
-        {/* CONTACT CARDS */}
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactInfo.map((c, i) => (
-              <div key={i} className="glass-luxury rounded-[28px] p-6 text-center border border-slate-200 space-y-2">
-                <span className="text-3xl block">{c.icon}</span>
-                <p className="text-[11px] font-black uppercase text-slate-400">{c.label}</p>
-                <a href={c.href} className="text-base font-black text-slate-900 hover:text-emerald-600 block">
-                  {c.value}
-                </a>
-                <p className="text-xs text-slate-500 font-medium">{c.sub}</p>
+        {/* CONTACT CARDS GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {contactInfo.map((c, i) => (
+            <div key={i} className="glass-panel rounded-[2.5rem] p-6 text-center border border-[rgba(26,26,26,0.08)] space-y-3 hover:-translate-y-1 transition-all ambient-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-[#F4F4F0] flex items-center justify-center mx-auto text-[#006E1C]">
+                <span className="material-symbols-outlined text-2xl">{c.icon}</span>
               </div>
-            ))}
-          </div>
-        </section>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-[#6F7A6B]">{c.label}</p>
+              <a href={c.href} className="text-base font-extrabold text-[#1B1C1A] hover:text-[#006E1C] block">
+                {c.value}
+              </a>
+              <p className="text-xs text-[#3F4A3C]">{c.sub}</p>
+            </div>
+          ))}
+        </div>
 
         {/* FAQ & FORM GRID */}
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* FAQ ACCORDION */}
           <div className="space-y-6">
             <div className="space-y-2">
-              <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase">
+              <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-extrabold uppercase tracking-wider">
                 Got Questions?
               </span>
-              <h2 className="text-3xl font-black text-slate-900">
+              <h2 className="text-3xl font-extrabold text-[#1B1C1A] tracking-tight">
                 Frequently Asked Questions 💡
               </h2>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {faqs.map((faq, i) => (
                 <div
                   key={i}
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="glass-luxury rounded-2xl p-5 border border-slate-200 cursor-pointer space-y-2"
+                  className="glass-panel rounded-[2rem] p-6 border border-[rgba(26,26,26,0.08)] cursor-pointer space-y-2 hover:bg-white/90 transition-colors"
                 >
-                  <div className="flex justify-between items-center gap-4 font-bold text-sm text-slate-900">
+                  <div className="flex justify-between items-center gap-4 font-bold text-sm text-[#1B1C1A]">
                     <span>{faq.q}</span>
-                    <span className="text-emerald-600 text-lg">{openFaq === i ? "−" : "+"}</span>
+                    <span className="text-[#006E1C] text-xl font-extrabold">{openFaq === i ? "−" : "+"}</span>
                   </div>
                   {openFaq === i && (
-                    <p className="text-xs text-slate-600 leading-relaxed pt-2 border-t border-slate-100">
+                    <p className="text-xs text-[#3F4A3C] leading-relaxed pt-3 border-t border-black/5">
                       {faq.a}
                     </p>
                   )}
@@ -102,27 +100,27 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* QUICK INQUIRY FORM */}
-          <div className="glass-luxury rounded-[36px] p-8 border border-emerald-100 shadow-xl space-y-6">
+          {/* FAST RESPONSE FORM */}
+          <div className="glass-panel rounded-[3rem] p-8 md:p-10 border border-[rgba(26,26,26,0.08)] shadow-xl space-y-6">
             <div className="space-y-1">
-              <span className="text-xs font-bold text-emerald-700 uppercase">
-                Fast Response Form
+              <span className="text-xs font-bold text-[#006E1C] uppercase tracking-wider">
+                Fast 30-Sec Form
               </span>
-              <h2 className="text-2xl font-black text-slate-900">
-                Send Us a Quick Lead Inquiry 📩
+              <h2 className="text-2xl font-bold text-[#1B1C1A] tracking-tight">
+                Send Us an Inquiry 📩
               </h2>
             </div>
 
             {sent ? (
               <div className="text-center py-8 space-y-4">
                 <span className="text-4xl block">✅</span>
-                <h3 className="text-xl font-black text-slate-900">Message Received!</h3>
-                <p className="text-xs text-slate-600">
+                <h3 className="text-xl font-bold text-[#1B1C1A]">Inquiry Received!</h3>
+                <p className="text-xs text-[#3F4A3C]">
                   Our veterinary team will contact you on WhatsApp within 10 minutes.
                 </p>
                 <button
                   onClick={() => setSent(false)}
-                  className="bg-emerald-600 text-white font-bold text-xs px-6 py-3 rounded-full"
+                  className="bg-[#006E1C] text-white font-extrabold text-xs px-6 py-3 rounded-full"
                 >
                   Send Another Inquiry
                 </button>
@@ -135,7 +133,7 @@ export default function ContactPage() {
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder="Your Full Name *"
-                  className="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full px-5 py-3.5 rounded-full bg-[#F4F4F0] border border-black/5 text-xs font-bold text-[#1B1C1A] focus:outline-none focus:border-[#006E1C]"
                 />
 
                 <input
@@ -144,13 +142,13 @@ export default function ContactPage() {
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   placeholder="WhatsApp Mobile Number *"
-                  className="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full px-5 py-3.5 rounded-full bg-[#F4F4F0] border border-black/5 text-xs font-bold text-[#1B1C1A] focus:outline-none focus:border-[#006E1C]"
                 />
 
                 <select
                   value={form.service}
                   onChange={(e) => setForm({ ...form, service: e.target.value })}
-                  className="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full px-5 py-3.5 rounded-full bg-[#F4F4F0] border border-black/5 text-xs font-bold text-[#1B1C1A] focus:outline-none focus:border-[#006E1C]"
                 >
                   <option value="Veterinary Home Visit (₹449)">🩺 Vet Home Visit — ₹449</option>
                   <option value="Anti-Rabies Core Vaccine (₹999)">💉 Anti-Rabies Shot — ₹999</option>
@@ -164,19 +162,19 @@ export default function ContactPage() {
                   value={form.msg}
                   onChange={(e) => setForm({ ...form, msg: e.target.value })}
                   placeholder="Tell us about your pet (species, symptoms, location)..."
-                  className="w-full px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full px-5 py-3.5 rounded-3xl bg-[#F4F4F0] border border-black/5 text-xs font-bold text-[#1B1C1A] focus:outline-none focus:border-[#006E1C]"
                 />
 
                 <button
                   type="submit"
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-4 rounded-2xl text-xs uppercase tracking-wider shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.01]"
+                  className="w-full bg-[#006E1C] hover:bg-[#005313] text-white font-extrabold py-4 rounded-full text-xs uppercase tracking-wider shadow-lg shadow-[#006E1C]/30 hover:scale-[1.01] active:scale-95 transition-all"
                 >
                   Send Inquiry Now 🚀
                 </button>
               </form>
             )}
           </div>
-        </section>
+        </div>
       </main>
 
       <QuickLeadBar onBookClick={() => setModalOpen(true)} />
