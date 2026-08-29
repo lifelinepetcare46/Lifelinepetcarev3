@@ -11,26 +11,44 @@ import PetPriceCalculator from "./PetPriceCalculator";
 
 /* ─── DATA ───────────────────────────────────────────────── */
 const reviews = [
-  { name: "Ananya Sharma", location: "South Delhi", text: "Dr. Rohit came within 35 minutes for my Golden Retriever's emergency fever. Thorough, gentle, and extremely professional!", pet: "Golden Retriever" },
-  { name: "Rohan Mehta", location: "Noida Sector 50", text: "Puppy vaccination at home — zero stress. Genuine cold-chain vaccines and prescription sent on WhatsApp instantly.", pet: "Labrador Pup" },
-  { name: "Priya Kapoor", location: "Gurgaon Phase 5", text: "My Persian cat Mochi hates clinic visits. Lifeline's doorstep spa & grooming was a lifesaver. Pure luxury!", pet: "Persian Cat" },
-  { name: "Vikram Malhotra", location: "West Delhi", text: "Called 24/7 SOS helpline at 2 AM. Vet dispatched immediately. Truly saved my Beagle's life!", pet: "Beagle" },
+  { name: "Ananya Sharma", location: "South Delhi", text: "Dr. Rohit came within 35 minutes for my Golden Retriever's emergency fever. Thorough, gentle, and extremely professional!", pet: "Golden Retriever 🐕" },
+  { name: "Priya Kapoor", location: "Gurgaon Phase 5", text: "My Persian cat Mochi hates clinic visits. Lifeline's doorstep spa & grooming was a lifesaver. Pure luxury!", pet: "Persian Cat 🐱" },
+  { name: "Rohan Mehta", location: "Noida Sector 50", text: "Puppy vaccination at home — zero stress. Genuine cold-chain vaccines and prescription sent on WhatsApp instantly.", pet: "Labrador Pup 🐕" },
+  { name: "Vikram Malhotra", location: "West Delhi", text: "Called 24/7 SOS helpline at 2 AM. Vet dispatched immediately for my Beagle. Truly saved his life!", pet: "Beagle 🐕" },
 ];
 
 const whyUs = [
-  { icon: "🏠", title: "100% Doorstep Visits", desc: "Certified doctors visit your home anywhere in Delhi NCR, 7 days a week." },
-  { icon: "🎓", title: "BVSc Verified Doctors", desc: "Degree-qualified, background-verified veterinary specialists only." },
-  { icon: "❄️", title: "Cold-Chain Vaccines", desc: "Genuine vaccines maintained at 2°C–8°C directly from manufacturer." },
+  { icon: "🏠", title: "100% Doorstep Dog & Cat Care", desc: "Certified doctors visit your home anywhere in Delhi NCR, 7 days a week." },
+  { icon: "🎓", title: "Canine & Feline BVSc Vets", desc: "Degree-qualified, background-verified veterinary specialists only." },
+  { icon: "❄️", title: "Cold-Chain Core Vaccines", desc: "Genuine vaccines maintained at 2°C–8°C directly from manufacturer." },
   { icon: "📱", title: "Instant WhatsApp Reports", desc: "Digital prescriptions & blood test lab reports delivered in minutes." },
   { icon: "💳", title: "Transparent Pricing", desc: "Pay after service completion via UPI, Cash, or Card. Zero hidden fees." },
   { icon: "🕐", title: "Same-Day Booking", desc: "Book before noon and get guaranteed same-day doctor or grooming visit." },
 ];
 
-const pets = [
-  { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBc9LWmMM08px7CB1tFJossP1smXHH2DGGWRseN8U15pjcpGLaZvzkUEjnJQKHP2vEIZnA-zM0nQ-iPUtHY8mWxD5--Uuojs47qFWjjnv3E_Xw2-Jy_Pf_jyB7e5IVvF97Zs9gfYZKaH-VAyoJBqulaP02SAHydoTWMYTYNKxVNhHZCYyorVgygyTTOWaScJ0yV0rMmvuj8859r904dxIDDaEdTvcvhk9A4HjwNlnqWLEEf7RPLIq9D", label: "Dogs 🐕", sub: "Vaccines, Clinical Checkup & Spa", booking: "Canine Care" },
-  { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA3epoSNHaQgHPWcSrhdDaatNsKRMNPLvMf6uFc-qbSkbfuOVgVJawXLj3KGGqfXgZT-4lCZDY2ewdE2-dklSqyK2kbtd74MaEBLhDh65-fIQmm-ZAlb7GqJM0Z9AweuQ_O7D8wC6HN3mnq8MNJM0SX3pTPESH60QXu48qyZ_KydcdkTOCOgnYEoENdRrxZkTWVRB0cMk976vV6XTib64xqAvONWJFNsQ_0kw1OpB58f5sALLdEDTpQ", label: "Cats 🐱", sub: "Stress-Free Feline Healthcare", booking: "Feline Care" },
+/* DOGS & CATS FIRST AND FEATURED */
+const primaryPets = [
+  {
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBc9LWmMM08px7CB1tFJossP1smXHH2DGGWRseN8U15pjcpGLaZvzkUEjnJQKHP2vEIZnA-zM0nQ-iPUtHY8mWxD5--Uuojs47qFWjjnv3E_Xw2-Jy_Pf_jyB7e5IVvF97Zs9gfYZKaH-VAyoJBqulaP02SAHydoTWMYTYNKxVNhHZCYyorVgygyTTOWaScJ0yV0rMmvuj8859r904dxIDDaEdTvcvhk9A4HjwNlnqWLEEf7RPLIq9D",
+    label: "Canine Care (Dogs) 🐕",
+    sub: "9-in-1 Vaccines, Clinical Exam, Breed Haircuts & Anti-Tick Spa",
+    booking: "Canine Care (Dogs)",
+    tag: "Primary Focus",
+    color: "#059669",
+  },
+  {
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA3epoSNHaQgHPWcSrhdDaatNsKRMNPLvMf6uFc-qbSkbfuOVgVJawXLj3KGGqfXgZT-4lCZDY2ewdE2-dklSqyK2kbtd74MaEBLhDh65-fIQmm-ZAlb7GqJM0Z9AweuQ_O7D8wC6HN3mnq8MNJM0SX3pTPESH60QXu48qyZ_KydcdkTOCOgnYEoENdRrxZkTWVRB0cMk976vV6XTib64xqAvONWJFNsQ_0kw1OpB58f5sALLdEDTpQ",
+    label: "Feline Care (Cats) 🐱",
+    sub: "FVRCP Vaccines, Stress-Free Home Spa & Gentle Feline Checkup",
+    booking: "Feline Care (Cats)",
+    tag: "Popular",
+    color: "#ea580c",
+  },
+];
+
+const secondaryPets = [
   { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCn6yuSTBLZI7luWPuF4PFsdKYYRmRiVta9IMcpEqMid21rdbnTvGKyk8SnUDMuUjXBGbBW9q7QdYVk4GIOpgQQKPFGH0PYeLO7B2aBkHLg__hw2_uafxCbVfP9Fy7SsNmYL-gRz6qVixAOndx26HktkF-4dBeysCvhNeW28TplFC8L20FPL6TFfK6pxUWqL0QvEj7aBDaxf-eSnOY1GPU8LSE_6JzPKCM2-KE_su-w1xlN-y8DyLI2", label: "Birds 🦜", sub: "Avian Health & Wing Specialist", booking: "Avian Care" },
-  { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3I1cbucbuU4w4rFrSAaKOZV7ggfr_1vxJ8vLFfBEd2paISnaJ0z0BsCL0TnxNBA6cPVlcuBmjk1hO2GFEAzHCorUK7tPYgOj0JtcJBILhjdQAMsDmHEfAt5Jxee1wbNfHsL2KXfiA5LCQiiJspx6SBCJstmKSD4rDfxgfsnWkonR7o3hwXTSc-esO4ztzu-rJjYoxu8VrvMxtpEMQgGaQZzakjzzK_r5fuM6EDDPwV5OXbPuXQ7hI", label: "Exotics 🐇", sub: "Rabbits, Ferrets & Rodent Care", booking: "Exotic Care" },
+  { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3I1cbucbuU4w4rFrSAaKOZV7ggfr_1vxJ8vLFfBEd2paISnaJ0z0BsCL0TnxNBA6cPVlcuBmjk1hO2GFEAzHCorUK7tPYgOj0JtcJBILhjdQAMsDmHEfAt5Jxee1wbNfHsL2KXfiA5LCQiiJspx6SBCJstmKSD4rDfxgfsnWkonR7o3hwXTSc-esO4ztzu-rJjYoxu8VrvMxtpEMQgGaQZzakjzzK_r5fuM6EDDPwV5OXbPuXQ7hI", label: "Exotics 🐇", sub: "Rabbits, Ferrets & Rodents", booking: "Exotic Care" },
 ];
 
 const services = [
@@ -41,13 +59,13 @@ const services = [
     booking: "Veterinary Home Visit (₹449)",
   },
   {
-    icon: "💉", label: "Vaccinations", title: "Core Vaccines", price: "from ₹999", unit: "",
+    icon: "💉", label: "Vaccinations", title: "Dog & Cat Vaccines", price: "from ₹999", unit: "",
     accent: "#ea580c", accentBg: "#fff7ed", border: "#fed7aa",
-    features: ["Anti-Rabies Shot — ₹999", "Adult Booster (9-in-1) — ₹3,899", "Puppy 5-Shot Package — ₹6,799", "Cold-chain guarantee & digital record"],
+    features: ["Anti-Rabies Shot — ₹999", "Adult Dog Booster (9-in-1) — ₹3,899", "Cat FVRCP Triple Vaccine — ₹2,499", "Puppy 5-Shot Package — ₹6,799"],
     booking: "Anti-Rabies Core Vaccine (₹999)",
   },
   {
-    icon: "✂️", label: "Doorstep Spa", title: "Luxury Grooming", price: "from ₹799", unit: "",
+    icon: "✂️", label: "Doorstep Spa", title: "Dog & Cat Grooming", price: "from ₹799", unit: "",
     accent: "#7c3aed", accentBg: "#f5f3ff", border: "#ddd6fe",
     features: ["Bath & Blow Dry — ₹799", "Mini Groom (Bath + Nails) — ₹1,100", "Full Breed Haircut — ₹1,799", "Organic shampoo & area sanitization"],
     booking: "Doorstep Grooming Bath (₹799)",
@@ -95,7 +113,7 @@ export default function StitchMasterUI() {
               <span className="text-emerald-300 font-extrabold uppercase tracking-wider">
                 Live Status:
               </span>
-              <span>🟢 14 BVSc Doctors Active in Delhi, Noida & Gurgaon • Avg arrival: 35 mins</span>
+              <span>🟢 14 Dog & Cat Doctors Active in Delhi, Noida & Gurgaon • Avg arrival: 35 mins</span>
             </div>
             <a
               href="tel:+918800813462"
@@ -106,7 +124,7 @@ export default function StitchMasterUI() {
           </div>
         </div>
 
-        {/* ═══════════════════ HERO SECTION ═══════════════════ */}
+        {/* ═══════════════════ HERO SECTION (DOG & CAT ORIENTED) ═══════════════════ */}
         <section className="relative min-h-[85vh] flex items-center overflow-hidden py-12 lg:py-20">
           {/* Ambient Orbs */}
           <div className="orb orb-green" style={{ width: 600, height: 600, top: "-100px", left: "-200px" }} />
@@ -118,25 +136,25 @@ export default function StitchMasterUI() {
               <div className="anim-hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100/80 text-emerald-900 border border-emerald-300 backdrop-blur-md shadow-xs">
                 <span className="w-2 h-2 rounded-full bg-emerald-600 animate-ping" />
                 <span className="text-xs font-extrabold uppercase tracking-wider">
-                  #1 Doorstep Pet Healthcare in Delhi NCR
+                  🐕 #1 Dog & Cat Healthcare Specialist in Delhi NCR 🐱
                 </span>
               </div>
 
               <h1 className="anim-hero-h1 text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-[1.08]">
-                Hospital-Grade Pet Care,{" "}
+                Hospital-Grade Dog & Cat Care,{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
                   Delivered at Your Door 🐾
                 </span>
               </h1>
 
               <p className="anim-hero-p text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
-                Certified BVSc doctors, genuine cold-chain vaccines & organic doorstep grooming spa. No clinic queues, zero pet anxiety. Starting at just <strong className="text-emerald-700 font-extrabold">₹449</strong>.
+                Certified canine & feline BVSc doctors, genuine cold-chain vaccines & organic doorstep grooming spa. Zero clinic stress for your dogs and cats. Starting at just <strong className="text-emerald-700 font-extrabold">₹449</strong>.
               </p>
 
               {/* STATS STRIP */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
                 {[
-                  ["15,000+", "Happy Pets"],
+                  ["15,000+", "Dogs & Cats Treated"],
                   ["4.9★", "Google Rating"],
                   ["24/7", "Emergency Vets"],
                   ["₹449", "Starts At"],
@@ -154,7 +172,7 @@ export default function StitchMasterUI() {
                   onClick={() => book("Veterinary Home Visit (₹449)")}
                   className="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm px-8 py-4 rounded-full shadow-xl shadow-emerald-600/30 hover:scale-105 transition-all flex items-center gap-2"
                 >
-                  <span>🩺 Book Vet Visit — ₹449</span>
+                  <span>🩺 Book Dog/Cat Vet Visit — ₹449</span>
                   <span>→</span>
                 </button>
 
@@ -172,7 +190,7 @@ export default function StitchMasterUI() {
               <div className="relative rounded-[40px] overflow-hidden border-4 border-white shadow-2xl">
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc9LWmMM08px7CB1tFJossP1smXHH2DGGWRseN8U15pjcpGLaZvzkUEjnJQKHP2vEIZnA-zM0nQ-iPUtHY8mWxD5--Uuojs47qFWjjnv3E_Xw2-Jy_Pf_jyB7e5IVvF97Zs9gfYZKaH-VAyoJBqulaP02SAHydoTWMYTYNKxVNhHZCYyorVgygyTTOWaScJ0yV0rMmvuj8859r904dxIDDaEdTvcvhk9A4HjwNlnqWLEEf7RPLIq9D"
-                  alt="Doctor treating happy Golden Retriever at home"
+                  alt="Doctor treating happy Golden Retriever dog at home"
                   className="w-full h-[520px] object-cover"
                 />
               </div>
@@ -180,54 +198,93 @@ export default function StitchMasterUI() {
               {/* Floating Doctor Verification Badge */}
               <div className="absolute -bottom-6 -left-6 glass-luxury p-5 rounded-3xl border border-emerald-200 shadow-2xl flex items-center gap-4 max-w-xs">
                 <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-2xl shrink-0">
-                  🩺
+                  🐕
                 </div>
                 <div>
-                  <p className="text-xs font-black text-slate-900">BVSc & AH Certified Vets</p>
-                  <p className="text-[11px] text-slate-500 font-medium">100% Background Verified</p>
+                  <p className="text-xs font-black text-slate-900">Dog & Cat Specialists</p>
+                  <p className="text-[11px] text-slate-500 font-medium">100% Gentle & Certified Vets</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ═══════════════════ PET SPECIES SELECTION ═══════════════════ */}
+        {/* ═══════════════════ DOGS & CATS FIRST (FEATURED SECTION) ═══════════════════ */}
         <section className="py-16 bg-white/80 backdrop-blur-md border-y border-slate-100">
           <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-10">
             <div className="text-center max-w-xl mx-auto space-y-3">
               <span className="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider">
-                Specialized Clinical Care
+                Primary Specialty
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-                Tailored Healthcare for Every Companion 🐾
+                Dog & Cat Healthcare Specialists 🐕🐱
               </h2>
+              <p className="text-xs sm:text-sm text-slate-600">
+                Specialized clinical protocols, gentle handling, and cold-chain vaccines tailored specifically for dogs & cats.
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {pets.map((pet, i) => (
-                <button
+            {/* FEATURED DOG & CAT CARDS */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {primaryPets.map((pet, i) => (
+                <div
                   key={i}
-                  onClick={() => book(pet.booking)}
-                  className="anim-pet-card glass-luxury rounded-[28px] overflow-hidden text-left border border-slate-200 hover:border-emerald-400 hover:shadow-2xl transition-all duration-300 group"
+                  className="glass-luxury rounded-[36px] overflow-hidden border border-emerald-200 shadow-xl flex flex-col sm:flex-row items-stretch group hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="h-52 overflow-hidden relative">
+                  <div className="sm:w-1/2 h-64 sm:h-auto overflow-hidden relative">
                     <img
                       src={pet.img}
                       alt={pet.label}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                  </div>
-                  <div className="p-6 space-y-2">
-                    <h3 className="text-lg font-black text-slate-900 group-hover:text-emerald-700 transition-colors">
-                      {pet.label}
-                    </h3>
-                    <p className="text-xs text-slate-500 font-medium">{pet.sub}</p>
-                    <span className="text-xs font-bold text-emerald-600 block pt-2">
-                      Book Care Service →
+                    <span
+                      className="absolute top-4 left-4 px-3 py-1 rounded-full text-white text-xs font-black uppercase tracking-wider shadow-md"
+                      style={{ background: pet.color }}
+                    >
+                      {pet.tag}
                     </span>
                   </div>
-                </button>
+
+                  <div className="sm:w-1/2 p-6 sm:p-8 space-y-4 flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <h3 className="text-2xl font-black text-slate-900">{pet.label}</h3>
+                      <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                        {pet.sub}
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={() => book(pet.booking)}
+                      className="w-full text-white font-black text-xs py-3.5 rounded-2xl shadow-lg transition-all hover:scale-[1.02]"
+                      style={{ background: pet.color }}
+                    >
+                      Book {pet.label} Services →
+                    </button>
+                  </div>
+                </div>
               ))}
+            </div>
+
+            {/* SECONDARY PETS (BIRDS & EXOTICS) */}
+            <div className="pt-6 border-t border-slate-100 space-y-4">
+              <h4 className="text-xs font-black uppercase text-slate-400 tracking-wider text-center">
+                Also Servicing Birds & Exotic Pets
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                {secondaryPets.map((pet, i) => (
+                  <button
+                    key={i}
+                    onClick={() => book(pet.booking)}
+                    className="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-300 text-left flex items-center justify-between transition-all"
+                  >
+                    <div>
+                      <p className="text-xs font-bold text-slate-900">{pet.label}</p>
+                      <p className="text-[10px] text-slate-500">{pet.sub}</p>
+                    </div>
+                    <span className="text-xs font-bold text-emerald-600">Book →</span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -242,7 +299,7 @@ export default function StitchMasterUI() {
           <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-12">
             <div className="text-center max-w-2xl mx-auto space-y-3">
               <span className="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider">
-                Transparent Prices
+                Dog & Cat Pricing
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
                 Our Most Requested Doorstep Services 🏥
@@ -304,7 +361,7 @@ export default function StitchMasterUI() {
           <div className="glass-luxury rounded-[36px] p-8 md:p-12 border border-emerald-100 shadow-2xl space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-2">
               <span className="px-4 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider">
-                Why Pet Parents Switch to Lifeline
+                Why Dog & Cat Parents Switch to Lifeline
               </span>
               <h2 className="text-3xl font-black text-slate-900">
                 Lifeline Doorstep vs Traditional Clinic ⚔️
@@ -343,7 +400,7 @@ export default function StitchMasterUI() {
           <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-12">
             <div className="text-center max-w-xl mx-auto space-y-3">
               <h2 className="text-3xl font-black text-slate-900">
-                Why 15,000+ Pet Parents Trust Us 🛡️
+                Why 15,000+ Dog & Cat Parents Trust Us 🛡️
               </h2>
             </div>
 
@@ -369,7 +426,7 @@ export default function StitchMasterUI() {
               Real Reviews
             </span>
             <h2 className="text-3xl font-black text-slate-900">
-              Loved by Delhi NCR Pet Parents ❤️
+              Loved by Delhi NCR Dog & Cat Parents ❤️
             </h2>
           </div>
 

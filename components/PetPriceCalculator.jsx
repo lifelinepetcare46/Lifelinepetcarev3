@@ -49,10 +49,10 @@ export default function PetPriceCalculator({ onBook }) {
 
       <div className="text-center max-w-2xl mx-auto space-y-3 mb-8">
         <span className="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider border border-emerald-300">
-          💡 Transparent Pricing Estimator
+          🐕 Dog & Cat Healthcare Estimator 🐱
         </span>
         <h2 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight">
-          Calculate Your Pet Care Cost Instantly 🐾
+          Calculate Your Dog or Cat Care Cost Instantly 🐾
         </h2>
         <p className="text-xs sm:text-sm text-gray-600">
           No hidden visit charges or surprise clinic fees. See exact prices before booking.
@@ -62,29 +62,34 @@ export default function PetPriceCalculator({ onBook }) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
         {/* Step 1 & 2 */}
         <div className="lg:col-span-2 space-y-6">
-          {/* Pet Type */}
+          {/* Pet Type - Primary Focus on Dog & Cat */}
           <div>
             <label className="block text-xs font-extrabold uppercase text-gray-500 mb-2">
-              1. Select Pet Type
+              1. Select Pet Companion
             </label>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {[
-                { id: "dog", icon: "🐕", label: "Dog" },
-                { id: "cat", icon: "🐱", label: "Cat" },
-                { id: "bird", icon: "🦜", label: "Bird" },
-                { id: "exotic", icon: "🐇", label: "Exotic" },
+                { id: "dog", icon: "🐕", label: "Dog / Canine", badge: "Primary" },
+                { id: "cat", icon: "🐱", label: "Cat / Feline", badge: "Popular" },
+                { id: "bird", icon: "🦜", label: "Bird", badge: "" },
+                { id: "exotic", icon: "🐇", label: "Exotic", badge: "" },
               ].map((item) => (
                 <button
                   key={item.id}
                   onClick={() => setPetType(item.id)}
-                  className={`p-3 sm:p-4 rounded-2xl border text-center transition-all flex flex-col items-center gap-1 ${
+                  className={`p-4 rounded-2xl border text-center transition-all flex flex-col items-center gap-1 relative ${
                     petType === item.id
-                      ? "bg-emerald-600 text-white border-emerald-600 shadow-lg scale-[1.03]"
+                      ? "bg-emerald-600 text-white border-emerald-600 shadow-xl scale-[1.04]"
                       : "bg-white text-gray-700 border-gray-200 hover:border-emerald-300"
                   }`}
                 >
-                  <span className="text-2xl">{item.icon}</span>
-                  <span className="text-xs font-bold">{item.label}</span>
+                  {item.badge && (
+                    <span className="absolute -top-2 px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 font-black text-[9px] uppercase tracking-wider shadow-xs">
+                      {item.badge}
+                    </span>
+                  )}
+                  <span className="text-3xl">{item.icon}</span>
+                  <span className="text-xs font-extrabold">{item.label}</span>
                 </button>
               ))}
             </div>
@@ -93,18 +98,18 @@ export default function PetPriceCalculator({ onBook }) {
           {/* Size */}
           <div>
             <label className="block text-xs font-extrabold uppercase text-gray-500 mb-2">
-              2. Select Size / Breed Weight
+              2. Select Weight / Breed Size
             </label>
             <div className="grid grid-cols-3 gap-3">
               {[
-                { id: "small", label: "Small (< 10 kg)" },
-                { id: "medium", label: "Medium (10–25 kg)" },
-                { id: "large", label: "Large (> 25 kg)" },
+                { id: "small", label: "Small Breed (< 10 kg)" },
+                { id: "medium", label: "Medium Breed (10–25 kg)" },
+                { id: "large", label: "Large Breed (> 25 kg)" },
               ].map((size) => (
                 <button
                   key={size.id}
                   onClick={() => setPetSize(size.id)}
-                  className={`p-3 rounded-xl border text-xs font-bold transition-all ${
+                  className={`p-3.5 rounded-2xl border text-xs font-bold transition-all ${
                     petSize === size.id
                       ? "bg-emerald-50 text-emerald-800 border-emerald-500 shadow-sm"
                       : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
@@ -156,10 +161,10 @@ export default function PetPriceCalculator({ onBook }) {
           <div>
             <div className="flex items-center justify-between border-b border-slate-700/80 pb-4 mb-4">
               <span className="text-xs uppercase font-bold tracking-wider text-emerald-400">
-                Estimated Summary
+                Doorstep Care Estimate
               </span>
               <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-full font-semibold border border-emerald-500/30">
-                Doorstep Visit
+                Dog & Cat Specialist
               </span>
             </div>
 
@@ -174,7 +179,7 @@ export default function PetPriceCalculator({ onBook }) {
 
             {selectedServices.length >= 3 && (
               <div className="mt-4 p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold text-center">
-                🎉 10% Bundle Discount Applied!
+                🎉 10% Dog/Cat Bundle Discount Applied!
               </div>
             )}
           </div>
@@ -189,7 +194,7 @@ export default function PetPriceCalculator({ onBook }) {
             </div>
 
             <button
-              onClick={() => onBook && onBook(`Calculated Package (₹${totalCost})`)}
+              onClick={() => onBook && onBook(`Calculated Dog/Cat Package (₹${totalCost})`)}
               className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-black py-4 rounded-2xl shadow-lg shadow-emerald-500/40 transition-all hover:scale-[1.02] text-sm uppercase tracking-wide"
             >
               Book Estimated Package 🚀
