@@ -147,10 +147,30 @@ export default function StitchMasterUI() {
     setOpenModal(true);
   };
 
-  const handleHeroSubmit = (e) => {
+  const handleHeroSubmit = async (e) => {
     e.preventDefault();
     setHeroFormSubmitted(true);
-    // WhatsApp Fallback trigger
+
+    try {
+      // 1. Send API payload to trigger Nodemailer email to lifelinepetcare46@gmail.com
+      await fetch("/api/book", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: heroName,
+          phone: heroPhone,
+          service: heroService,
+          pet: heroPet,
+          area: heroArea,
+          date: "Immediate / Today",
+          slot: "Hero Form Submission",
+        }),
+      });
+    } catch (err) {
+      console.warn("Hero API fetch error:", err);
+    }
+
+    // 2. WhatsApp Fallback trigger
     const text = encodeURIComponent(
       `Hi Lifeline Pet Care! 🐾 I want to book a doorstep service for my ${heroPet}.\nName: ${heroName}\nPhone: ${heroPhone}\nArea: ${heroArea}\nService: ${heroService}\nPlease share doctor arrival timing & slot details.`
     );

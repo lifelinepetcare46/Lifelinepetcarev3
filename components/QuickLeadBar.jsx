@@ -6,7 +6,23 @@ export default function QuickLeadBar({ onBookClick }) {
   const [pet, setPet] = useState("Dog 🐕");
   const [service, setService] = useState("Vet Visit (₹449)");
 
-  const handleWhatsApp = () => {
+  const handleWhatsApp = async () => {
+    try {
+      await fetch("/api/book", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "Quick Lead Customer",
+          phone: "WhatsApp Lead",
+          service: service,
+          pet: pet,
+          date: "Immediate",
+          slot: "Quick Lead Bar",
+        }),
+      });
+    } catch {
+      // Ignore
+    }
     const text = encodeURIComponent(
       `Hi Lifeline Pet Care! 🐾 I want to book a doorstep service for my ${pet}.\nService: ${service}\nPlease share doctor arrival timing & details.`
     );
