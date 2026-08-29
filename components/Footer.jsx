@@ -3,32 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 
-const quickLinks = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "All Services" },
-  { href: "/packages", label: "Pricing & Packages" },
-  { href: "/about", label: "About Us" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/blog", label: "Pet Care Blog" },
-  { href: "/contact", label: "Contact Us" },
-];
-
-const services = [
-  { name: "🩺 Vet Home Visit", price: "₹449", href: "/vet-services" },
-  { name: "💉 Anti-Rabies Shot", price: "₹999", href: "/vaccination-services" },
-  { name: "🐶 Puppy Vaccine Package", price: "₹6,799", href: "/vaccination-services" },
-  { name: "✂️ Doorstep Grooming Spa", price: "from ₹799", href: "/grooming-services" },
-  { name: "🚑 24/7 Emergency Care", price: "Immediate", href: "/emergency-services" },
-  { name: "🧪 Lab Blood Tests at Home", price: "from ₹850", href: "/lab-test-services" },
-];
-
-const coverage = [
-  "Delhi — All South, West, North & East Zones",
-  "Noida & Greater Noida Expressway",
-  "Gurgaon Cyber City, Golf Course & Sohna Road",
-  "Ghaziabad & Faridabad Sector Belts",
-];
-
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -42,30 +16,29 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-slate-950 text-slate-400 font-sans border-t border-slate-800/80 relative overflow-hidden">
-      {/* Glow Orbs in Footer */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
+    <footer className="w-full pt-20 pb-12 rounded-t-[3rem] bg-[#1B1C1A] text-[#FAF9F5] font-sans relative z-30 overflow-hidden">
+      {/* Ambient background blur */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#006E1C]/10 rounded-full blur-3xl pointer-events-none" />
 
-      {/* TOP NEWSLETTER LEAD BANNER */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-16 pb-12 border-b border-slate-800/80">
-        <div className="glass-luxury-dark rounded-[32px] p-8 md:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 border border-slate-800">
+      {/* TOP NEWSLETTER CARD */}
+      <div className="max-w-7xl mx-auto px-6 md:px-16 mb-16">
+        <div className="glass-panel-dark rounded-[3rem] p-8 md:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 border border-white/10">
           <div className="space-y-2 max-w-xl text-center lg:text-left">
-            <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
-              🐾 Free Pet Parenting Tips & Offers
+            <span className="px-3.5 py-1.5 rounded-full bg-[#006E1C]/30 text-[#94F990] text-xs font-bold uppercase tracking-wider border border-[#006E1C]/40">
+              🐾 VIP Pet Parenting Tips & Offers
             </span>
-            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              Join 12,000+ Happy Pet Parents in Delhi NCR
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              Join 15,000+ Happy Pet Parents in Delhi NCR
             </h3>
-            <p className="text-xs sm:text-sm text-slate-400">
-              Get monthly vaccination reminders, pet health advice & exclusive doorstep spa discount codes.
+            <p className="text-xs sm:text-sm text-[#BECAB9]">
+              Monthly vaccination reminders, care advice & exclusive doorstep spa vouchers.
             </p>
           </div>
 
           <form onSubmit={handleNewsletter} className="w-full lg:w-auto flex flex-col sm:flex-row gap-3">
             {subscribed ? (
-              <div className="px-6 py-3.5 rounded-2xl bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30 text-center">
-                ✓ Thank you! You're on the VIP pet list.
+              <div className="px-6 py-3.5 rounded-full bg-[#006E1C]/30 text-[#94F990] text-xs font-bold border border-[#006E1C]/40 text-center">
+                ✓ Thank you! You're on our VIP list.
               </div>
             ) : (
               <>
@@ -74,12 +47,12 @@ export default function Footer() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address..."
-                  className="bg-slate-900 border border-slate-700 text-white placeholder-slate-500 px-5 py-3.5 rounded-2xl text-xs focus:outline-none focus:border-emerald-400 w-full sm:w-72"
+                  placeholder="Enter email address..."
+                  className="bg-[#2F312E] border border-white/10 text-white placeholder-[#BECAB9] px-5 py-3.5 rounded-full text-xs focus:outline-none focus:border-[#4CAF50] w-full sm:w-72"
                 />
                 <button
                   type="submit"
-                  className="bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs px-6 py-3.5 rounded-2xl shadow-lg shadow-emerald-500/30 transition-all hover:scale-105 shrink-0"
+                  className="bg-[#006E1C] hover:bg-[#005313] text-white font-extrabold text-xs px-6 py-3.5 rounded-full shadow-lg hover:scale-105 transition-all shrink-0"
                 >
                   Subscribe Free 📩
                 </button>
@@ -89,147 +62,61 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* MAIN FOOTER GRID */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-        {/* BRAND & SOCIALS */}
-        <div className="space-y-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl overflow-hidden ring-2 ring-emerald-400/40">
-              <img
-                alt="Lifeline Pet Care Logo"
-                className="w-full h-full object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDStsY34FedzZuhoOZ-1EluQ2amO8xDEr8tA7M_-1OhUlYHpkIsAq36_nV2esyootO5_wm5ZwS8KElMk3uF5VoU4RyA_pTXIwIpOXcfpL0Mvk2ofBu-TrCz4GFxG_hqQ_YDLjgbA-lfd7JvLPozD7PFUP2AX0eeWlpWkcdj0vH8XtT1tyZANfkccrtf5XFSUuW3YhEHFuDbtwtdEBEyvvaPfa2QsM3Uf_NRRdOqtBU4MKc3M4zWfMAJ"
-              />
-            </div>
-            <span className="font-black text-xl text-white tracking-tight">
-              Lifeline Pet Care <span className="text-emerald-400">🐾</span>
-            </span>
+      {/* MAIN STITCH FOOTER GRID */}
+      <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+        <div className="col-span-1 md:col-span-2 space-y-4">
+          <div className="font-extrabold text-4xl sm:text-6xl text-[#FAF9F5] opacity-20 tracking-tighter leading-none font-sans">
+            Lifeline <br /> Pet Care
           </div>
-
-          <p className="text-xs text-slate-400 leading-relaxed">
-            Delhi NCR’s premier doorstep veterinary, vaccination & luxury pet spa service. BVSc certified doctors, genuine cold-chain vaccines & zero clinic stress.
+          <p className="text-sm text-[#BECAB9] max-w-md leading-relaxed">
+            Care that comes home. The modern, experimental spatial platform for doorstep veterinary excellence in Delhi NCR.
           </p>
-
-          {/* Socials & WhatsApp */}
-          <div className="flex items-center gap-3 pt-2">
-            <a
-              href="https://wa.me/918800813462"
-              target="_blank"
-              rel="noreferrer"
-              className="w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-emerald-600/30 transition-all hover:scale-110"
-              aria-label="WhatsApp"
-            >
-              💬
-            </a>
-            <a
-              href="https://instagram.com/_lifeline_pet_care/"
-              target="_blank"
-              rel="noreferrer"
-              className="w-10 h-10 rounded-full bg-pink-600 hover:bg-pink-500 text-white flex items-center justify-center font-bold text-sm transition-all hover:scale-110"
-              aria-label="Instagram"
-            >
-              📸
-            </a>
-            <a
-              href="tel:+918800813462"
-              className="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold text-sm border border-slate-700 transition-all hover:scale-110"
-              aria-label="Phone"
-            >
-              📞
-            </a>
-          </div>
         </div>
 
-        {/* QUICK LINKS */}
-        <div className="space-y-4">
-          <h4 className="text-xs font-black uppercase tracking-wider text-emerald-400">
-            Quick Navigation
+        <div className="flex flex-col gap-3 font-semibold text-sm">
+          <h4 className="text-[#94F990] font-bold uppercase tracking-wider text-xs">
+            Navigation & Legal
           </h4>
-          <ul className="space-y-2.5 text-xs font-medium">
-            {quickLinks.map(({ href, label }) => (
-              <li key={href}>
-                <Link
-                  href={href}
-                  className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block"
-                >
-                  → {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Link href="/" className="text-[#BECAB9] hover:text-white hover:translate-x-1 transition-all">
+            Home
+          </Link>
+          <Link href="/services" className="text-[#BECAB9] hover:text-white hover:translate-x-1 transition-all">
+            Services
+          </Link>
+          <Link href="/packages" className="text-[#BECAB9] hover:text-white hover:translate-x-1 transition-all">
+            Pricing & Packages
+          </Link>
+          <Link href="/privacy" className="text-[#BECAB9] hover:text-white hover:translate-x-1 transition-all">
+            Privacy Policy
+          </Link>
+          <Link href="/terms" className="text-[#BECAB9] hover:text-white hover:translate-x-1 transition-all">
+            Terms of Service
+          </Link>
         </div>
 
-        {/* SERVICES */}
-        <div className="space-y-4">
-          <h4 className="text-xs font-black uppercase tracking-wider text-emerald-400">
-            Doorstep Services
+        <div className="flex flex-col gap-3 font-semibold text-sm">
+          <h4 className="text-[#94F990] font-bold uppercase tracking-wider text-xs">
+            Connect & SOS
           </h4>
-          <ul className="space-y-2.5 text-xs font-medium">
-            {services.map((s, idx) => (
-              <li key={idx}>
-                <Link
-                  href={s.href}
-                  className="flex items-center justify-between text-slate-400 hover:text-white transition-all group"
-                >
-                  <span className="group-hover:text-emerald-300">{s.name}</span>
-                  <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                    {s.price}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* 24/7 HELPLINE & COVERAGE */}
-        <div className="space-y-5">
-          <h4 className="text-xs font-black uppercase tracking-wider text-emerald-400">
-            24/7 Vet SOS Helpline
-          </h4>
-          <div>
-            <a
-              href="tel:+918800813462"
-              className="text-2xl font-black text-white hover:text-emerald-400 transition-colors block tracking-tight"
-            >
-              +91 88008 13462
-            </a>
-            <p className="text-[11px] text-slate-400 mt-1">
-              Emergency doctor dispatch within 30–60 minutes in Delhi NCR.
-            </p>
-          </div>
-
-          <div className="space-y-2 pt-2">
-            <h5 className="text-[11px] font-extrabold uppercase tracking-wider text-slate-300">
-              Service Locations
-            </h5>
-            <ul className="space-y-1 text-[11px] text-slate-400">
-              {coverage.map((c, i) => (
-                <li key={i} className="flex items-start gap-1.5">
-                  <span className="text-emerald-400 shrink-0">📍</span>
-                  <span>{c}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <a href="tel:+918800813462" className="text-[#FFDAD6] font-extrabold text-base hover:underline">
+            📞 24/7 Hotline: +91 88008 13462
+          </a>
+          <a href="https://wa.me/918800813462" target="_blank" rel="noreferrer" className="text-[#BECAB9] hover:text-white hover:translate-x-1 transition-all">
+            💬 WhatsApp Consultation
+          </a>
+          <a href="https://instagram.com/_lifeline_pet_care/" target="_blank" rel="noreferrer" className="text-[#BECAB9] hover:text-white hover:translate-x-1 transition-all">
+            📸 Instagram (@_lifeline_pet_care)
+          </a>
+          <Link href="/admin/login" className="text-[#BECAB9] hover:text-white hover:translate-x-1 transition-all text-xs pt-2">
+            🔐 Admin Portal
+          </Link>
         </div>
       </div>
 
-      {/* BOTTOM LEGAL BAR */}
-      <div className="border-t border-slate-900 bg-black/40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Lifeline Pet Care. All Rights Reserved.</p>
-          <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-slate-300 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-slate-300 transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="/admin/login" className="hover:text-emerald-400 transition-colors">
-              Admin Login
-            </Link>
-          </div>
-        </div>
+      {/* BOTTOM COPYRIGHT */}
+      <div className="max-w-7xl mx-auto px-6 md:px-16 pt-12 mt-12 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs text-[#BECAB9] gap-4">
+        <p>© {new Date().getFullYear()} Lifeline Pet Care. All rights reserved.</p>
+        <p className="text-[11px]">Delhi NCR • Delhi • Noida • Gurgaon • Ghaziabad • Faridabad</p>
       </div>
     </footer>
   );
