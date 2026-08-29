@@ -211,6 +211,33 @@ export default function StitchMasterUI() {
                 Licensed BVSc veterinary doctors, Zoetis 2°C–8°C cold-chain vaccines & organic doorstep grooming spa delivered directly to your home across Delhi, Noida, Gurgaon, Ghaziabad & Faridabad.
               </p>
 
+              {/* INSTANT HERO CALL & WHATSAPP CTAS ABOVE THE FOLD */}
+              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                <button
+                  onClick={() => book("Veterinary Home Visit (₹449)")}
+                  className="bg-[#006E1C] hover:bg-[#005313] text-white font-extrabold text-xs sm:text-sm px-7 py-3.5 rounded-full shadow-lg shadow-[#006E1C]/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
+                >
+                  <span>Book Visit (₹449)</span>
+                  <span>🩺</span>
+                </button>
+
+                <a
+                  href="tel:+918800813462"
+                  className="bg-[#BA1A1A] hover:bg-[#93000A] text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-full shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
+                >
+                  <span>📞 Call SOS: 8800813462</span>
+                </a>
+
+                <a
+                  href="https://wa.me/918800813462"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-white border-2 border-[#006E1C] text-[#006E1C] hover:bg-emerald-50 font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-full shadow-xs hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
+                >
+                  <span>💬 WhatsApp Chat</span>
+                </a>
+              </div>
+
               {/* TRUST BADGES GRID */}
               <div className="pt-2 flex flex-wrap gap-4 justify-center lg:justify-start text-xs font-bold text-[#1B1C1A]">
                 <div className="glass-panel px-4 py-2.5 rounded-full flex items-center gap-2 ambient-shadow">
