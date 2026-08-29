@@ -267,6 +267,81 @@ img { display: block; max-width: 100%; }
 /* ═══════════════════════════════════════════════════
    SECTION DIVIDERS / SHAPES
 ═══════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════
+   LUXURY GLASSMORPHISM & CONVERSION STYLES
+═══════════════════════════════════════════════════ */
+.glass-luxury {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 50px rgba(6, 78, 59, 0.07), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.glass-luxury-dark {
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+}
+
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glow-emerald-lg {
+  box-shadow: 0 10px 40px rgba(5, 150, 105, 0.35);
+}
+
+.glow-amber-lg {
+  box-shadow: 0 10px 40px rgba(234, 88, 12, 0.35);
+}
+
+.shimmer-badge {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-badge::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer-slide 2.5s infinite;
+}
+
+@keyframes shimmer-slide {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.lead-bar-floating {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  width: calc(100% - 2.5rem);
+  max-width: 960px;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 30px rgba(5, 150, 105, 0.25);
+  padding: 0.6rem 1rem;
+}
+
 .wave-top {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,40L48,36C96,32,192,24,288,26.7C384,29,480,43,576,45.3C672,48,768,38,864,29.3C960,21,1056,13,1152,16C1248,19,1344,32,1392,37.3L1440,43L1440,60L1392,60C1344,60,1248,60,1152,60C1056,60,960,60,864,60C768,60,672,60,576,60C480,60,384,60,288,60C192,60,96,60,48,60L0,60Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom / 100%;
   height: 60px;

@@ -8,7 +8,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/packages", label: "Pricing" },
-  { href: "/about", label: "About" },
+  { href: "/about", label: "About Us" },
   { href: "/gallery", label: "Gallery" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
@@ -20,114 +20,123 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 inset-x-0 z-50 h-[64px] flex items-center"
-        style={{
-          background: "rgba(255,255,255,0.92)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          borderBottom: "1px solid #e2e8f0",
-          boxShadow: "0 1px 0 0 rgba(0,0,0,0.04)",
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-5 md:px-10 w-full flex items-center justify-between gap-6">
-
-          {/* ── LOGO ── */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
-            <div className="w-9 h-9 rounded-full overflow-hidden ring-2 ring-emerald-200 shadow-sm">
+      <header className="fixed top-0 inset-x-0 z-50 h-[72px] flex items-center glass-navbar transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between gap-4">
+          {/* LOGO */}
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
+            <div className="w-10 h-10 rounded-2xl overflow-hidden ring-2 ring-emerald-500/30 shadow-md group-hover:scale-105 transition-all">
               <img
-                alt="Lifeline Pet Care"
+                alt="Lifeline Pet Care Logo"
                 className="w-full h-full object-cover"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDStsY34FedzZuhoOZ-1EluQ2amO8xDEr8tA7M_-1OhUlYHpkIsAq36_nV2esyootO5_wm5ZwS8KElMk3uF5VoU4RyA_pTXIwIpOXcfpL0Mvk2ofBu-TrCz4GFxG_hqQ_YDLjgbA-lfd7JvLPozD7PFUP2AX0eeWlpWkcdj0vH8XtT1tyZANfkccrtf5XFSUuW3YhEHFuDbtwtdEBEyvvaPfa2QsM3Uf_NRRdOqtBU4MKc3M4zWfMAJ"
               />
             </div>
-            <span
-              className="hidden sm:block text-base font-extrabold tracking-tight"
-              style={{ fontFamily: "var(--font-display)", color: "#065f46", letterSpacing: "-0.02em" }}
-            >
-              Lifeline Pet Care
-            </span>
+            <div className="flex flex-col">
+              <span className="text-base font-black text-emerald-950 tracking-tight leading-none group-hover:text-emerald-600 transition-colors">
+                Lifeline Pet Care 🐾
+              </span>
+              <span className="text-[10px] font-extrabold text-emerald-700 uppercase tracking-widest mt-0.5">
+                Delhi NCR Doorstep Vet & Spa
+              </span>
+            </div>
           </Link>
 
-          {/* ── DESKTOP NAV ── */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* DESKTOP NAV LINKS */}
+          <nav className="hidden lg:flex items-center gap-1 bg-white/60 p-1.5 rounded-full border border-slate-200/80 backdrop-blur-md shadow-sm">
             {links.map(({ href, label }) => {
-              const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
+              const isActive =
+                pathname === href || (href !== "/" && pathname.startsWith(href));
               return (
                 <Link
                   key={href}
                   href={href}
-                  className="relative px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-150"
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    color: isActive ? "#059669" : "#475569",
-                    background: isActive ? "#ecfdf5" : "transparent",
-                    fontWeight: isActive ? 700 : 600,
-                  }}
-                  onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = "#f8fafc"; e.currentTarget.style.color = "#059669"; }}
-                  onMouseLeave={e => { if (!isActive) { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#475569"; } }}
+                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${
+                    isActive
+                      ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30"
+                      : "text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/60"
+                  }`}
                 >
                   {label}
-                  {isActive && (
-                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-emerald-500" />
-                  )}
                 </Link>
               );
             })}
           </nav>
 
-          {/* ── RIGHT CTAs ── */}
+          {/* RIGHT CTAs */}
           <div className="flex items-center gap-3">
-            {/* Emergency pill */}
+            {/* Live Vet Available Badge */}
+            <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-[11px] font-bold text-emerald-900">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+              <span>14 Vets Active</span>
+            </div>
+
+            {/* Emergency hotline */}
             <a
               href="tel:+918800813462"
-              className="hidden md:flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full transition-all"
-              style={{
-                background: "#fee2e2",
-                color: "#b91c1c",
-                border: "1px solid #fecaca",
-                fontFamily: "var(--font-display)",
-              }}
+              className="hidden sm:flex items-center gap-1.5 text-xs font-black px-3.5 py-2 rounded-full bg-red-50 text-red-700 border border-red-200 hover:bg-red-100 transition-all shadow-xs"
             >
-              <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
-              Emergency 24/7
+              <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
+              <span>24/7 Vet SOS</span>
             </a>
 
-            {/* Book button */}
+            {/* Book Visit Button */}
             <Link
               href="/contact"
-              className="btn-primary text-sm hidden sm:flex"
-              style={{ padding: "0.5rem 1.25rem", fontSize: "0.8rem" }}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold px-5 py-2.5 rounded-full shadow-lg shadow-emerald-600/30 hover:scale-105 transition-all flex items-center gap-1"
             >
-              Book Now
+              <span>Book Doorstep Visit</span>
+              <span>→</span>
             </Link>
 
-            {/* Mobile hamburger */}
+            {/* Mobile Hamburger */}
             <button
-              className="lg:hidden p-2 rounded-xl hover:bg-slate-100 transition-colors"
+              className="lg:hidden p-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
               <div className="space-y-1.5 w-5">
-                <span className={`block h-0.5 bg-slate-600 rounded-full transition-all ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
-                <span className={`block h-0.5 bg-slate-600 rounded-full transition-all ${mobileOpen ? "opacity-0" : ""}`} />
-                <span className={`block h-0.5 bg-slate-600 rounded-full transition-all ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+                <span
+                  className={`block h-0.5 bg-slate-800 rounded-full transition-all ${
+                    mobileOpen ? "rotate-45 translate-y-2" : ""
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 bg-slate-800 rounded-full transition-all ${
+                    mobileOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 bg-slate-800 rounded-full transition-all ${
+                    mobileOpen ? "-rotate-45 -translate-y-2" : ""
+                  }`}
+                />
               </div>
             </button>
           </div>
         </div>
       </header>
 
-      {/* ── MOBILE MENU ── */}
+      {/* MOBILE NAV DRAWER */}
       {mobileOpen && (
         <div
           className="fixed inset-0 z-40 lg:hidden"
           onClick={() => setMobileOpen(false)}
         >
-          <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-md" />
           <nav
-            className="absolute top-[64px] inset-x-0 bg-white border-b border-slate-200 shadow-xl p-4 space-y-1"
-            onClick={e => e.stopPropagation()}
+            className="absolute top-[72px] inset-x-0 bg-white border-b border-slate-200 shadow-2xl p-6 space-y-2 animate-in slide-in-from-top duration-200"
+            onClick={(e) => e.stopPropagation()}
           >
+            <div className="flex items-center justify-between p-3 rounded-2xl bg-emerald-50 border border-emerald-100 text-xs font-bold text-emerald-900 mb-4">
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                Vets On Duty: 14 Doctors
+              </span>
+              <span className="text-[10px] uppercase tracking-wider text-emerald-700">
+                Delhi NCR
+              </span>
+            </div>
+
             {links.map(({ href, label }) => {
               const isActive = pathname === href;
               return (
@@ -135,24 +144,26 @@ export default function Navbar() {
                   key={href}
                   href={href}
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center px-4 py-3 rounded-xl text-sm font-semibold transition-colors"
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    color: isActive ? "#059669" : "#334155",
-                    background: isActive ? "#ecfdf5" : "transparent",
-                  }}
+                  className={`flex items-center justify-between px-4 py-3.5 rounded-2xl text-sm font-bold transition-all ${
+                    isActive
+                      ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30"
+                      : "text-slate-800 hover:bg-slate-100"
+                  }`}
                 >
-                  {label}
+                  <span>{label}</span>
+                  <span className="opacity-50">→</span>
                 </Link>
               );
             })}
-            <a
-              href="tel:+918800813462"
-              className="flex items-center gap-2 mt-3 px-4 py-3 rounded-xl font-bold text-sm"
-              style={{ background: "#fee2e2", color: "#b91c1c", fontFamily: "var(--font-display)" }}
-            >
-              📞 Emergency: +91 88008 13462
-            </a>
+
+            <div className="pt-4 border-t border-slate-100 space-y-2">
+              <a
+                href="tel:+918800813462"
+                className="flex items-center justify-center gap-2 p-3.5 rounded-2xl font-black text-sm bg-red-50 text-red-700 border border-red-200"
+              >
+                🚨 Emergency Vet SOS: +91 88008 13462
+              </a>
+            </div>
           </nav>
         </div>
       )}

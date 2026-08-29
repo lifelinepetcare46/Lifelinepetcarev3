@@ -6,196 +6,225 @@ import { useGSAP } from "@/hooks/useGSAP";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import BookingModal from "./BookingModal";
+import QuickLeadBar from "./QuickLeadBar";
+import PetPriceCalculator from "./PetPriceCalculator";
 
 /* ─── DATA ───────────────────────────────────────────────── */
 const reviews = [
-  { name: "Ananya S.", location: "South Delhi", text: "Dr. Rohit came within 45 minutes for my Golden's emergency. Thorough, caring — my dog recovered fully. Best vet service in Delhi!", pet: "Golden Retriever" },
-  { name: "Rohan M.", location: "Noida Sec. 50", text: "Puppy vaccination at home — zero stress. Genuine cold-chain vaccines, digital record on WhatsApp. Highly recommend!", pet: "Labrador Pup" },
-  { name: "Priya K.", location: "Gurgaon", text: "My cat Mochi hates clinics. Lifeline's home grooming was a game-changer — professional, gentle & gorgeous results!", pet: "Persian Cat" },
-  { name: "Vikram T.", location: "West Delhi", text: "Called emergency at 2 AM — they picked up and dispatched a vet. Unbelievable. Literally saved my Beagle's life.", pet: "Beagle" },
+  { name: "Ananya Sharma", location: "South Delhi", text: "Dr. Rohit came within 35 minutes for my Golden Retriever's emergency fever. Thorough, gentle, and extremely professional!", pet: "Golden Retriever" },
+  { name: "Rohan Mehta", location: "Noida Sector 50", text: "Puppy vaccination at home — zero stress. Genuine cold-chain vaccines and prescription sent on WhatsApp instantly.", pet: "Labrador Pup" },
+  { name: "Priya Kapoor", location: "Gurgaon Phase 5", text: "My Persian cat Mochi hates clinic visits. Lifeline's doorstep spa & grooming was a lifesaver. Pure luxury!", pet: "Persian Cat" },
+  { name: "Vikram Malhotra", location: "West Delhi", text: "Called 24/7 SOS helpline at 2 AM. Vet dispatched immediately. Truly saved my Beagle's life!", pet: "Beagle" },
 ];
 
 const whyUs = [
-  { icon: "🏠", title: "100% Doorstep", desc: "We come to you, anywhere in Delhi NCR, 7 days a week." },
-  { icon: "🎓", title: "BVSc Certified Vets", desc: "Degree-qualified, background-verified veterinary doctors only." },
-  { icon: "❄️", title: "Cold-Chain Vaccines", desc: "Genuine vaccines at 2°C–8°C, manufacturer straight to your pet." },
-  { icon: "📱", title: "WhatsApp Reports", desc: "Prescription & lab results delivered on WhatsApp in minutes." },
-  { icon: "💳", title: "Flexible Payments", desc: "UPI, cash, cards — pay after the service is done." },
-  { icon: "🕐", title: "Same-Day Booking", desc: "Book before noon, get an appointment the very same day." },
+  { icon: "🏠", title: "100% Doorstep Visits", desc: "Certified doctors visit your home anywhere in Delhi NCR, 7 days a week." },
+  { icon: "🎓", title: "BVSc Verified Doctors", desc: "Degree-qualified, background-verified veterinary specialists only." },
+  { icon: "❄️", title: "Cold-Chain Vaccines", desc: "Genuine vaccines maintained at 2°C–8°C directly from manufacturer." },
+  { icon: "📱", title: "Instant WhatsApp Reports", desc: "Digital prescriptions & blood test lab reports delivered in minutes." },
+  { icon: "💳", title: "Transparent Pricing", desc: "Pay after service completion via UPI, Cash, or Card. Zero hidden fees." },
+  { icon: "🕐", title: "Same-Day Booking", desc: "Book before noon and get guaranteed same-day doctor or grooming visit." },
 ];
 
 const pets = [
-  { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBc9LWmMM08px7CB1tFJossP1smXHH2DGGWRseN8U15pjcpGLaZvzkUEjnJQKHP2vEIZnA-zM0nQ-iPUtHY8mWxD5--Uuojs47qFWjjnv3E_Xw2-Jy_Pf_jyB7e5IVvF97Zs9gfYZKaH-VAyoJBqulaP02SAHydoTWMYTYNKxVNhHZCYyorVgygyTTOWaScJ0yV0rMmvuj8859r904dxIDDaEdTvcvhk9A4HjwNlnqWLEEf7RPLIq9D", label: "Dogs 🐕", sub: "Vaccines, Checkup & Spa", booking: "Canine Care" },
-  { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA3epoSNHaQgHPWcSrhdDaatNsKRMNPLvMf6uFc-qbSkbfuOVgVJawXLj3KGGqfXgZT-4lCZDY2ewdE2-dklSqyK2kbtd74MaEBLhDh65-fIQmm-ZAlb7GqJM0Z9AweuQ_O7D8wC6HN3mnq8MNJM0SX3pTPESH60QXu48qyZ_KydcdkTOCOgnYEoENdRrxZkTWVRB0cMk976vV6XTib64xqAvONWJFNsQ_0kw1OpB58f5sALLdEDTpQ", label: "Cats 🐱", sub: "Stress-Free Feline Care", booking: "Feline Care" },
-  { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCn6yuSTBLZI7luWPuF4PFsdKYYRmRiVta9IMcpEqMid21rdbnTvGKyk8SnUDMuUjXBGbBW9q7QdYVk4GIOpgQQKPFGH0PYeLO7B2aBkHLg__hw2_uafxCbVfP9Fy7SsNmYL-gRz6qVixAOndx26HktkF-4dBeysCvhNeW28TplFC8L20FPL6TFfK6pxUWqL0QvEj7aBDaxf-eSnOY1GPU8LSE_6JzPKCM2-KE_su-w1xlN-y8DyLI2", label: "Birds 🦜", sub: "Avian & Wing Specialist", booking: "Avian Care" },
-  { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3I1cbucbuU4w4rFrSAaKOZV7ggfr_1vxJ8vLFfBEd2paISnaJ0z0BsCL0TnxNBA6cPVlcuBmjk1hO2GFEAzHCorUK7tPYgOj0JtcJBILhjdQAMsDmHEfAt5Jxee1wbNfHsL2KXfiA5LCQiiJspx6SBCJstmKSD4rDfxgfsnWkonR7o3hwXTSc-esO4ztzu-rJjYoxu8VrvMxtpEMQgGaQZzakjzzK_r5fuM6EDDPwV5OXbPuXQ7hI", label: "Exotics 🐇", sub: "Rabbits, Ferrets & More", booking: "Exotic Care" },
+  { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBc9LWmMM08px7CB1tFJossP1smXHH2DGGWRseN8U15pjcpGLaZvzkUEjnJQKHP2vEIZnA-zM0nQ-iPUtHY8mWxD5--Uuojs47qFWjjnv3E_Xw2-Jy_Pf_jyB7e5IVvF97Zs9gfYZKaH-VAyoJBqulaP02SAHydoTWMYTYNKxVNhHZCYyorVgygyTTOWaScJ0yV0rMmvuj8859r904dxIDDaEdTvcvhk9A4HjwNlnqWLEEf7RPLIq9D", label: "Dogs 🐕", sub: "Vaccines, Clinical Checkup & Spa", booking: "Canine Care" },
+  { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA3epoSNHaQgHPWcSrhdDaatNsKRMNPLvMf6uFc-qbSkbfuOVgVJawXLj3KGGqfXgZT-4lCZDY2ewdE2-dklSqyK2kbtd74MaEBLhDh65-fIQmm-ZAlb7GqJM0Z9AweuQ_O7D8wC6HN3mnq8MNJM0SX3pTPESH60QXu48qyZ_KydcdkTOCOgnYEoENdRrxZkTWVRB0cMk976vV6XTib64xqAvONWJFNsQ_0kw1OpB58f5sALLdEDTpQ", label: "Cats 🐱", sub: "Stress-Free Feline Healthcare", booking: "Feline Care" },
+  { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCn6yuSTBLZI7luWPuF4PFsdKYYRmRiVta9IMcpEqMid21rdbnTvGKyk8SnUDMuUjXBGbBW9q7QdYVk4GIOpgQQKPFGH0PYeLO7B2aBkHLg__hw2_uafxCbVfP9Fy7SsNmYL-gRz6qVixAOndx26HktkF-4dBeysCvhNeW28TplFC8L20FPL6TFfK6pxUWqL0QvEj7aBDaxf-eSnOY1GPU8LSE_6JzPKCM2-KE_su-w1xlN-y8DyLI2", label: "Birds 🦜", sub: "Avian Health & Wing Specialist", booking: "Avian Care" },
+  { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3I1cbucbuU4w4rFrSAaKOZV7ggfr_1vxJ8vLFfBEd2paISnaJ0z0BsCL0TnxNBA6cPVlcuBmjk1hO2GFEAzHCorUK7tPYgOj0JtcJBILhjdQAMsDmHEfAt5Jxee1wbNfHsL2KXfiA5LCQiiJspx6SBCJstmKSD4rDfxgfsnWkonR7o3hwXTSc-esO4ztzu-rJjYoxu8VrvMxtpEMQgGaQZzakjzzK_r5fuM6EDDPwV5OXbPuXQ7hI", label: "Exotics 🐇", sub: "Rabbits, Ferrets & Rodent Care", booking: "Exotic Care" },
 ];
 
 const services = [
   {
     icon: "🩺", label: "Veterinary Doctor", title: "Vet Home Visit", price: "₹449", unit: "/visit",
     accent: "#059669", accentBg: "#ecfdf5", border: "#a7f3d0",
-    features: ["Head-to-tail clinical examination", "Fever, illness & symptom diagnosis", "Official signed prescription", "WhatsApp follow-up support"],
-    booking: "Veterinary Home Visit",
+    features: ["Full clinical examination at home", "Fever, illness & infection diagnosis", "Signed digital prescription on WhatsApp", "Free 7-day follow-up chat support"],
+    booking: "Veterinary Home Visit (₹449)",
   },
   {
     icon: "💉", label: "Vaccinations", title: "Core Vaccines", price: "from ₹999", unit: "",
     accent: "#ea580c", accentBg: "#fff7ed", border: "#fed7aa",
-    features: ["Anti-Rabies Shot — ₹999", "Adult Booster 9-in-1 — ₹3,899", "Puppy 5-Shot Package — ₹6,799", "Genuine cold-chain, digital record"],
-    booking: "Vaccination",
+    features: ["Anti-Rabies Shot — ₹999", "Adult Booster (9-in-1) — ₹3,899", "Puppy 5-Shot Package — ₹6,799", "Cold-chain guarantee & digital record"],
+    booking: "Anti-Rabies Core Vaccine (₹999)",
   },
   {
-    icon: "✂️", label: "Doorstep Spa", title: "Grooming", price: "from ₹799", unit: "",
+    icon: "✂️", label: "Doorstep Spa", title: "Luxury Grooming", price: "from ₹799", unit: "",
     accent: "#7c3aed", accentBg: "#f5f3ff", border: "#ddd6fe",
-    features: ["Bath & Blow Dry — ₹799", "Mini Groom (Bath+Nails) — ₹1,100", "Full Breed Haircut — ₹1,799", "Organic shampoo, zero cage stress"],
-    booking: "Grooming Spa",
+    features: ["Bath & Blow Dry — ₹799", "Mini Groom (Bath + Nails) — ₹1,100", "Full Breed Haircut — ₹1,799", "Organic shampoo & area sanitization"],
+    booking: "Doorstep Grooming Bath (₹799)",
   },
 ];
 
-const stats = [
-  ["15,000+", "Pets Treated"],
-  ["24/7", "Emergency Support"],
-  ["25+", "Specialist Doctors"],
-  ["4.9★", "Average Rating"],
+const comparisonData = [
+  { feature: "Travel & Clinic Waiting", traditional: "1–2 hours in traffic & crowded clinic", lifeline: "Zero travel. Doctor arrives at your door." },
+  { feature: "Pet Anxiety & Stress", traditional: "High stress, barking dogs, cat panic", lifeline: "100% relaxed in pet's comfortable home environment." },
+  { feature: "Infection Exposure Risk", traditional: "High risk of catching parvo or flu from sick pets", lifeline: "Zero infection risk. Sterile single-use gear." },
+  { feature: "Vaccine Cold-Chain Integrity", traditional: "Varies; often left out on counter", lifeline: "Guaranteed 2°C–8°C insulated cold-chain transport." },
+  { feature: "Follow-Up & Prescriptions", traditional: "Paper slip, hard to reach doctor again", lifeline: "WhatsApp digital records + direct doctor chat." },
 ];
 
 export default function StitchMasterUI() {
   const [openModal, setOpenModal] = useState(false);
-  const [modalService, setModalService] = useState("General Consultation");
+  const [modalService, setModalService] = useState("Veterinary Home Visit (₹449)");
 
-  const book = (s = "General Consultation") => { setModalService(s); setOpenModal(true); };
+  const book = (s = "Veterinary Home Visit (₹449)") => {
+    setModalService(s);
+    setOpenModal(true);
+  };
 
   /* ─── GSAP SCROLL ANIMATIONS ──────────────────────────── */
   useGSAP([
-    { selector: ".anim-hero-badge",  from: { opacity: 0, y: -20 }, duration: 0.6, ease: "back.out(1.4)", start: "top 95%" },
-    { selector: ".anim-hero-h1",     from: { opacity: 0, y: 60, skewY: 3 }, duration: 0.9, ease: "power4.out", stagger: 0 },
-    { selector: ".anim-hero-p",      from: { opacity: 0, y: 30 }, duration: 0.7, ease: "power3.out", start: "top 95%", to: { delay: 0.2 } },
-    { selector: ".anim-hero-stat",   from: { opacity: 0, y: 20, scale: 0.9 }, duration: 0.5, ease: "back.out(1.2)", stagger: 0.08 },
-    { selector: ".anim-hero-cta",    from: { opacity: 0, y: 20 }, duration: 0.6, ease: "power3.out", stagger: 0.1 },
-    { selector: ".anim-hero-img",    from: { opacity: 0, x: 60, scale: 0.95 }, duration: 1, ease: "power3.out" },
-    { selector: ".anim-pet-card",    from: { opacity: 0, y: 50 }, duration: 0.6, ease: "power3.out", stagger: 0.1 },
-    { selector: ".anim-svc-card",    from: { opacity: 0, y: 60 }, duration: 0.7, ease: "power3.out", stagger: 0.15 },
-    { selector: ".anim-why-card",    from: { opacity: 0, y: 40 }, duration: 0.6, ease: "power2.out", stagger: 0.08 },
-    { selector: ".anim-review-card", from: { opacity: 0, y: 40, scale: 0.96 }, duration: 0.6, ease: "power2.out", stagger: 0.1 },
-    { selector: ".anim-stat",        from: { opacity: 0, y: 30, scale: 0.85 }, duration: 0.55, ease: "back.out(1.4)", stagger: 0.1 },
-    { selector: ".anim-section-h",   from: { opacity: 0, y: 30 }, duration: 0.7, ease: "power3.out" },
+    { selector: ".anim-hero-badge", from: { opacity: 0, y: -20 }, duration: 0.6, ease: "back.out(1.4)", start: "top 95%" },
+    { selector: ".anim-hero-h1", from: { opacity: 0, y: 50 }, duration: 0.8, ease: "power4.out" },
+    { selector: ".anim-hero-p", from: { opacity: 0, y: 30 }, duration: 0.7, ease: "power3.out" },
+    { selector: ".anim-pet-card", from: { opacity: 0, y: 40 }, duration: 0.6, ease: "power3.out", stagger: 0.1 },
+    { selector: ".anim-svc-card", from: { opacity: 0, y: 50 }, duration: 0.7, ease: "power3.out", stagger: 0.15 },
+    { selector: ".anim-why-card", from: { opacity: 0, y: 30 }, duration: 0.6, ease: "power2.out", stagger: 0.08 },
+    { selector: ".anim-review-card", from: { opacity: 0, y: 30 }, duration: 0.6, ease: "power2.out", stagger: 0.1 },
   ]);
 
   return (
-    <div style={{ background: "var(--grad-home)", minHeight: "100vh", fontFamily: "var(--ff-body)", color: "var(--clr-ink-500)" }}>
+    <div className="bg-[#FDFBF7] min-h-screen font-sans text-slate-700 antialiased relative">
       <Navbar />
 
-      <main>
-        {/* ═══════════════════ HERO ═══════════════════ */}
-        <section style={{ position: "relative", minHeight: "92vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
-          {/* Decorative orbs */}
+      <main className="pt-16">
+        {/* ═══════════════════ LIVE TICKER ═══════════════════ */}
+        <div className="bg-emerald-950 text-white py-2.5 px-4 text-xs font-bold border-b border-emerald-800">
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-hidden whitespace-nowrap">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
+              <span className="text-emerald-300 font-extrabold uppercase tracking-wider">
+                Live Status:
+              </span>
+              <span>🟢 14 BVSc Doctors Active in Delhi, Noida & Gurgaon • Avg arrival: 35 mins</span>
+            </div>
+            <a
+              href="tel:+918800813462"
+              className="hidden sm:inline-flex items-center gap-1 text-red-300 hover:text-red-200 underline font-black"
+            >
+              <span>🚨 24/7 SOS Helpline</span>
+            </a>
+          </div>
+        </div>
+
+        {/* ═══════════════════ HERO SECTION ═══════════════════ */}
+        <section className="relative min-h-[85vh] flex items-center overflow-hidden py-12 lg:py-20">
+          {/* Ambient Orbs */}
           <div className="orb orb-green" style={{ width: 600, height: 600, top: "-100px", left: "-200px" }} />
-          <div className="orb orb-teal"  style={{ width: 500, height: 500, bottom: "0px", right: "-150px" }} />
-          <div className="orb orb-blue"  style={{ width: 400, height: 400, top: "30%", right: "20%" }} />
+          <div className="orb orb-teal" style={{ width: 500, height: 500, bottom: "0px", right: "-150px" }} />
 
-          <div style={{ position: "relative", zIndex: 1, maxWidth: 1280, margin: "0 auto", padding: "6rem 2rem 4rem", width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}
-            className="max-w-7xl px-6 md:px-12 grid-cols-1 lg:grid-cols-2">
-
-            {/* LEFT */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
-              {/* Emergency badge */}
-              <div className="anim-hero-badge" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 16px", borderRadius: 999, background: "#fee2e2", border: "1px solid #fecaca", width: "fit-content" }}>
-                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#ef4444", animation: "pulse 1.5s infinite" }} />
-                <span style={{ fontFamily: "var(--ff-display)", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "#b91c1c" }}>
-                  Emergency Vet Active · Delhi NCR · 24/7
+          <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 w-full">
+            {/* LEFT HERO TEXT */}
+            <div className="space-y-6">
+              <div className="anim-hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100/80 text-emerald-900 border border-emerald-300 backdrop-blur-md shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-600 animate-ping" />
+                <span className="text-xs font-extrabold uppercase tracking-wider">
+                  #1 Doorstep Pet Healthcare in Delhi NCR
                 </span>
               </div>
 
-              {/* H1 */}
-              <div className="anim-hero-h1">
-                <h1 style={{ fontFamily: "var(--ff-display)", fontWeight: 900, fontSize: "clamp(2.8rem, 5vw, 4.2rem)", lineHeight: 1.06, letterSpacing: "-0.035em", color: "var(--clr-ink-900)" }}>
-                  Premium Vet Care,{" "}
-                  <span style={{ background: "linear-gradient(135deg, #059669 0%, #0d9488 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                    Right at Your Door 🐾
-                  </span>
-                </h1>
-              </div>
+              <h1 className="anim-hero-h1 text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-[1.08]">
+                Hospital-Grade Pet Care,{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
+                  Delivered at Your Door 🐾
+                </span>
+              </h1>
 
-              {/* Subtext */}
-              <p className="anim-hero-p" style={{ fontSize: "1.1rem", color: "var(--clr-ink-400)", lineHeight: 1.75, maxWidth: 500 }}>
-                Certified vets, genuine cold-chain vaccines & organic grooming — delivered to your home across Delhi NCR.
-                Starting just <strong style={{ color: "var(--clr-green-600)", fontWeight: 700 }}>₹449</strong>.
+              <p className="anim-hero-p text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+                Certified BVSc doctors, genuine cold-chain vaccines & organic doorstep grooming spa. No clinic queues, zero pet anxiety. Starting at just <strong className="text-emerald-700 font-extrabold">₹449</strong>.
               </p>
 
-              {/* Stat pills */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
-                {[["15K+", "Pets Served"], ["4.9★", "Rating"], ["24/7", "Emergency"], ["₹449", "Starts At"]].map(([s, l]) => (
-                  <div key={s} className="anim-hero-stat card" style={{ padding: "0.75rem 1.25rem", textAlign: "center", minWidth: 90 }}>
-                    <p style={{ fontFamily: "var(--ff-display)", fontWeight: 800, fontSize: "1.2rem", color: "var(--clr-green-600)", lineHeight: 1 }}>{s}</p>
-                    <p style={{ fontSize: "0.7rem", color: "var(--clr-ink-300)", fontWeight: 600, marginTop: 3 }}>{l}</p>
+              {/* STATS STRIP */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                {[
+                  ["15,000+", "Happy Pets"],
+                  ["4.9★", "Google Rating"],
+                  ["24/7", "Emergency Vets"],
+                  ["₹449", "Starts At"],
+                ].map(([num, label]) => (
+                  <div key={num} className="glass-luxury p-3 rounded-2xl text-center border border-emerald-100">
+                    <p className="text-xl font-black text-emerald-700">{num}</p>
+                    <p className="text-[11px] font-bold text-slate-500">{label}</p>
                   </div>
                 ))}
               </div>
 
-              {/* CTA row */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem" }}>
-                <button onClick={() => book("Veterinary Home Visit")} className="anim-hero-cta btn btn-green">
-                  🩺 Book Vet Visit — ₹449
+              {/* HERO CTA BUTTONS */}
+              <div className="flex flex-wrap gap-4 pt-2">
+                <button
+                  onClick={() => book("Veterinary Home Visit (₹449)")}
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm px-8 py-4 rounded-full shadow-xl shadow-emerald-600/30 hover:scale-105 transition-all flex items-center gap-2"
+                >
+                  <span>🩺 Book Vet Visit — ₹449</span>
+                  <span>→</span>
                 </button>
-                <a href="tel:+918800813462" className="anim-hero-cta btn btn-danger pulse-sos">
-                  📞 Emergency: +91 88008 13462
+
+                <a
+                  href="tel:+918800813462"
+                  className="bg-red-600 hover:bg-red-700 text-white font-black text-sm px-7 py-4 rounded-full shadow-xl shadow-red-600/30 hover:scale-105 transition-all pulse-sos flex items-center gap-2"
+                >
+                  <span>📞 Emergency SOS</span>
                 </a>
               </div>
             </div>
 
-            {/* RIGHT — hero image */}
-            <div className="anim-hero-img hidden lg:block" style={{ position: "relative" }}>
-              <div style={{ borderRadius: "var(--r-2xl)", overflow: "hidden", boxShadow: "var(--shadow-xl)", border: "3px solid rgba(255,255,255,0.9)" }}>
+            {/* RIGHT HERO VISUAL */}
+            <div className="relative hidden lg:block">
+              <div className="relative rounded-[40px] overflow-hidden border-4 border-white shadow-2xl">
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc9LWmMM08px7CB1tFJossP1smXHH2DGGWRseN8U15pjcpGLaZvzkUEjnJQKHP2vEIZnA-zM0nQ-iPUtHY8mWxD5--Uuojs47qFWjjnv3E_Xw2-Jy_Pf_jyB7e5IVvF97Zs9gfYZKaH-VAyoJBqulaP02SAHydoTWMYTYNKxVNhHZCYyorVgygyTTOWaScJ0yV0rMmvuj8859r904dxIDDaEdTvcvhk9A4HjwNlnqWLEEf7RPLIq9D"
-                  alt="Happy dog with Lifeline vet"
-                  style={{ width: "100%", height: 500, objectFit: "cover" }}
+                  alt="Doctor treating happy Golden Retriever at home"
+                  className="w-full h-[520px] object-cover"
                 />
               </div>
-              {/* Floating badge */}
-              <div style={{
-                position: "absolute", bottom: -20, left: -20,
-                background: "#fff", borderRadius: "var(--r-lg)", boxShadow: "var(--shadow-lg)",
-                border: "1.5px solid var(--clr-border)", padding: "1rem 1.5rem",
-                display: "flex", alignItems: "center", gap: 12
-              }}>
-                <div style={{ width: 44, height: 44, background: "#ecfdf5", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.4rem" }}>⭐</div>
+
+              {/* Floating Doctor Verification Badge */}
+              <div className="absolute -bottom-6 -left-6 glass-luxury p-5 rounded-3xl border border-emerald-200 shadow-2xl flex items-center gap-4 max-w-xs">
+                <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-2xl shrink-0">
+                  🩺
+                </div>
                 <div>
-                  <p style={{ fontFamily: "var(--ff-display)", fontWeight: 800, fontSize: "0.95rem", color: "var(--clr-ink-900)" }}>4.9 / 5 Stars</p>
-                  <p style={{ fontSize: "0.72rem", color: "var(--clr-ink-200)" }}>1,200+ Verified Reviews</p>
+                  <p className="text-xs font-black text-slate-900">BVSc & AH Certified Vets</p>
+                  <p className="text-[11px] text-slate-500 font-medium">100% Background Verified</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ═══════════════════ PET SPECIES ═══════════════════ */}
-        <section style={{ background: "rgba(255,255,255,0.85)", backdropFilter: "blur(8px)", padding: "5rem 0" }}>
-          <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem" }}>
-            <div className="text-center anim-section-h" style={{ marginBottom: "3rem" }}>
-              <span className="chip">For Every Companion</span>
-              <h2 style={{ fontFamily: "var(--ff-display)", fontWeight: 900, fontSize: "clamp(1.8rem,3.5vw,2.6rem)", marginTop: "1rem", color: "var(--clr-ink-900)" }}>
-                Tailored Care for Every Pet
+        {/* ═══════════════════ PET SPECIES SELECTION ═══════════════════ */}
+        <section className="py-16 bg-white/80 backdrop-blur-md border-y border-slate-100">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-10">
+            <div className="text-center max-w-xl mx-auto space-y-3">
+              <span className="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider">
+                Specialized Clinical Care
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                Tailored Healthcare for Every Companion 🐾
               </h2>
-              <p style={{ color: "var(--clr-ink-300)", fontSize: "1rem", marginTop: "0.75rem", maxWidth: 480, margin: "0.75rem auto 0" }}>
-                Dogs, cats, birds & exotics — each with its own specialized clinical protocol.
-              </p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.5rem" }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {pets.map((pet, i) => (
-                <button key={i} onClick={() => book(pet.booking)}
-                  className="anim-pet-card card"
-                  style={{ padding: 0, overflow: "hidden", cursor: "pointer", textAlign: "left" }}>
-                  <div style={{ height: 220, overflow: "hidden" }}>
-                    <img src={pet.img} alt={pet.label} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.6s ease" }}
-                      onMouseEnter={e => e.currentTarget.style.transform = "scale(1.08)"}
-                      onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"} />
+                <button
+                  key={i}
+                  onClick={() => book(pet.booking)}
+                  className="anim-pet-card glass-luxury rounded-[28px] overflow-hidden text-left border border-slate-200 hover:border-emerald-400 hover:shadow-2xl transition-all duration-300 group"
+                >
+                  <div className="h-52 overflow-hidden relative">
+                    <img
+                      src={pet.img}
+                      alt={pet.label}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <div style={{ padding: "1.25rem 1.5rem" }}>
-                    <p style={{ fontFamily: "var(--ff-display)", fontWeight: 800, fontSize: "1.05rem", color: "var(--clr-ink-900)" }}>{pet.label}</p>
-                    <p style={{ fontSize: "0.8rem", color: "var(--clr-ink-300)", marginTop: 3 }}>{pet.sub}</p>
-                    <p style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--clr-green-600)", marginTop: 10 }}>Book Now →</p>
+                  <div className="p-6 space-y-2">
+                    <h3 className="text-lg font-black text-slate-900 group-hover:text-emerald-700 transition-colors">
+                      {pet.label}
+                    </h3>
+                    <p className="text-xs text-slate-500 font-medium">{pet.sub}</p>
+                    <span className="text-xs font-bold text-emerald-600 block pt-2">
+                      Book Care Service →
+                    </span>
                   </div>
                 </button>
               ))}
@@ -203,76 +232,130 @@ export default function StitchMasterUI() {
           </div>
         </section>
 
-        {/* ═══════════════════ SERVICES / PRICING ═══════════════════ */}
-        <section style={{ padding: "5rem 0", background: "linear-gradient(160deg, #f0fdfa 0%, #ecfdf5 40%, #f8fafc 100%)" }}>
-          <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem" }}>
-            <div className="text-center anim-section-h" style={{ marginBottom: "3rem" }}>
-              <span className="chip">Transparent Pricing</span>
-              <h2 style={{ fontFamily: "var(--ff-display)", fontWeight: 900, fontSize: "clamp(1.8rem,3.5vw,2.6rem)", marginTop: "1rem", color: "var(--clr-ink-900)" }}>
-                Most Popular Services
+        {/* ═══════════════════ INTERACTIVE PRICE CALCULATOR ═══════════════════ */}
+        <section className="max-w-7xl mx-auto px-6 md:px-12">
+          <PetPriceCalculator onBook={(p) => book(p)} />
+        </section>
+
+        {/* ═══════════════════ POPULAR SERVICES & PACKAGES ═══════════════════ */}
+        <section className="py-16 bg-gradient-to-b from-[#FDFBF7] to-emerald-50/50">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-12">
+            <div className="text-center max-w-2xl mx-auto space-y-3">
+              <span className="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider">
+                Transparent Prices
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                Our Most Requested Doorstep Services 🏥
               </h2>
-              <p style={{ color: "var(--clr-ink-300)", fontSize: "1rem", marginTop: "0.75rem" }}>Zero hidden fees. What you see is what you pay.</p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))", gap: "2rem" }}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {services.map((svc, i) => (
-                <div key={i} className="anim-svc-card card" style={{ padding: "2.25rem", border: `1.5px solid ${svc.border}`, display: "flex", flexDirection: "column" }}>
-                  <div style={{ width: 56, height: 56, background: svc.accentBg, borderRadius: "var(--r-lg)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.6rem", marginBottom: "1.25rem" }}>
-                    {svc.icon}
+                <div
+                  key={i}
+                  className="anim-svc-card glass-luxury rounded-[32px] p-8 border flex flex-col justify-between hover:shadow-2xl transition-all duration-300"
+                  style={{ borderColor: svc.border }}
+                >
+                  <div className="space-y-4">
+                    <div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-sm"
+                      style={{ background: svc.accentBg }}
+                    >
+                      {svc.icon}
+                    </div>
+                    <span
+                      className="text-xs font-black uppercase tracking-wider block"
+                      style={{ color: svc.accent }}
+                    >
+                      {svc.label}
+                    </span>
+                    <h3 className="text-2xl font-black text-slate-900">{svc.title}</h3>
+                    <p className="text-3xl font-black" style={{ color: svc.accent }}>
+                      {svc.price}
+                    </p>
+
+                    <ul className="space-y-3 text-xs text-slate-600 pt-2 border-t border-slate-100">
+                      {svc.features.map((f, j) => (
+                        <li key={j} className="flex items-start gap-2">
+                          <span style={{ color: svc.accent }} className="font-bold shrink-0">
+                            ✓
+                          </span>
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p style={{ fontFamily: "var(--ff-display)", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: svc.accent, marginBottom: "0.4rem" }}>
-                    {svc.label}
-                  </p>
-                  <h3 style={{ fontFamily: "var(--ff-display)", fontWeight: 900, fontSize: "1.4rem", color: "var(--clr-ink-900)", marginBottom: "0.4rem" }}>{svc.title}</h3>
-                  <p style={{ fontFamily: "var(--ff-display)", fontWeight: 800, fontSize: "2rem", color: svc.accent, lineHeight: 1, marginBottom: "1.5rem" }}>
-                    {svc.price}
-                    {svc.unit && <span style={{ fontSize: "0.9rem", fontWeight: 500, color: "var(--clr-ink-200)", marginLeft: 4 }}>{svc.unit}</span>}
-                  </p>
-                  <ul style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "2rem" }}>
-                    {svc.features.map((f, j) => (
-                      <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem", fontSize: "0.88rem", color: "var(--clr-ink-500)" }}>
-                        <span style={{ color: svc.accent, fontWeight: 700, flexShrink: 0 }}>✓</span>{f}
-                      </li>
-                    ))}
-                  </ul>
-                  <button onClick={() => book(svc.booking)} style={{
-                    width: "100%", background: svc.accent, color: "#fff",
-                    fontFamily: "var(--ff-display)", fontWeight: 700, fontSize: "0.9rem",
-                    padding: "0.9rem 1.5rem", borderRadius: "var(--r-pill)",
-                    border: "none", cursor: "pointer",
-                    boxShadow: `0 6px 24px ${svc.accent}40`,
-                    transition: "all 0.2s ease",
-                  }}
-                    onMouseEnter={e => { e.currentTarget.style.opacity = "0.9"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                    onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "none"; }}>
+
+                  <button
+                    onClick={() => book(svc.booking)}
+                    className="w-full mt-8 font-black text-xs py-4 rounded-full text-white shadow-lg transition-all hover:scale-[1.02]"
+                    style={{ background: svc.accent }}
+                  >
                     Book {svc.label}
                   </button>
                 </div>
               ))}
             </div>
+          </div>
+        </section>
 
-            <div style={{ textAlign: "center", marginTop: "2rem" }}>
-              <Link href="/packages" style={{ fontFamily: "var(--ff-display)", fontWeight: 700, fontSize: "0.9rem", color: "var(--clr-green-600)" }}>
-                View All Packages & Pricing →
-              </Link>
+        {/* ═══════════════════ COMPARISON MATRIX ═══════════════════ */}
+        <section className="py-16 max-w-7xl mx-auto px-6 md:px-12">
+          <div className="glass-luxury rounded-[36px] p-8 md:p-12 border border-emerald-100 shadow-2xl space-y-8">
+            <div className="text-center max-w-xl mx-auto space-y-2">
+              <span className="px-4 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider">
+                Why Pet Parents Switch to Lifeline
+              </span>
+              <h2 className="text-3xl font-black text-slate-900">
+                Lifeline Doorstep vs Traditional Clinic ⚔️
+              </h2>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                <thead>
+                  <tr className="border-b border-slate-200">
+                    <th className="py-4 px-4 font-black text-slate-900">Feature</th>
+                    <th className="py-4 px-4 font-bold text-slate-500">Traditional Vet Clinic</th>
+                    <th className="py-4 px-4 font-black text-emerald-700 bg-emerald-50/80 rounded-t-2xl">
+                      Lifeline Doorstep Care 🏆
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {comparisonData.map((row, idx) => (
+                    <tr key={idx} className="hover:bg-slate-50/50">
+                      <td className="py-4 px-4 font-bold text-slate-900">{row.feature}</td>
+                      <td className="py-4 px-4 text-slate-500">{row.traditional}</td>
+                      <td className="py-4 px-4 font-bold text-emerald-800 bg-emerald-50/50">
+                        ✓ {row.lifeline}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
 
-        {/* ═══════════════════ WHY US ═══════════════════ */}
-        <section style={{ background: "rgba(255,255,255,0.9)", padding: "5rem 0" }}>
-          <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem" }}>
-            <div className="text-center anim-section-h" style={{ marginBottom: "3rem" }}>
-              <h2 style={{ fontFamily: "var(--ff-display)", fontWeight: 900, fontSize: "clamp(1.8rem,3.5vw,2.5rem)", color: "var(--clr-ink-900)" }}>
-                Why 15,000+ Pet Parents Choose Lifeline
+        {/* ═══════════════════ WHY CHOOSE US ═══════════════════ */}
+        <section className="py-16 bg-white/80 border-t border-slate-100">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-12">
+            <div className="text-center max-w-xl mx-auto space-y-3">
+              <h2 className="text-3xl font-black text-slate-900">
+                Why 15,000+ Pet Parents Trust Us 🛡️
               </h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem" }}>
-              {whyUs.map((f, i) => (
-                <div key={i} className="anim-why-card card" style={{ padding: "2rem" }}>
-                  <div style={{ fontSize: "2.2rem", marginBottom: "1rem" }}>{f.icon}</div>
-                  <h4 style={{ fontFamily: "var(--ff-display)", fontWeight: 800, fontSize: "1.05rem", color: "var(--clr-ink-900)", marginBottom: "0.5rem" }}>{f.title}</h4>
-                  <p style={{ fontSize: "0.875rem", color: "var(--clr-ink-300)", lineHeight: 1.65 }}>{f.desc}</p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {whyUs.map((w, i) => (
+                <div
+                  key={i}
+                  className="anim-why-card glass-luxury rounded-[28px] p-6 space-y-3 border border-slate-200 hover:border-emerald-300 transition-all"
+                >
+                  <span className="text-3xl">{w.icon}</span>
+                  <h3 className="text-base font-black text-slate-900">{w.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">{w.desc}</p>
                 </div>
               ))}
             </div>
@@ -280,81 +363,51 @@ export default function StitchMasterUI() {
         </section>
 
         {/* ═══════════════════ REVIEWS ═══════════════════ */}
-        <section style={{ padding: "5rem 0", background: "linear-gradient(160deg, #f8fafc 0%, #f0fdfa 50%, #ecfdf5 100%)" }}>
-          <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem" }}>
-            <div className="text-center anim-section-h" style={{ marginBottom: "3rem" }}>
-              <span className="chip">Testimonials</span>
-              <h2 style={{ fontFamily: "var(--ff-display)", fontWeight: 900, fontSize: "clamp(1.8rem,3.5vw,2.5rem)", marginTop: "1rem", color: "var(--clr-ink-900)" }}>
-                What Pet Parents Say ❤️
-              </h2>
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem" }}>
-              {reviews.map((r, i) => (
-                <div key={i} className="anim-review-card card" style={{ padding: "1.75rem" }}>
-                  <div style={{ color: "#f59e0b", fontSize: "1.1rem", letterSpacing: "0.1em", marginBottom: "1rem" }}>★★★★★</div>
-                  <p style={{ fontSize: "0.88rem", color: "var(--clr-ink-400)", lineHeight: 1.75, fontStyle: "italic", marginBottom: "1.25rem" }}>"{r.text}"</p>
-                  <div style={{ paddingTop: "0.75rem", borderTop: "1px solid var(--clr-border)" }}>
-                    <p style={{ fontFamily: "var(--ff-display)", fontWeight: 700, fontSize: "0.875rem", color: "var(--clr-ink-900)" }}>{r.name}</p>
-                    <p style={{ fontSize: "0.75rem", color: "var(--clr-ink-200)", marginTop: 2 }}>{r.location} · {r.pet}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <section className="py-16 max-w-7xl mx-auto px-6 md:px-12 space-y-10">
+          <div className="text-center max-w-xl mx-auto space-y-2">
+            <span className="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider">
+              Real Reviews
+            </span>
+            <h2 className="text-3xl font-black text-slate-900">
+              Loved by Delhi NCR Pet Parents ❤️
+            </h2>
           </div>
-        </section>
 
-        {/* ═══════════════════ STATS BAND ═══════════════════ */}
-        <section style={{ background: "linear-gradient(135deg, #047857 0%, #059669 40%, #0d9488 100%)", padding: "4.5rem 0" }}>
-          <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "2rem", textAlign: "center" }}>
-            {stats.map(([s, l]) => (
-              <div key={s} className="anim-stat">
-                <p style={{ fontFamily: "var(--ff-display)", fontWeight: 900, fontSize: "clamp(2rem,4vw,3rem)", color: "#fff", lineHeight: 1, letterSpacing: "-0.03em" }}>{s}</p>
-                <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.75)", marginTop: "0.5rem", fontWeight: 500 }}>{l}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {reviews.map((r, i) => (
+              <div
+                key={i}
+                className="anim-review-card glass-luxury rounded-[28px] p-6 space-y-4 border border-emerald-100 shadow-md flex flex-col justify-between"
+              >
+                <div className="space-y-2">
+                  <div className="text-amber-400 text-sm font-bold">★★★★★</div>
+                  <p className="text-xs text-slate-600 italic">"{r.text}"</p>
+                </div>
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <div>
+                    <p className="font-black text-slate-900">{r.name}</p>
+                    <p className="text-[10px] text-slate-400">{r.location}</p>
+                  </div>
+                  <span className="text-[10px] font-bold bg-emerald-50 text-emerald-800 px-2 py-1 rounded-full">
+                    {r.pet}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
         </section>
-
-        {/* ═══════════════════ EMERGENCY CTA ═══════════════════ */}
-        <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e293b 100%)", padding: "5.5rem 0", position: "relative", overflow: "hidden" }}>
-          {/* Decorative orb */}
-          <div style={{ position: "absolute", width: 600, height: 600, top: "-200px", right: "-150px", borderRadius: "50%", background: "radial-gradient(circle, rgba(239,68,68,0.12) 0%, transparent 65%)", pointerEvents: "none" }} />
-          
-          <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 2rem", textAlign: "center", position: "relative", zIndex: 1 }}>
-            <div className="anim-section-h" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 16px", borderRadius: 999, background: "rgba(239,68,68,0.15)", border: "1px solid rgba(239,68,68,0.3)", marginBottom: "1.5rem" }}>
-              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#f87171", animation: "pulse 1.5s infinite" }} />
-              <span style={{ fontFamily: "var(--ff-display)", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "#f87171" }}>
-                Emergency Line Active — 24 Hours · 7 Days
-              </span>
-            </div>
-            <h2 style={{ fontFamily: "var(--ff-display)", fontWeight: 900, fontSize: "clamp(2rem,4.5vw,3.2rem)", color: "#fff", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1.25rem" }}>
-              Is Your Pet In Distress?<br />
-              <span style={{ color: "#f87171" }}>Call Us Right Now</span>
-            </h2>
-            <p style={{ fontSize: "1rem", color: "#94a3b8", lineHeight: 1.7, marginBottom: "2.5rem", maxWidth: 480, margin: "0 auto 2.5rem" }}>
-              Our emergency vets dispatch across Delhi NCR within 30–60 minutes, around the clock.
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
-              <a href="tel:+918800813462" className="btn btn-danger pulse-sos" style={{ fontSize: "1.1rem", padding: "1rem 2.5rem" }}>
-                📞 +91 88008 13462
-              </a>
-              <button onClick={() => book("General Checkup")} style={{
-                background: "rgba(255,255,255,0.08)", border: "1.5px solid rgba(255,255,255,0.15)",
-                color: "#e2e8f0", fontFamily: "var(--ff-display)", fontWeight: 700,
-                fontSize: "0.95rem", padding: "1rem 2rem", borderRadius: "var(--r-pill)", cursor: "pointer",
-                transition: "background 0.2s",
-              }}
-                onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.15)"}
-                onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.08)"}>
-                Book Appointment
-              </button>
-            </div>
-          </div>
-        </section>
       </main>
 
+      <QuickLeadBar onBookClick={(s) => book(s)} />
+
+      {openModal && (
+        <BookingModal
+          service={modalService}
+          onClose={() => setOpenModal(false)}
+        />
+      )}
+
       <Footer />
-      {openModal && <BookingModal service={modalService} onClose={() => setOpenModal(false)} />}
     </div>
   );
 }

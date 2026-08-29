@@ -1,58 +1,48 @@
 "use client";
 
-import Link from "next/link";
+import ServiceLayout from "@/components/ServiceLayout";
 
 export default function EmergencyServicesPage() {
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-gray-900 font-sans antialiased">
-      <nav className="flex justify-between items-center px-6 md:px-16 py-4 bg-slate-900 text-white border-b border-slate-800">
-        <Link href="/" className="font-extrabold text-xl text-red-400">Lifeline Pet Care</Link>
-        <Link href="/" className="text-xs font-bold text-white border border-slate-700 px-4 py-1.5 rounded-full">
-          ← Back to Home
-        </Link>
-      </nav>
+    <ServiceLayout
+      title="24/7 Emergency Vet SOS & ICU Support 🚑"
+      subtitle="Critical pet care, trauma response, oxygen therapy, and emergency vet dispatch across Delhi NCR."
+    >
+      <div className="space-y-8 text-slate-700">
+        <div className="p-6 rounded-3xl bg-red-50 border border-red-200 space-y-3">
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 bg-red-600 rounded-full animate-ping" />
+            <span className="text-xs font-black text-red-700 uppercase tracking-wider">
+              24/7 Emergency Hotline
+            </span>
+          </div>
+          <h2 className="text-2xl font-black text-red-950">
+            Need Immediate Help? Call +91 88008 13462
+          </h2>
+          <p className="text-xs text-red-800 leading-relaxed">
+            For critical cases like severe trauma, sudden paralysis, heat stroke, poisoning, or continuous vomiting — our emergency veterinary team is available 24/7 with emergency triage.
+          </p>
+        </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 space-y-12">
-        {/* EMERGENCY HERO */}
-        <div className="glass-card rounded-[36px] p-6 sm:p-12 relative overflow-hidden shadow-2xl bg-[#0F172A] text-white border border-red-500/30">
-          <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/20 text-red-400 font-bold text-xs sm:text-sm border border-red-500/40 animate-pulse">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
-              🚨 24/7 Critical Veterinary Emergency Active
-            </div>
-
-            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-              24/7 Emergency Veterinary <span className="text-red-400">Hospital & ICU Care</span>
-            </h1>
-
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              Immediate emergency response for accidents, trauma, sudden collapse, severe vomiting, poisoning, or breathing difficulty. Fast response team available across Delhi NCR!
-            </p>
-
-            <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="tel:+918800813462"
-                className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-base shadow-xl hover:scale-105 transition-all flex items-center gap-2"
-              >
-                <span>📞 Call Emergency Vet (+91 88008 13462)</span>
-              </a>
-
-              <a
-                href="https://wa.me/918800813462?text=EMERGENCY%20PET%20CARE%20NEEDED"
-                target="_blank"
-                rel="noreferrer"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full font-bold text-base shadow-xl hover:scale-105 transition-all flex items-center gap-2"
-              >
-                <span>💬 WhatsApp Emergency Dispatch</span>
-              </a>
-            </div>
-
-            <p className="text-xs text-slate-400">
-              📍 <strong>Full NCR Coverage:</strong> Delhi, Noida, Gurgaon, Ghaziabad & Faridabad.
-            </p>
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold text-slate-900">Emergency Services Handled</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              "Acute Poisoning & Toxic Ingestion Triage",
+              "Severe Trauma, Accidental Injury & Fractures",
+              "Bloat (GDV) & Severe Gastric Distress",
+              "High Fever, Seizures & Sudden Collapse",
+              "Difficulty Breathing & Emergency Oxygen Support",
+              "Continuous Vomiting, Diarrhea & Dehydration IV",
+            ].map((item, idx) => (
+              <div key={idx} className="p-4 rounded-2xl bg-white border border-slate-200 flex items-start gap-3 shadow-xs">
+                <span className="text-red-600 font-bold">🚨</span>
+                <span className="text-xs font-bold text-slate-800">{item}</span>
+              </div>
+            ))}
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </ServiceLayout>
   );
 }
