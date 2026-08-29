@@ -138,6 +138,38 @@ export default function PackagesPage() {
             </div>
           ))}
         </section>
+
+        {/* HIGH CONVERTING LEAD CTA BANNER */}
+        <div className="mt-16 bg-[#E8F5E9] rounded-[3rem] p-8 md:p-12 border border-[#006E1C]/20 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-2 text-center md:text-left">
+            <span className="px-3.5 py-1 rounded-full bg-[#006E1C] text-white text-[11px] font-extrabold uppercase tracking-wider">
+              ⚡ Transparent Doorstep Packages
+            </span>
+            <h3 className="text-2xl sm:text-4xl font-extrabold text-[#1B1C1A]">
+              Get Custom Package Quote
+            </h3>
+            <p className="text-xs sm:text-sm text-[#3F4A3C]">
+              Need a custom vaccination series or multi-pet consultation package? Chat directly with our vet coordinator.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3 shrink-0">
+            <button
+              onClick={() => book("Custom Package Quote")}
+              className="bg-[#006E1C] hover:bg-[#005313] text-white font-extrabold text-xs px-7 py-3.5 rounded-full shadow-lg shadow-[#006E1C]/30 hover:scale-105 transition-all"
+            >
+              Book Package Now 🚀
+            </button>
+            <a
+              href="https://wa.me/918800813462"
+              target="_blank"
+              rel="noreferrer"
+              className="bg-white text-[#006E1C] border border-[#006E1C]/30 font-extrabold text-xs px-6 py-3.5 rounded-full hover:bg-emerald-50 transition-all flex items-center gap-1.5"
+            >
+              <span>💬</span>
+              <span>WhatsApp Consultation</span>
+            </a>
+          </div>
+        </div>
       </main>
 
       <QuickLeadBar onBookClick={(s) => book(s)} />

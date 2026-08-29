@@ -1,0 +1,20 @@
+# Lifeline Pet Care - Doorstep Veterinary Care Platform (Delhi NCR)
+
+Lifeline Pet Care is Delhi NCR's premier doorstep veterinary care service providing certified BVSc veterinary doctors, Zoetis 2°C–8°C cold-chain vaccines, home diagnostic blood sampling, and medical grooming spa right to your doorstep.
+
+## Core Doorstep Services & Transparent Pricing:
+- Veterinary Doctor Home Visit: ₹449 (Clinical exam + signed digital prescription)
+- Single Anti-Rabies Vaccine: ₹999
+- Adult Dog 9-in-1 Booster Package: ₹3,899
+- Puppy 5-Vaccine Series Package: ₹6,799
+- Cat FVRCP Triple Vaccine: ₹2,499
+- Doorstep Spa & Bath: ₹799+
+- Full Breed Styling Haircut: ₹1,799
+- Complete Blood Count (CBC) Sample Pickup: ₹850
+- 24/7 Emergency Vet SOS: Priority dispatch across Delhi NCR
+
+## Contact & Helplines:
+- Primary 24/7 Hotline: +91 88008 13462
+- Secondary 24/7 Helpline: +91 63874 74595
+- Official Website: https://lifeline-pet-care-v3.vercel.app
+- Service Locations: South Delhi, North Delhi, West Delhi, East Delhi, Noida, Gurgaon, Ghaziabad, Faridabad
