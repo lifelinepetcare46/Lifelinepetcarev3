@@ -22,12 +22,12 @@ export default function Navbar() {
     <>
       {/* ── DESKTOP FLOATING PILL NAVBAR (PERFECTLY CENTERED) ── */}
       <nav
-        className="fixed top-4 left-0 right-0 mx-auto w-[90%] max-w-7xl rounded-full px-8 py-3.5 bg-white/85 backdrop-blur-xl border border-[rgba(26,26,26,0.08)] shadow-md hover:shadow-lg transition-all duration-500 z-50 justify-between items-center hidden md:flex"
+        className="fixed top-4 left-0 right-0 mx-auto w-[90%] max-w-7xl rounded-full px-8 py-3 bg-white/90 backdrop-blur-xl border border-[rgba(26,26,26,0.08)] shadow-md hover:shadow-lg transition-all duration-500 z-50 justify-between items-center hidden md:flex"
         style={{ left: 0, right: 0, marginLeft: "auto", marginRight: "auto" }}
       >
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-3 group shrink-0">
-          <div className="w-10 h-10 rounded-2xl bg-[#E8F5E9] border border-[#006E1C]/20 flex items-center justify-center p-1 group-hover:scale-105 transition-transform overflow-hidden shadow-xs">
+          <div className="w-12 h-12 rounded-2xl bg-white border border-[#006E1C]/30 flex items-center justify-center p-1 group-hover:scale-105 transition-transform overflow-hidden shadow-sm">
             <img src="/logo3.png" alt="Lifeline Pet Care Logo" className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col">
@@ -86,11 +86,11 @@ export default function Navbar() {
 
       {/* ── MOBILE TOP HEADER PILL (PERFECTLY CENTERED) ── */}
       <header
-        className="md:hidden fixed top-3 left-0 right-0 mx-auto w-[92%] z-50 glass-panel rounded-full px-5 py-2.5 flex justify-between items-center border border-[rgba(26,26,26,0.08)] shadow-md"
+        className="md:hidden fixed top-3 left-0 right-0 mx-auto w-[92%] z-50 glass-panel rounded-full px-4 py-2 flex justify-between items-center border border-[rgba(26,26,26,0.08)] shadow-md"
         style={{ left: 0, right: 0, marginLeft: "auto", marginRight: "auto" }}
       >
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-full bg-[#E8F5E9] border border-[#006E1C]/20 flex items-center justify-center p-0.5 overflow-hidden">
+          <div className="w-10 h-10 rounded-full bg-white border border-[#006E1C]/30 flex items-center justify-center p-1 overflow-hidden shadow-xs">
             <img src="/logo3.png" alt="Lifeline Pet Care Logo" className="w-full h-full object-contain" />
           </div>
           <span className="text-base font-extrabold tracking-tight text-[#1B1C1A]">
@@ -122,7 +122,7 @@ export default function Navbar() {
         <div className="md:hidden fixed inset-0 z-[60] bg-[#1B1C1A]/95 backdrop-blur-2xl p-6 flex flex-col justify-between text-white animate-fadeIn">
           <div className="flex justify-between items-center pt-2 pb-6 border-b border-white/10">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#006E1C] flex items-center justify-center p-1 overflow-hidden">
+              <div className="w-12 h-12 rounded-2xl bg-white border border-white/30 flex items-center justify-center p-1 overflow-hidden shadow-md">
                 <img src="/logo3.png" alt="Lifeline Pet Care Logo" className="w-full h-full object-contain" />
               </div>
               <div>

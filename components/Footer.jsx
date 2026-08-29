@@ -66,7 +66,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
         <div className="col-span-1 md:col-span-2 space-y-4">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-white/10 p-2 border border-white/15 overflow-hidden shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-white p-2 border-2 border-[#006E1C]/40 overflow-hidden shrink-0 shadow-lg">
               <img src="/logo3.png" alt="Lifeline Pet Care Logo" className="w-full h-full object-contain" />
             </div>
             <div className="font-extrabold text-3xl sm:text-5xl text-[#FAF9F5] tracking-tight font-sans">

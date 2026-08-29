@@ -35,7 +35,7 @@ export default function Preloader() {
           <div className="absolute inset-0 rounded-full border-4 border-[#006E1C]/20 border-t-[#006E1C] animate-spin" />
           <div className="absolute inset-2 rounded-full border-4 border-[#4CAF50]/30 border-b-[#4CAF50] animate-spin duration-1000 reverse" />
           
-          <div className="w-16 h-16 rounded-full bg-[#E8F5E9] flex items-center justify-center p-2.5 shadow-inner animate-pulse overflow-hidden border border-[#006E1C]/20">
+          <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center p-3 shadow-md overflow-hidden border-2 border-[#006E1C]/40 animate-pulse">
             <img src="/logo3.png" alt="Lifeline Pet Care Logo" className="w-full h-full object-contain" />
           </div>
         </div>
