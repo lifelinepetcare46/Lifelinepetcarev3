@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
 import Link from "next/link";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -88,6 +89,7 @@ const serviceCards = [
 ];
 
 export default function StitchMasterUI() {
+  const containerRef = useRef(null);
   const [openModal, setOpenModal] = useState(false);
   const [modalService, setModalService] = useState("Veterinary Home Visit (₹449)");
 
@@ -98,6 +100,34 @@ export default function StitchMasterUI() {
   const [heroPhone, setHeroPhone] = useState("");
   const [heroArea, setHeroArea] = useState("");
   const [heroFormSubmitted, setHeroFormSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const ctx = gsap.context(() => {
+        gsap.fromTo(
+          ".gsap-hero-animate",
+          { opacity: 0, y: 35 },
+          { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: "power3.out" }
+        );
+
+        gsap.fromTo(
+          ".gsap-card-animate",
+          { opacity: 0, y: 30, scale: 0.96 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: "back.out(1.2)",
+            delay: 0.2,
+          }
+        );
+      }, containerRef);
+
+      return () => ctx.revert();
+    }
+  }, []);
 
   const book = (s = "Veterinary Home Visit (₹449)") => {
     setModalService(s);
@@ -117,7 +147,7 @@ export default function StitchMasterUI() {
   };
 
   return (
-    <div className="bg-[#FAF9F5] text-[#1B1C1A] font-sans antialiased min-h-screen relative">
+    <div ref={containerRef} className="bg-[#FAF9F5] text-[#1B1C1A] font-sans antialiased min-h-screen relative">
       <Navbar />
 
       <main>

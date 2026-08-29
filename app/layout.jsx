@@ -1,6 +1,5 @@
 // app/layout.jsx
 import "./globals.css";
-import Preloader from "@/components/Preloader";
 
 export const metadata = {
   metadataBase: new URL("https://lifeline-pet-care-v3.vercel.app"),
@@ -167,9 +166,6 @@ export default function RootLayout({ children }) {
       </head>
 
       <body suppressHydrationWarning className="font-sans antialiased">
-        {/* GLOBAL SITE PRELOADER */}
-        <Preloader />
-
         {/* SITE CONTENT */}
         {children}
 
