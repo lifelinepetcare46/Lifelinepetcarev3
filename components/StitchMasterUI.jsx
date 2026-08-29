@@ -2,7 +2,12 @@
 
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import BookingModal from "./BookingModal";
@@ -104,25 +109,33 @@ export default function StitchMasterUI() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const ctx = gsap.context(() => {
+        // Hero entrance animation
         gsap.fromTo(
           ".gsap-hero-animate",
-          { opacity: 0, y: 35 },
+          { opacity: 0, y: 40 },
           { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: "power3.out" }
         );
 
-        gsap.fromTo(
-          ".gsap-card-animate",
-          { opacity: 0, y: 30, scale: 0.96 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.7,
-            stagger: 0.12,
-            ease: "back.out(1.2)",
-            delay: 0.2,
-          }
-        );
+        // Section Scroll-Reveal Animations
+        const revealElements = gsap.utils.toArray(".gsap-reveal");
+        revealElements.forEach((el) => {
+          gsap.fromTo(
+            el,
+            { opacity: 0, y: 50, scale: 0.97 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.8,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+        });
       }, containerRef);
 
       return () => ctx.revert();
@@ -353,7 +366,7 @@ export default function StitchMasterUI() {
         </section>
 
         {/* ═══════════════════ EXTRACTED SERVICES GRID ═══════════════════ */}
-        <section className="py-20 bg-[#F4F4F0] border-y border-[rgba(26,26,26,0.06)] relative">
+        <section className="py-20 bg-[#F4F4F0] border-y border-[rgba(26,26,26,0.06)] relative gsap-reveal">
           <div className="max-w-7xl mx-auto px-6 md:px-16 space-y-12">
             <div className="max-w-2xl space-y-3">
               <span className="px-4 py-1 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-bold uppercase">
@@ -414,12 +427,12 @@ export default function StitchMasterUI() {
         </section>
 
         {/* ═══════════════════ DOG & CAT PRICE CALCULATOR ═══════════════════ */}
-        <section className="max-w-7xl mx-auto px-6 md:px-16 py-8">
+        <section className="max-w-7xl mx-auto px-6 md:px-16 py-8 gsap-reveal">
           <PetPriceCalculator onBook={(p) => book(p)} />
         </section>
 
         {/* ═══════════════════ TESTIMONIALS CAROUSEL ═══════════════════ */}
-        <section className="py-20 bg-[#FAF9F5] overflow-hidden">
+        <section className="py-20 bg-[#FAF9F5] overflow-hidden gsap-reveal">
           <div className="max-w-7xl mx-auto px-6 md:px-16 space-y-12">
             <div className="max-w-xl space-y-2">
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1B1C1A] tracking-tight">
@@ -469,10 +482,10 @@ export default function StitchMasterUI() {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
               <div>
                 <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1B1C1A] tracking-tight">
-                  Proactive Pet Care Guides
+                  Veterinary Care Guides
                 </h2>
                 <p className="text-base sm:text-lg text-[#3F4A3C] mt-2">
-                  Expert advice written by our licensed Delhi NCR veterinarians.
+                  Clinical insights & seasonal advice from certified Delhi vets.
                 </p>
               </div>
               <Link
@@ -510,7 +523,7 @@ export default function StitchMasterUI() {
         </section>
 
         {/* ═══════════════════ STRAY ANIMAL INITIATIVE (STITCH SPEC) ═══════════════════ */}
-        <section className="py-16 max-w-7xl mx-auto px-6 md:px-16">
+        <section className="py-16 max-w-7xl mx-auto px-6 md:px-16 gsap-reveal">
           <div className="rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-[#E8F5E9] p-8 md:p-14 border border-[#006E1C]/20 shadow-xl grid md:grid-cols-2 gap-10 items-center">
             <div className="space-y-5">
               <span className="inline-block px-4 py-1 bg-[#006E1C] text-white text-xs font-extrabold uppercase tracking-wider rounded-full">
@@ -550,7 +563,7 @@ export default function StitchMasterUI() {
         </section>
 
         {/* ═══════════════════ DUAL CTA & EMERGENCY SECTION ═══════════════════ */}
-        <section className="py-20 max-w-7xl mx-auto px-6 md:px-16">
+        <section className="py-20 max-w-7xl mx-auto px-6 md:px-16 gsap-reveal">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Primary CTA */}
             <div className="bg-[#E8F5E9] rounded-[3rem] md:rounded-[4rem] p-10 md:p-14 relative overflow-hidden flex flex-col justify-between border border-[#006E1C]/20 shadow-xl space-y-8">
