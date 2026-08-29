@@ -60,8 +60,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
-        {/* TAILWIND CSS CDN FOR RELIABLE RENDERING */}
-        <script src="https://cdn.tailwindcss.com"></script>
 
         {/* GOOGLE FONTS & MATERIAL SYMBOLS */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
