@@ -7,33 +7,6 @@ import BookingModal from "@/components/BookingModal";
 import QuickLeadBar from "@/components/QuickLeadBar";
 import Link from "next/link";
 
-const team = [
-  {
-    name: "Dr. Evelyn Vance",
-    role: "Chief Veterinary Officer",
-    title: "BVSc & AH (12+ Yrs Exp)",
-    desc: "Specialist in internal medicine, emergency triage & low-stress canine handling.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAyws5kJuyMk_uM5xm3ElvGJBAr7yL0h--vpDcuxIRgdi_2aX5CwEZhjX5mt_2YvgjITQdvcbsYnj_oZzFZ9RkrGeRIDZuA62Jj6AkoITo1RX40u18gKDORbcnMwWlFs5MUtKNdkCXDzJf4aExDDy4YF27-B9Gtqcm71_wwVDYVXHFi69p6oGiVyG7aNL_EcK6kNDFDsTFEU9MKqxSm_WCuDVE2xOKRxWZ5s3YMi68AIilF2fnsicp0",
-    badge: "Clinical CVO",
-  },
-  {
-    name: "Dr. Leo Vance",
-    role: "Head of Diagnostics",
-    title: "BVSc & MVSc Pathology",
-    desc: "Oversees doorstep blood sampling, parasite screening & digital laboratory reporting.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD1_7xNNmqHHYdfnT1K0_5hQ0RDdwcM0qFmi7u2s3PG16gGPyHUQ9cUwdAMSYlfavjLh59Qaf0G5uOZpCNTMiNlOx4V1yNuI5VLZO24KfWcXEJ9Ed3mi8hvfUADFHCUzUvqs1CiBd0_8vpA7c-gdQu-hQx-WifnzDmBBkYKGT0db9popLUC-LE8my58d7xaYygmvJtRroV4H1Xpw-_7P_huzpoRcvieADNQhrZ9x8Fzm6cK5jTO3QH3",
-    badge: "Diagnostics Lead",
-  },
-  {
-    name: "Dr. Maya Lin",
-    role: "Feline & Cat Specialist",
-    title: "BVSc & AH (8+ Yrs Exp)",
-    desc: "Expert in feline behavior, gentle cat handling & specialized feline immunizations.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCAGFmd9eQXOgcgujcrF_m3z7CZBJuKbw8AcmYD1jaQoOLAbnlcf4RxFFu7VVj2t4o8fotT6JbHmQ6_nTir8mlB1y0E3nOyDqthmzMQV12qN-VYTlzAi6qVnzynE3DDxxxZwr0L0UdpoXve_5Pw0aSDGn5Sa7SXm8MusMvI9plObKZD7SnEKuxzhBc3fgk616SS6Iz_Ly4L9BClWz_Y_muCbtLuYFCzCIxhcSs4sNreq2NfMTRJc02i",
-    badge: "Feline Expert",
-  },
-];
-
 const principles = [
   {
     icon: "health_and_safety",
@@ -158,49 +131,6 @@ export default function AboutPage() {
                   <h3 className="text-2xl font-bold text-[#1B1C1A]">{p.title}</h3>
                   <p className="text-xs sm:text-sm text-[#3F4A3C] leading-relaxed">
                     {p.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* VETERINARY CLINICAL TEAM (STITCH SPEC) */}
-        <div className="space-y-10">
-          <div className="text-center max-w-xl mx-auto space-y-3">
-            <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-extrabold uppercase tracking-wider border border-[#006E1C]/30">
-              Licensed Vets
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1B1C1A] tracking-tight">
-              Veterinary Leadership 🩺
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((vet, idx) => (
-              <div
-                key={idx}
-                className="glass-panel rounded-[3rem] p-8 border border-[rgba(26,26,26,0.08)] space-y-6 ambient-shadow group hover:-translate-y-2 transition-all"
-              >
-                <div className="aspect-[4/3] rounded-[2rem] overflow-hidden relative shadow-md">
-                  <img
-                    src={vet.img}
-                    alt={vet.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute top-4 left-4 glass-panel px-3.5 py-1 rounded-full text-xs font-bold text-[#006E1C]">
-                    {vet.badge}
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-extrabold text-[#1B1C1A]">{vet.name}</h3>
-                  <p className="text-xs font-extrabold text-[#006E1C] uppercase tracking-wider">
-                    {vet.role}
-                  </p>
-                  <p className="text-xs text-[#6F7A6B] font-semibold">{vet.title}</p>
-                  <p className="text-xs text-[#3F4A3C] leading-relaxed pt-1">
-                    {vet.desc}
                   </p>
                 </div>
               </div>
