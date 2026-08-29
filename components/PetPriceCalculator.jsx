@@ -44,27 +44,25 @@ export default function PetPriceCalculator({ onBook }) {
   const totalCost = calculateTotal();
 
   return (
-    <div className="glass-luxury rounded-[36px] p-6 sm:p-10 border border-emerald-100 shadow-2xl relative overflow-hidden my-12">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="text-center max-w-2xl mx-auto space-y-3 mb-8">
-        <span className="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider border border-emerald-300">
+    <div className="glass-panel rounded-[2.5rem] p-6 sm:p-10 border border-[rgba(26,26,26,0.08)] shadow-2xl relative overflow-hidden my-12 bg-[#FAF9F5]">
+      <div className="text-center max-w-2xl mx-auto space-y-3 mb-10">
+        <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-extrabold uppercase tracking-wider border border-[#006E1C]/30 inline-block">
           🐕 Dog & Cat Healthcare Estimator 🐱
         </span>
-        <h2 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight">
+        <h2 className="text-2xl sm:text-4xl font-extrabold text-[#1B1C1A] tracking-tight">
           Calculate Your Dog or Cat Care Cost Instantly 🐾
         </h2>
-        <p className="text-xs sm:text-sm text-gray-600">
+        <p className="text-xs sm:text-sm text-[#3F4A3C] font-normal">
           No hidden visit charges or surprise clinic fees. See exact prices before booking.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-        {/* Step 1 & 2 */}
-        <div className="lg:col-span-2 space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        {/* Left Column: Interactive Selectors */}
+        <div className="lg:col-span-7 space-y-6">
           {/* Pet Type - Dog & Cat Only */}
           <div>
-            <label className="block text-xs font-extrabold uppercase text-gray-500 mb-2">
+            <label className="block text-xs font-extrabold uppercase tracking-wider text-[#6F7A6B] mb-2.5">
               1. Select Pet Companion
             </label>
             <div className="grid grid-cols-2 gap-4">
@@ -74,11 +72,12 @@ export default function PetPriceCalculator({ onBook }) {
               ].map((item) => (
                 <button
                   key={item.id}
+                  type="button"
                   onClick={() => setPetType(item.id)}
-                  className={`p-5 rounded-2xl border text-center transition-all flex flex-col items-center gap-1.5 relative ${
+                  className={`p-5 rounded-2xl border text-center transition-all flex flex-col items-center gap-2 relative ${
                     petType === item.id
-                      ? "bg-emerald-600 text-white border-emerald-600 shadow-xl scale-[1.03]"
-                      : "bg-white text-gray-700 border-gray-200 hover:border-emerald-300"
+                      ? "bg-[#006E1C] text-white border-[#006E1C] shadow-xl scale-[1.02]"
+                      : "bg-white text-[#1B1C1A] border-gray-200 hover:border-[#006E1C]/40"
                   }`}
                 >
                   {item.badge && (
@@ -93,24 +92,25 @@ export default function PetPriceCalculator({ onBook }) {
             </div>
           </div>
 
-          {/* Size */}
+          {/* Weight / Size */}
           <div>
-            <label className="block text-xs font-extrabold uppercase text-gray-500 mb-2">
+            <label className="block text-xs font-extrabold uppercase tracking-wider text-[#6F7A6B] mb-2.5">
               2. Select Weight / Breed Size
             </label>
             <div className="grid grid-cols-3 gap-3">
               {[
-                { id: "small", label: "Small Breed (< 10 kg)" },
-                { id: "medium", label: "Medium Breed (10–25 kg)" },
-                { id: "large", label: "Large Breed (> 25 kg)" },
+                { id: "small", label: "Small (< 10 kg)" },
+                { id: "medium", label: "Medium (10–25 kg)" },
+                { id: "large", label: "Large (> 25 kg)" },
               ].map((size) => (
                 <button
                   key={size.id}
+                  type="button"
                   onClick={() => setPetSize(size.id)}
-                  className={`p-3.5 rounded-2xl border text-xs font-bold transition-all ${
+                  className={`p-3.5 rounded-2xl border text-xs font-extrabold transition-all ${
                     petSize === size.id
-                      ? "bg-emerald-50 text-emerald-800 border-emerald-500 shadow-sm"
-                      : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
+                      ? "bg-[#E8F5E9] text-[#006E1C] border-[#006E1C] shadow-sm"
+                      : "bg-white text-[#1B1C1A] border-gray-200 hover:bg-gray-50"
                   }`}
                 >
                   {size.label}
@@ -119,9 +119,9 @@ export default function PetPriceCalculator({ onBook }) {
             </div>
           </div>
 
-          {/* Services */}
+          {/* Services Checklist */}
           <div>
-            <label className="block text-xs font-extrabold uppercase text-gray-500 mb-2">
+            <label className="block text-xs font-extrabold uppercase tracking-wider text-[#6F7A6B] mb-2.5">
               3. Choose Desired Services (Select Multiple)
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -131,22 +131,23 @@ export default function PetPriceCalculator({ onBook }) {
                 return (
                   <button
                     key={key}
+                    type="button"
                     onClick={() => toggleService(key)}
-                    className={`p-3.5 rounded-2xl border text-left flex items-center justify-between transition-all ${
+                    className={`p-4 rounded-2xl border text-left flex items-center justify-between transition-all ${
                       isSelected
-                        ? "bg-emerald-50 border-emerald-500 shadow-sm"
-                        : "bg-white border-gray-200 hover:border-emerald-200"
+                        ? "bg-[#E8F5E9] border-[#006E1C] shadow-sm"
+                        : "bg-white border-gray-200 hover:border-[#006E1C]/30"
                     }`}
                   >
-                    <div className="flex items-center gap-2.5">
-                      <span className={`w-5 h-5 rounded-md flex items-center justify-center text-xs font-bold ${
-                        isSelected ? "bg-emerald-600 text-white" : "bg-gray-200 text-transparent"
+                    <div className="flex items-center gap-3">
+                      <span className={`w-5 h-5 rounded-md flex items-center justify-center text-xs font-extrabold shrink-0 ${
+                        isSelected ? "bg-[#006E1C] text-white" : "bg-gray-200 text-transparent"
                       }`}>
                         ✓
                       </span>
-                      <span className="text-xs font-bold text-gray-800">{item.name}</span>
+                      <span className="text-xs font-extrabold text-[#1B1C1A]">{item.name}</span>
                     </div>
-                    <span className="text-xs font-black text-emerald-700">₹{item.base}</span>
+                    <span className="text-xs font-black text-[#006E1C]">₹{item.base}</span>
                   </button>
                 );
               })}
@@ -154,46 +155,54 @@ export default function PetPriceCalculator({ onBook }) {
           </div>
         </div>
 
-        {/* Calculation Result Summary Card */}
-        <div className="glass-luxury-dark rounded-[28px] p-6 text-white space-y-6 flex flex-col justify-between h-full border border-emerald-500/30">
-          <div>
-            <div className="flex items-center justify-between border-b border-slate-700/80 pb-4 mb-4">
-              <span className="text-xs uppercase font-bold tracking-wider text-emerald-400">
+        {/* Right Column: High-Contrast Glass Dark Summary Card */}
+        <div className="lg:col-span-5 bg-[#1B1C1A] text-white rounded-[2.5rem] p-6 sm:p-8 space-y-6 flex flex-col justify-between border-2 border-[#006E1C] shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#006E1C]/20 rounded-full blur-xl pointer-events-none" />
+
+          <div className="space-y-5 relative z-10">
+            <div className="flex items-center justify-between border-b border-white/15 pb-4">
+              <span className="text-xs uppercase font-extrabold tracking-wider text-[#94F990]">
                 Doorstep Care Estimate
               </span>
-              <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-full font-semibold border border-emerald-500/30">
+              <span className="text-[11px] bg-[#006E1C] text-white px-3 py-1 rounded-full font-bold">
                 Dog & Cat Specialist
               </span>
             </div>
 
-            <ul className="space-y-2.5 text-xs text-gray-300">
+            {/* Selected items list */}
+            <ul className="space-y-3 text-xs">
               {selectedServices.map((key) => (
-                <li key={key} className="flex justify-between items-center">
-                  <span>• {pricingMap[key].name}</span>
-                  <span className="font-semibold text-white">₹{pricingMap[key].base}</span>
+                <li key={key} className="flex justify-between items-center py-0.5 border-b border-white/5 pb-2">
+                  <span className="text-[#BECAB9] font-medium">• {pricingMap[key].name}</span>
+                  <span className="font-extrabold text-white text-sm">₹{pricingMap[key].base}</span>
                 </li>
               ))}
             </ul>
 
             {selectedServices.length >= 3 && (
-              <div className="mt-4 p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold text-center">
+              <div className="mt-3 p-3 rounded-2xl bg-[#006E1C]/40 border border-[#94F990] text-[#94F990] text-xs font-extrabold text-center shadow-md">
                 🎉 10% Dog/Cat Bundle Discount Applied!
               </div>
             )}
           </div>
 
-          <div className="pt-4 border-t border-slate-700/80 space-y-4">
+          <div className="pt-4 border-t border-white/15 space-y-5 relative z-10">
             <div>
-              <p className="text-xs text-gray-400">Estimated Total Cost</p>
-              <p className="text-4xl font-black text-white mt-1">₹{totalCost}</p>
-              <p className="text-[11px] text-gray-400 mt-1">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#BECAB9]">
+                Estimated Total Cost
+              </p>
+              <p className="text-4xl sm:text-5xl font-extrabold text-[#94F990] mt-1 tracking-tight">
+                ₹{totalCost}
+              </p>
+              <p className="text-[11px] text-[#BECAB9] font-medium mt-1">
                 Zero travel charge. Pay after service completion.
               </p>
             </div>
 
             <button
+              type="button"
               onClick={() => onBook && onBook(`Calculated Dog/Cat Package (₹${totalCost})`)}
-              className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-black py-4 rounded-2xl shadow-lg shadow-emerald-500/40 transition-all hover:scale-[1.02] text-sm uppercase tracking-wide"
+              className="w-full bg-[#006E1C] hover:bg-[#005313] text-white font-extrabold py-4 rounded-full text-xs uppercase tracking-wider shadow-xl shadow-[#006E1C]/50 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer"
             >
               Book Estimated Package 🚀
             </button>
