@@ -20,15 +20,18 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── DESKTOP FLOATING PILL NAVBAR (STITCH SPEC) ── */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl rounded-full px-8 py-3.5 bg-white/80 backdrop-blur-xl border border-[rgba(26,26,26,0.08)] shadow-md hover:shadow-lg transition-all duration-500 z-50 justify-between items-center hidden md:flex">
+      {/* ── DESKTOP FLOATING PILL NAVBAR (PERFECTLY CENTERED) ── */}
+      <nav
+        className="fixed top-4 left-0 right-0 mx-auto w-[90%] max-w-7xl rounded-full px-8 py-3.5 bg-white/85 backdrop-blur-xl border border-[rgba(26,26,26,0.08)] shadow-md hover:shadow-lg transition-all duration-500 z-50 justify-between items-center hidden md:flex"
+        style={{ left: 0, right: 0, marginLeft: "auto", marginRight: "auto" }}
+      >
         {/* LOGO */}
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group shrink-0">
           <div className="w-10 h-10 rounded-2xl bg-[#E8F5E9] border border-[#006E1C]/20 flex items-center justify-center text-2xl group-hover:scale-105 transition-transform">
             🐾
           </div>
           <div className="flex flex-col">
-            <span className="text-lg font-bold tracking-tight text-[#1B1C1A] group-hover:text-[#006E1C] transition-colors">
+            <span className="text-lg font-extrabold tracking-tight text-[#1B1C1A] group-hover:text-[#006E1C] transition-colors">
               Lifeline <span className="text-[#006E1C] italic font-serif">Pet Care</span>
             </span>
             <span className="text-[10px] font-semibold text-[#6F7A6B] uppercase tracking-widest -mt-1">
@@ -37,7 +40,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* NAV LINKS WITH ACTIVE INDICATOR */}
+        {/* CENTER NAV LINKS */}
         <ul className="flex items-center gap-6 font-semibold text-sm">
           {links.map(({ href, label }) => {
             const isActive =
@@ -46,7 +49,7 @@ export default function Navbar() {
               <li key={href} className="relative">
                 <Link
                   href={href}
-                  className={`transition-all hover:scale-[1.02] flex flex-col items-center ${
+                  className={`transition-all hover:scale-[1.02] flex flex-col items-center whitespace-nowrap ${
                     isActive
                       ? "text-[#006E1C] font-bold"
                       : "text-[#5F5E5E] hover:text-[#006E1C]"
@@ -63,10 +66,10 @@ export default function Navbar() {
         </ul>
 
         {/* RIGHT CTAs */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0">
           <a
             href="tel:+918800813462"
-            className="flex items-center gap-2 text-xs font-bold text-[#BA1A1A] bg-[#FFEBEE] px-4 py-2.5 rounded-full border border-red-200 hover:bg-red-100 transition-colors"
+            className="flex items-center gap-2 text-xs font-bold text-[#BA1A1A] bg-[#FFEBEE] px-4 py-2.5 rounded-full border border-red-200 hover:bg-red-100 transition-colors whitespace-nowrap"
           >
             <span className="w-2 h-2 rounded-full bg-[#BA1A1A] animate-ping" />
             <span>24/7 Vet SOS</span>
@@ -74,15 +77,18 @@ export default function Navbar() {
 
           <Link
             href="/contact"
-            className="bg-[#006E1C] hover:bg-[#005313] text-white px-6 py-2.5 rounded-full text-xs font-extrabold shadow-md hover:scale-[1.05] active:scale-95 transition-all duration-300"
+            className="bg-[#006E1C] hover:bg-[#005313] text-white px-6 py-2.5 rounded-full text-xs font-extrabold shadow-md hover:scale-[1.05] active:scale-95 transition-all duration-300 whitespace-nowrap"
           >
             Book a Vet 🩺
           </Link>
         </div>
       </nav>
 
-      {/* ── MOBILE TOP HEADER PILL ── */}
-      <header className="md:hidden fixed top-3 left-1/2 -translate-x-1/2 w-[92%] z-50 glass-panel rounded-full px-5 py-2.5 flex justify-between items-center border border-[rgba(26,26,26,0.08)] shadow-md">
+      {/* ── MOBILE TOP HEADER PILL (PERFECTLY CENTERED) ── */}
+      <header
+        className="md:hidden fixed top-3 left-0 right-0 mx-auto w-[92%] z-50 glass-panel rounded-full px-5 py-2.5 flex justify-between items-center border border-[rgba(26,26,26,0.08)] shadow-md"
+        style={{ left: 0, right: 0, marginLeft: "auto", marginRight: "auto" }}
+      >
         <Link href="/" className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-full bg-[#E8F5E9] border border-[#006E1C]/20 flex items-center justify-center text-lg">
             🐾
@@ -178,8 +184,11 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* ── MOBILE BOTTOM NAVIGATION ANCHOR (STITCH SPEC) ── */}
-      <div className="md:hidden fixed bottom-3 left-1/2 -translate-x-1/2 w-[92%] z-50 glass-panel rounded-full px-4 py-2 flex justify-around items-center ambient-shadow border border-[rgba(26,26,26,0.08)] bg-white/90 backdrop-blur-xl">
+      {/* ── MOBILE BOTTOM NAVIGATION ANCHOR (PERFECTLY CENTERED) ── */}
+      <div
+        className="md:hidden fixed bottom-3 left-0 right-0 mx-auto w-[92%] z-50 glass-panel rounded-full px-4 py-2 flex justify-around items-center ambient-shadow border border-[rgba(26,26,26,0.08)] bg-white/90 backdrop-blur-xl"
+        style={{ left: 0, right: 0, marginLeft: "auto", marginRight: "auto" }}
+      >
         <Link
           href="/"
           className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-full transition-all ${

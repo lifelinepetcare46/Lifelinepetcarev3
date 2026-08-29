@@ -14,7 +14,10 @@ export default function QuickLeadBar({ onBookClick }) {
   };
 
   return (
-    <div className="fixed bottom-[4.5rem] md:bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-5xl z-40 bg-[#1B1C1A]/95 text-white backdrop-blur-2xl p-3 md:p-3.5 rounded-full border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.4)] flex flex-col md:flex-row items-center justify-between gap-3 transition-all hover:scale-[1.01]">
+    <div
+      className="fixed bottom-[4.5rem] md:bottom-6 left-0 right-0 mx-auto w-[92%] max-w-5xl z-40 bg-[#1B1C1A]/95 text-white backdrop-blur-2xl p-3 md:p-3.5 rounded-full border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.4)] flex flex-col md:flex-row items-center justify-between gap-3 transition-all hover:scale-[1.01]"
+      style={{ left: 0, right: 0, marginLeft: "auto", marginRight: "auto" }}
+    >
       <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start px-2 md:px-0">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#006E1C]/40 border border-[#006E1C] flex items-center justify-center text-base shrink-0 animate-bounce">
