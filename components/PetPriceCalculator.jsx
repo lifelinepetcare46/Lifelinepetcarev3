@@ -62,34 +62,32 @@ export default function PetPriceCalculator({ onBook }) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
         {/* Step 1 & 2 */}
         <div className="lg:col-span-2 space-y-6">
-          {/* Pet Type - Primary Focus on Dog & Cat */}
+          {/* Pet Type - Dog & Cat Only */}
           <div>
             <label className="block text-xs font-extrabold uppercase text-gray-500 mb-2">
               1. Select Pet Companion
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 gap-4">
               {[
                 { id: "dog", icon: "🐕", label: "Dog / Canine", badge: "Primary" },
                 { id: "cat", icon: "🐱", label: "Cat / Feline", badge: "Popular" },
-                { id: "bird", icon: "🦜", label: "Bird", badge: "" },
-                { id: "exotic", icon: "🐇", label: "Exotic", badge: "" },
               ].map((item) => (
                 <button
                   key={item.id}
                   onClick={() => setPetType(item.id)}
-                  className={`p-4 rounded-2xl border text-center transition-all flex flex-col items-center gap-1 relative ${
+                  className={`p-5 rounded-2xl border text-center transition-all flex flex-col items-center gap-1.5 relative ${
                     petType === item.id
-                      ? "bg-emerald-600 text-white border-emerald-600 shadow-xl scale-[1.04]"
+                      ? "bg-emerald-600 text-white border-emerald-600 shadow-xl scale-[1.03]"
                       : "bg-white text-gray-700 border-gray-200 hover:border-emerald-300"
                   }`}
                 >
                   {item.badge && (
-                    <span className="absolute -top-2 px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 font-black text-[9px] uppercase tracking-wider shadow-xs">
+                    <span className="absolute -top-2.5 px-2.5 py-0.5 rounded-full bg-amber-400 text-slate-950 font-black text-[9px] uppercase tracking-wider shadow-xs">
                       {item.badge}
                     </span>
                   )}
-                  <span className="text-3xl">{item.icon}</span>
-                  <span className="text-xs font-extrabold">{item.label}</span>
+                  <span className="text-4xl">{item.icon}</span>
+                  <span className="text-sm font-extrabold">{item.label}</span>
                 </button>
               ))}
             </div>

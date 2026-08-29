@@ -40,8 +40,6 @@ export default function QuickLeadBar({ onBookClick }) {
         >
           <option>Dog 🐕</option>
           <option>Cat 🐱</option>
-          <option>Bird 🦜</option>
-          <option>Exotic 🐇</option>
         </select>
 
         <select
