@@ -26,9 +26,31 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: "", phone: "", pet: "", service: "Veterinary Home Visit (₹449)", msg: "" });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
+    setLoading(true);
+
+    try {
+      await fetch("/api/book", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          phone: form.phone,
+          pet: form.pet,
+          service: form.service,
+          message: form.msg,
+          slot: "Contact Page Form",
+        }),
+      });
+    } catch (err) {
+      console.warn("Contact form fetch notice:", err);
+    } finally {
+      setLoading(false);
+      setSent(true);
+    }
   };
 
   return (
