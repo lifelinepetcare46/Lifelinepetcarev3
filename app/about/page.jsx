@@ -8,25 +8,64 @@ import QuickLeadBar from "@/components/QuickLeadBar";
 import Link from "next/link";
 
 const team = [
-  { name: "Dr. Rohit Sharma", title: "Senior Veterinary Surgeon", spec: "Soft tissue surgery & internal medicine", exp: "12 yrs", emoji: "👨‍⚕️" },
-  { name: "Dr. Priya Mehta", title: "Feline & Canine Specialist", spec: "Cat behavior & dog preventive medicine", exp: "8 yrs", emoji: "👩‍⚕️" },
-  { name: "Dr. Arjun Kapur", title: "Vaccination & Immunology", spec: "Cold-chain vaccine protocols", exp: "10 yrs", emoji: "👨‍⚕️" },
-  { name: "Dr. Neha Gupta", title: "Dermatology & Nutrition", spec: "Therapeutic diets & coat restoration", exp: "7 yrs", emoji: "👩‍⚕️" },
+  {
+    name: "Dr. Evelyn Vance",
+    role: "Chief Veterinary Officer",
+    title: "BVSc & AH (12+ Yrs Exp)",
+    desc: "Specialist in internal medicine, emergency triage & low-stress canine handling.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAyws5kJuyMk_uM5xm3ElvGJBAr7yL0h--vpDcuxIRgdi_2aX5CwEZhjX5mt_2YvgjITQdvcbsYnj_oZzFZ9RkrGeRIDZuA62Jj6AkoITo1RX40u18gKDORbcnMwWlFs5MUtKNdkCXDzJf4aExDDy4YF27-B9Gtqcm71_wwVDYVXHFi69p6oGiVyG7aNL_EcK6kNDFDsTFEU9MKqxSm_WCuDVE2xOKRxWZ5s3YMi68AIilF2fnsicp0",
+    badge: "Clinical CVO",
+  },
+  {
+    name: "Dr. Leo Vance",
+    role: "Head of Diagnostics",
+    title: "BVSc & MVSc Pathology",
+    desc: "Oversees doorstep blood sampling, parasite screening & digital laboratory reporting.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD1_7xNNmqHHYdfnT1K0_5hQ0RDdwcM0qFmi7u2s3PG16gGPyHUQ9cUwdAMSYlfavjLh59Qaf0G5uOZpCNTMiNlOx4V1yNuI5VLZO24KfWcXEJ9Ed3mi8hvfUADFHCUzUvqs1CiBd0_8vpA7c-gdQu-hQx-WifnzDmBBkYKGT0db9popLUC-LE8my58d7xaYygmvJtRroV4H1Xpw-_7P_huzpoRcvieADNQhrZ9x8Fzm6cK5jTO3QH3",
+    badge: "Diagnostics Lead",
+  },
+  {
+    name: "Dr. Maya Lin",
+    role: "Feline & Cat Specialist",
+    title: "BVSc & AH (8+ Yrs Exp)",
+    desc: "Expert in feline behavior, gentle cat handling & specialized feline immunizations.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCAGFmd9eQXOgcgujcrF_m3z7CZBJuKbw8AcmYD1jaQoOLAbnlcf4RxFFu7VVj2t4o8fotT6JbHmQ6_nTir8mlB1y0E3nOyDqthmzMQV12qN-VYTlzAi6qVnzynE3DDxxxZwr0L0UdpoXve_5Pw0aSDGn5Sa7SXm8MusMvI9plObKZD7SnEKuxzhBc3fgk616SS6Iz_Ly4L9BClWz_Y_muCbtLuYFCzCIxhcSs4sNreq2NfMTRJc02i",
+    badge: "Feline Expert",
+  },
 ];
 
-const timeline = [
-  { year: "2016", event: "Founded in South Delhi with 2 dedicated vets & a mobile care van." },
-  { year: "2018", event: "Expanded to 5 zones across Delhi, Noida & Gurgaon." },
-  { year: "2020", event: "Launched 24/7 Emergency Vet SOS during lockdown." },
-  { year: "2022", event: "Crossed 10,000 happy pets treated milestone." },
-  { year: "2024", event: "Opened dedicated Pet Boarding & ICU facility." },
-  { year: "2026", event: "15,000+ happy pet families across Delhi NCR." },
+const principles = [
+  {
+    icon: "health_and_safety",
+    tag: "Protocol 01",
+    title: "Hospital-Grade Protocols At Home",
+    desc: "Strict 2°C–8°C cold-chain vaccine management using insulated digital carriers, sterile equipment & Zoetis/Virbac core vaccines.",
+    bg: "bg-[#E8F5E9]",
+    color: "#006E1C",
+  },
+  {
+    icon: "psychology",
+    tag: "Protocol 02",
+    title: "Zero Stress Diagnostics",
+    desc: "Eliminating terrorizing clinic trips. Low-stress gentle handling in your pet's safe living room rug environment.",
+    bg: "bg-[#FFFDE7]",
+    color: "#1B1C1A",
+  },
+  {
+    icon: "description",
+    tag: "Protocol 03",
+    title: "Transparent Digital Records",
+    desc: "Instant digitally signed doctor prescriptions & vaccine certificates delivered straight to your WhatsApp after every visit.",
+    bg: "bg-[#E3F2FD]",
+    color: "#0284C7",
+  },
 ];
 
-const pillars = [
-  { icon: "stethoscope", title: "Certified BVSc Doctors Only", desc: "Every vet holds a BVSc & AH degree, background verified and trained in stress-free handling." },
-  { icon: "vaccines", title: "Genuine Cold-Chain Vaccines", desc: "Sourced directly from Zoetis, Virbac & Intervet. Stored strictly at 2°C–8°C." },
-  { icon: "home", title: "Zero Clinic Stress", desc: "Complete clinical treatments & spa baths inside your pet's safe home." },
+const stats = [
+  { value: "15,000+", label: "Doorstep Visits Completed" },
+  { value: "99.4%", label: "On-Time Doctor Arrival" },
+  { value: "4.9★", label: "Parent Satisfaction Rating" },
+  { value: "24/7", label: "Emergency SOS Support Desk" },
 ];
 
 export default function AboutPage() {
@@ -36,99 +75,183 @@ export default function AboutPage() {
     <div className="bg-[#FAF9F5] text-[#1B1C1A] font-sans antialiased min-h-screen relative flex flex-col justify-between">
       <Navbar />
 
-      <main className="pt-32 pb-24 px-6 md:px-16 max-w-7xl mx-auto w-full space-y-16">
-        {/* EDITORIAL HERO (STITCH SPEC) */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-extrabold uppercase tracking-wider border border-[#006E1C]/30">
-            Our Story & Mission
+      <main className="pt-32 pb-24 px-6 md:px-16 max-w-7xl mx-auto w-full space-y-20">
+        {/* STITCH EDITORIAL HERO HEADER */}
+        <div className="text-center max-w-4xl mx-auto space-y-6">
+          <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-extrabold uppercase tracking-wider border border-[#006E1C]/30 inline-block">
+            Our Philosophy & Foundation
           </span>
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-[#1B1C1A] tracking-tight leading-none">
-            About Lifeline <span className="text-[#006E1C] italic font-serif">Pet Care</span> 🐾
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#1B1C1A] tracking-tight leading-[1.08]">
+            Pioneering the Next Era of <br className="hidden sm:block" />
+            <span className="text-[#006E1C] italic font-serif">Doorstep Veterinary</span> Medicine.
           </h1>
-          <p className="text-base sm:text-lg text-[#3F4A3C] leading-relaxed">
-            Founded in 2016, we are Delhi NCR's spatial laboratory for veterinary excellence — bringing certified doctors, cold-chain vaccines, and compassionate care straight to your doorstep.
+          <p className="text-base sm:text-xl text-[#3F4A3C] leading-relaxed max-w-3xl mx-auto font-normal">
+            Founded in 2024, Lifeline Pet Care was born from a simple conviction: clinical medical excellence and profound compassion belong right at home.
           </p>
         </div>
 
-        {/* MISSION & VISION */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[
-            { title: "Our Mission", text: "To eliminate clinic travel stress for pets and families by delivering world-class veterinary care — diagnoses, vaccinations, grooming, and 24/7 emergency response — directly at the doorstep." },
-            { title: "Our Vision", text: "To become India's most trusted & loved pet healthcare brand by 2030 — where every pet receives compassionate, hospital-grade care in the comfort of their home." },
-          ].map((mv, i) => (
-            <div key={i} className="glass-panel rounded-[3rem] p-8 sm:p-10 border border-[rgba(26,26,26,0.08)] shadow-lg space-y-4">
-              <h2 className="text-2xl font-bold text-[#1B1C1A] tracking-tight">{mv.title}</h2>
-              <p className="text-sm text-[#3F4A3C] leading-relaxed">{mv.text}</p>
+        {/* STITCH BENTO STATS BAR */}
+        <div className="glass-panel-dark rounded-[3rem] p-8 sm:p-12 border border-white/10 shadow-2xl grid grid-cols-2 lg:grid-cols-4 gap-8 text-center text-white">
+          {stats.map((s, i) => (
+            <div key={i} className="space-y-1">
+              <p className="text-3xl sm:text-5xl font-extrabold text-[#94F990] tracking-tight">
+                {s.value}
+              </p>
+              <p className="text-xs sm:text-sm text-[#BECAB9] font-medium">{s.label}</p>
             </div>
           ))}
         </div>
 
-        {/* CORE PILLARS */}
-        <div className="space-y-8">
-          <div className="text-center max-w-xl mx-auto space-y-2">
-            <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-extrabold uppercase tracking-wider">
+        {/* MISSION & VISION DUAL CARDS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="glass-panel rounded-[3rem] p-8 sm:p-12 border border-[rgba(26,26,26,0.08)] shadow-lg space-y-4">
+            <span className="px-3.5 py-1 rounded-full bg-[#E8F5E9] text-[#006E1C] text-[11px] font-extrabold uppercase tracking-wider">
+              Core Purpose
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1B1C1A] tracking-tight">
+              Our Clinical Mission
+            </h2>
+            <p className="text-sm sm:text-base text-[#3F4A3C] leading-relaxed">
+              To eliminate travel anxiety and stressful clinic waiting rooms for pets by dispatching licensed BVSc doctors, Zoetis 2°C–8°C cold-chain vaccines & organic spa care directly to your living room floor.
+            </p>
+          </div>
+
+          <div className="glass-panel rounded-[3rem] p-8 sm:p-12 border border-[rgba(26,26,26,0.08)] shadow-lg space-y-4">
+            <span className="px-3.5 py-1 rounded-full bg-[#FFFDE7] text-[#1B1C1A] text-[11px] font-extrabold uppercase tracking-wider">
+              Future Vision
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1B1C1A] tracking-tight">
+              Our 2030 Vision
+            </h2>
+            <p className="text-sm sm:text-base text-[#3F4A3C] leading-relaxed">
+              To build India's gold-standard doorstep veterinary institution — where every dog & cat receives hospital-grade diagnostic care, preventive immunizations, and emergency SOS support at home.
+            </p>
+          </div>
+        </div>
+
+        {/* STITCH THREE CORE PRINCIPLES BENTO */}
+        <div className="space-y-10">
+          <div className="text-center max-w-xl mx-auto space-y-3">
+            <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-extrabold uppercase tracking-wider border border-[#006E1C]/30">
               Clinical Non-Negotiables
             </span>
-            <h2 className="text-3xl font-bold text-[#1B1C1A] tracking-tight">
-              Our Core Medical Standards 🛡️
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1B1C1A] tracking-tight">
+              Our Three Medical Principles 🛡️
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pillars.map((p, i) => (
-              <div key={i} className="glass-panel rounded-[3rem] p-8 border border-[rgba(26,26,26,0.08)] space-y-4 ambient-shadow">
-                <div className="w-14 h-14 rounded-2xl bg-[#E8F5E9] text-[#006E1C] flex items-center justify-center">
-                  <span className="material-symbols-outlined text-3xl">{p.icon}</span>
+            {principles.map((p, idx) => (
+              <div
+                key={idx}
+                className="glass-panel rounded-[3rem] p-8 sm:p-10 border border-[rgba(26,26,26,0.08)] space-y-6 ambient-shadow flex flex-col justify-between"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className={`w-14 h-14 rounded-2xl ${p.bg} flex items-center justify-center text-[#006E1C]`}>
+                      <span className="material-symbols-outlined text-3xl">{p.icon}</span>
+                    </div>
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#6F7A6B]">
+                      {p.tag}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#1B1C1A]">{p.title}</h3>
+                  <p className="text-xs sm:text-sm text-[#3F4A3C] leading-relaxed">
+                    {p.desc}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-[#1B1C1A]">{p.title}</h3>
-                <p className="text-xs text-[#3F4A3C] leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* VETERINARY TEAM */}
-        <div className="space-y-8">
-          <div className="text-center max-w-xl mx-auto space-y-2">
-            <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-extrabold uppercase tracking-wider">
-              Expert Vets
+        {/* VETERINARY CLINICAL TEAM (STITCH SPEC) */}
+        <div className="space-y-10">
+          <div className="text-center max-w-xl mx-auto space-y-3">
+            <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] text-[#006E1C] text-xs font-extrabold uppercase tracking-wider border border-[#006E1C]/30">
+              Licensed Vets
             </span>
-            <h2 className="text-3xl font-bold text-[#1B1C1A] tracking-tight">
-              Meet Our BVSc Veterinary Team 🩺
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1B1C1A] tracking-tight">
+              Veterinary Leadership 🩺
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((v, i) => (
-              <div key={i} className="glass-panel rounded-[2.5rem] p-6 text-center border border-[rgba(26,26,26,0.08)] space-y-3 hover:-translate-y-1 transition-all">
-                <div className="w-16 h-16 rounded-full bg-[#E8F5E9] text-3xl flex items-center justify-center mx-auto border border-[#006E1C]/20">
-                  {v.emoji}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {team.map((vet, idx) => (
+              <div
+                key={idx}
+                className="glass-panel rounded-[3rem] p-8 border border-[rgba(26,26,26,0.08)] space-y-6 ambient-shadow group hover:-translate-y-2 transition-all"
+              >
+                <div className="aspect-[4/3] rounded-[2rem] overflow-hidden relative shadow-md">
+                  <img
+                    src={vet.img}
+                    alt={vet.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute top-4 left-4 glass-panel px-3.5 py-1 rounded-full text-xs font-bold text-[#006E1C]">
+                    {vet.badge}
+                  </div>
                 </div>
-                <h4 className="text-lg font-bold text-[#1B1C1A]">{v.name}</h4>
-                <p className="text-xs font-extrabold text-[#006E1C]">{v.title}</p>
-                <p className="text-[11px] text-[#3F4A3C]">{v.spec}</p>
-                <span className="inline-block bg-[#F4F4F0] text-[#1B1C1A] text-[10px] font-bold px-3 py-1 rounded-full border border-black/5">
-                  {v.exp} experience
-                </span>
+
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-extrabold text-[#1B1C1A]">{vet.name}</h3>
+                  <p className="text-xs font-extrabold text-[#006E1C] uppercase tracking-wider">
+                    {vet.role}
+                  </p>
+                  <p className="text-xs text-[#6F7A6B] font-semibold">{vet.title}</p>
+                  <p className="text-xs text-[#3F4A3C] leading-relaxed pt-1">
+                    {vet.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* JOURNEY TIMELINE */}
-        <div className="glass-panel-dark text-white rounded-[3rem] p-8 md:p-12 space-y-8 shadow-2xl">
-          <h2 className="text-3xl font-bold text-center text-white tracking-tight">
-            Our Journey Over The Years 🚀
-          </h2>
-          <div className="space-y-6 max-w-2xl mx-auto">
-            {timeline.map((t, i) => (
-              <div key={i} className="flex gap-6 items-start border-b border-white/10 pb-6">
-                <span className="text-base font-extrabold text-[#94F990] min-w-16">{t.year}</span>
-                <p className="text-xs text-[#BECAB9] leading-relaxed">{t.event}</p>
-              </div>
-            ))}
+        {/* STITCH COMMUNITY IMPACT: THE STRAY ANIMAL INITIATIVE */}
+        <section className="relative rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-[#E8F5E9] p-8 md:p-16 border border-[#006E1C]/20 shadow-xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <span className="inline-block px-4 py-1.5 bg-[#006E1C] text-white text-xs font-extrabold uppercase tracking-wider rounded-full">
+                Community Impact
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1B1C1A] tracking-tight">
+                The Stray Animal Initiative
+              </h2>
+              <p className="text-sm sm:text-base text-[#3F4A3C] leading-relaxed">
+                Our commitment extends beyond registered home patients. Through our experimental outreach program across Delhi NCR, we dedicate 15% of our clinical resources to providing free emergency care and vaccines for vulnerable community animals.
+              </p>
+              <ul className="space-y-3 text-xs sm:text-sm text-[#1B1C1A] font-semibold">
+                <li className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-[#006E1C]">health_and_safety</span>
+                  <span>Free field triage & emergency wound care for street dogs & cats.</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-[#006E1C]">vaccines</span>
+                  <span>Anti-Rabies vaccination drives across Delhi NCR localities.</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-[#006E1C]">volunteer_activism</span>
+                  <span>Rehabilitation and rehoming support with trusted local shelters.</span>
+                </li>
+              </ul>
+              <button
+                onClick={() => setModalOpen(true)}
+                className="bg-[#006E1C] hover:bg-[#005313] text-white font-extrabold text-xs px-8 py-4 rounded-full shadow-lg shadow-[#006E1C]/30 hover:scale-105 transition-all"
+              >
+                Support the Initiative 🐾
+              </button>
+            </div>
+
+            <div className="relative aspect-square sm:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
+              <img
+                className="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAiA780AgYZBVbumsih1aCRaqEbtotRmcKev89-sst3vKcdRHeePT2iBeuVWsdxog9jal4OWx4-AmmJqRhVLNj_ozA3DRFWPfFfm7H4eTgSfHdH7Hh0R7-lpgHoJ6sVMAFjlRFqI3QjJ_IyBLWGEhxZgr4TL9BxP6_3I0KZmxLfiz76l1A083Y2Lx8slBgvwra1AUqBGa9W7X2u9QvCcNIa8v6Fuc9axtelbIh9lLZ7zmIucGZ2ycF"
+                alt="Veterinary technician caring for stray puppy"
+              />
+            </div>
           </div>
-        </div>
+        </section>
       </main>
 
       <QuickLeadBar onBookClick={() => setModalOpen(true)} />

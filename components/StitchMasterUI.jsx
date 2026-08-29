@@ -479,6 +479,46 @@ export default function StitchMasterUI() {
           </div>
         </section>
 
+        {/* ═══════════════════ STRAY ANIMAL INITIATIVE (STITCH SPEC) ═══════════════════ */}
+        <section className="py-16 max-w-7xl mx-auto px-6 md:px-16">
+          <div className="rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-[#E8F5E9] p-8 md:p-14 border border-[#006E1C]/20 shadow-xl grid md:grid-cols-2 gap-10 items-center">
+            <div className="space-y-5">
+              <span className="inline-block px-4 py-1 bg-[#006E1C] text-white text-xs font-extrabold uppercase tracking-wider rounded-full">
+                Community Impact
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1B1C1A] tracking-tight">
+                The Stray Animal Initiative
+              </h2>
+              <p className="text-xs sm:text-sm text-[#3F4A3C] leading-relaxed">
+                We dedicate 15% of our medical resources to providing free emergency triage, field vaccinations, and rescue shelter partnerships across Delhi NCR.
+              </p>
+              <ul className="space-y-2 text-xs text-[#1B1C1A] font-semibold">
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-[#006E1C] text-lg">health_and_safety</span>
+                  <span>Field diagnostics & emergency wound care for street animals.</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-[#006E1C] text-lg">vaccines</span>
+                  <span>Preventative rabies vaccination drives in Delhi NCR.</span>
+                </li>
+              </ul>
+              <button
+                onClick={() => book("Community Stray Animal Support")}
+                className="bg-[#006E1C] hover:bg-[#005313] text-white font-extrabold text-xs px-7 py-3.5 rounded-full shadow-lg shadow-[#006E1C]/30 hover:scale-105 transition-all"
+              >
+                Support the Initiative 🐾
+              </button>
+            </div>
+            <div className="aspect-[4/3] rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
+              <img
+                className="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAiA780AgYZBVbumsih1aCRaqEbtotRmcKev89-sst3vKcdRHeePT2iBeuVWsdxog9jal4OWx4-AmmJqRhVLNj_ozA3DRFWPfFfm7H4eTgSfHdH7Hh0R7-lpgHoJ6sVMAFjlRFqI3QjJ_IyBLWGEhxZgr4TL9BxP6_3I0KZmxLfiz76l1A083Y2Lx8slBgvwra1AUqBGa9W7X2u9QvCcNIa8v6Fuc9axtelbIh9lLZ7zmIucGZ2ycF"
+                alt="Veterinarian holding rescued puppy"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* ═══════════════════ DUAL CTA & EMERGENCY SECTION ═══════════════════ */}
         <section className="py-20 max-w-7xl mx-auto px-6 md:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
