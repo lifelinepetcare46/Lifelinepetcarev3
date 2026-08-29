@@ -104,10 +104,7 @@ export default function Footer() {
             Connect & SOS
           </h4>
           <a href="tel:+918800813462" className="text-[#FFDAD6] font-extrabold text-xs sm:text-sm hover:underline block">
-            📞 Hotline 1: +91 88008 13462
-          </a>
-          <a href="tel:+916387474595" className="text-[#94F990] font-extrabold text-xs sm:text-sm hover:underline block">
-            📞 Hotline 2: +91 63874 74595
+            📞 Emergency SOS: +91 88008 13462
           </a>
           <a href="https://wa.me/918800813462" target="_blank" rel="noreferrer" className="text-[#BECAB9] hover:text-white hover:translate-x-1 transition-all">
             💬 WhatsApp Consultation

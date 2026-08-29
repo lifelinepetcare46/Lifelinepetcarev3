@@ -16,7 +16,6 @@ const faqs = [
 
 const contactInfo = [
   { icon: "call", label: "24/7 Primary Helpline", value: "+91 88008 13462", sub: "Always live for emergency dispatch", href: "tel:+918800813462", color: "#BA1A1A" },
-  { icon: "phone_enabled", label: "24/7 Secondary Helpline", value: "+91 63874 74595", sub: "Direct doctor & booking line", href: "tel:+916387474595", color: "#006E1C" },
   { icon: "chat", label: "WhatsApp Desk", value: "+91 88008 13462", sub: "Instant 2-min response", href: "https://wa.me/918800813462", color: "#006E1C" },
   { icon: "photo_camera", label: "Instagram", value: "@_lifeline_pet_care", sub: "Follow for pet tips", href: "https://instagram.com/_lifeline_pet_care/", color: "#1B1C1A" },
 ];
@@ -46,7 +45,7 @@ export default function ContactPage() {
             Get in <span className="text-[#006E1C] italic font-serif">Touch</span> 📞
           </h1>
           <p className="text-base sm:text-lg text-[#3F4A3C] leading-relaxed">
-            Call us on <a href="tel:+918800813462" className="font-bold underline text-[#006E1C]">+91 88008 13462</a> or <a href="tel:+916387474595" className="font-bold underline text-[#006E1C]">+91 63874 74595</a>, chat on WhatsApp, or fill out the quick form below.
+            Call us on <a href="tel:+918800813462" className="font-bold underline text-[#006E1C]">+91 88008 13462</a>, chat on WhatsApp, or fill out the quick form below.
           </p>
         </div>
 

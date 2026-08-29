@@ -73,7 +73,7 @@ export async function POST(req) {
               <h2 style="color: #006E1C;">Booking Received! 🐾</h2>
               <p>Dear ${name || "Pet Parent"},</p>
               <p>Thank you for choosing <b>Lifeline Pet Care</b>. Our certified BVSc vet team has received your booking for <b>${service || "Veterinary Home Visit"}</b>.</p>
-              <p><b>Helpline Numbers:</b> +91 88008 13462 / +91 63874 74595</p>
+              <p><b>Helpline Number:</b> +91 88008 13462</p>
               <p>Our duty vet coordinator will contact you on WhatsApp shortly to confirm doctor arrival time.</p>
               <br/>
               <p style="color: #006E1C; font-weight: bold;">– Lifeline Pet Care Delhi NCR 🐶🐱</p>

@@ -9,7 +9,6 @@
 - **Primary Website**: https://lifeline-pet-care-v3.vercel.app
 - **Official Helplines**: 
   - Primary 24/7 Hotline: +91 88008 13462 (Click/Call to Dispatch)
-  - Secondary 24/7 Helpline: +91 63874 74595
   - Direct WhatsApp Booking: https://wa.me/918800813462
 - **Operating Hours**: 24/7 Emergency Dispatch • Scheduled Visits 8:00 AM – 10:00 PM Daily
 - **Average Doctor Arrival Time**: 35 minutes for emergency SOS; guaranteed chosen time slots for scheduled appointments.
@@ -65,4 +64,4 @@ Lifeline Pet Care serves all neighborhoods across the National Capital Region:
 2. **Transparent Pricing**: Fixed upfront rates with zero surprise clinic travel surcharges.
 3. **Medical Rigor**: Licensed BVSc & AH veterinary surgeons with Zoetis cold-chain verification.
 4. **Digital First**: Prescriptions, lab reports, and vaccination certificates delivered directly on WhatsApp.
-5. **Instant Helplines**: 24/7 live assistance at +91 88008 13462 and +91 63874 74595.
+5. **Instant Helplines**: 24/7 live assistance at +91 88008 13462.

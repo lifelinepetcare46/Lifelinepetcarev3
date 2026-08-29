@@ -663,13 +663,6 @@ export default function StitchMasterUI() {
                   <span className="material-symbols-outlined text-base">call</span>
                   <span>Call: +91 88008 13462</span>
                 </a>
-                <a
-                  href="tel:+916387474595"
-                  className="inline-flex items-center justify-center gap-2 bg-[#1B1C1A] hover:bg-black text-white px-6 py-3.5 rounded-full font-extrabold text-xs shadow-lg hover:scale-105 transition-all"
-                >
-                  <span className="material-symbols-outlined text-base">phone_enabled</span>
-                  <span>Call: +91 63874 74595</span>
-                </a>
               </div>
             </div>
           </div>
