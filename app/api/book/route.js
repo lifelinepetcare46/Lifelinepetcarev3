@@ -21,14 +21,16 @@ export async function POST(req) {
       },
     });
 
-    // 2️⃣ Prepare Admin Notification Email Payload
+    // 2️⃣ Prepare Admin Notification Email Payload (Anti-Spam Optimized)
     const mailOptions = {
-      from: `"Lifeline Pet Care Alert 🚨" <${targetUser}>`,
+      from: `"Lifeline Pet Care" <${targetUser}>`,
+      replyTo: email && email.includes("@") ? email : targetUser,
       to: adminEmail,
-      subject: `🚨 NEW LEAD: ${service || "Doorstep Vet Visit"} - ${name || "Pet Parent"} (${phone || "No Phone"})`,
+      subject: `NEW BOOKING LEAD: ${service || "Doorstep Vet Visit"} - ${name || "Pet Parent"} (${phone || "No Phone"})`,
+      text: `NEW DOORSTEP VET BOOKING LEAD\n\nPet Parent: ${name || "Not Provided"}\nPhone: ${phone || "Not Provided"}\nEmail: ${email || "Not Provided"}\nPet: ${pet || "Dog / Cat"}\nService: ${service || "Veterinary Home Visit"}\nArea: ${area || "Delhi NCR"}\nDate: ${date || "Today"}\nSlot: ${slot || "ASAP"}\nMessage: ${message || notes || "None"}`,
       html: `
-        <div style="font-family: Arial, sans-serif; padding: 24px; background-color: #FAF9F5; border-radius: 16px; border: 2px solid #006E1C;">
-          <h2 style="color: #006E1C; margin-top: 0;">🐾 New Booking / Contact Lead Received!</h2>
+        <div style="font-family: Arial, sans-serif; padding: 24px; background-color: #FAF9F5; border-radius: 16px; border: 2px solid #006E1C; max-w: 600px;">
+          <h2 style="color: #006E1C; margin-top: 0;">🐾 New Booking / Contact Lead Received</h2>
           <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
             <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold; width: 140px;">Pet Parent:</td><td style="padding: 10px; font-size: 16px; font-weight: bold;">${name || "Not Provided"}</td></tr>
             <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Phone Number:</td><td style="padding: 10px;"><a href="tel:${phone}" style="color: #006E1C; font-weight: bold; font-size: 16px;">${phone || "Not Provided"}</a></td></tr>
@@ -40,8 +42,8 @@ export async function POST(req) {
             <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold;">Preferred Slot:</td><td style="padding: 10px;">${slot || "As soon as possible"}</td></tr>
             ${(message || notes) ? `<tr><td style="padding: 10px; font-weight: bold;">Customer Message:</td><td style="padding: 10px; color: #333;">${message || notes}</td></tr>` : ''}
           </table>
-          <div style="margin-top: 24px; padding: 12px; background-color: #E8F5E9; border-radius: 8px; text-align: center;">
-            <a href="https://wa.me/91${(phone || "").replace(/\D/g, "")}" style="color: #006E1C; font-weight: bold; text-decoration: none;">💬 Click here to reply on WhatsApp</a>
+          <div style="margin-top: 24px; padding: 14px; background-color: #E8F5E9; border-radius: 8px; text-align: center;">
+            <a href="https://wa.me/91${(phone || "").replace(/\D/g, "")}" style="color: #006E1C; font-weight: bold; text-decoration: none; font-size: 15px;">💬 Click here to reply to ${name || "Customer"} on WhatsApp</a>
           </div>
         </div>
       `,
