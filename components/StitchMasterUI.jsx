@@ -194,7 +194,7 @@ export default function StitchMasterUI() {
 
           <div className="max-w-7xl mx-auto px-6 md:px-16 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* HERO LEFT COLUMN: EDITORIAL CONTENT */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div className="lg:col-span-7 space-y-6 text-center lg:text-left order-2 lg:order-1">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E8F5E9] border border-[#006E1C]/30 text-[#006E1C] text-xs font-extrabold uppercase tracking-wider shadow-xs shimmer-badge">
                 <span className="w-2 h-2 rounded-full bg-[#006E1C] animate-ping" />
                 <span>#1 Doorstep Veterinary Care in Delhi NCR</span>
@@ -211,11 +211,11 @@ export default function StitchMasterUI() {
                 Licensed BVSc veterinary doctors, Zoetis 2°C–8°C cold-chain vaccines & organic doorstep grooming spa delivered directly to your home across Delhi, Noida, Gurgaon, Ghaziabad & Faridabad.
               </p>
 
-              {/* INSTANT HERO CALL & WHATSAPP CTAS ABOVE THE FOLD */}
-              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              {/* INSTANT HERO CALL, WHATSAPP & BOOKING CTAS — UNIFORM SIZED BUTTON GRID */}
+              <div className="pt-2 grid grid-cols-1 sm:grid-cols-3 gap-2.5 max-w-xl mx-auto lg:mx-0">
                 <button
                   onClick={() => book("Veterinary Home Visit (₹449)")}
-                  className="bg-[#006E1C] hover:bg-[#005313] text-white font-extrabold text-xs sm:text-sm px-7 py-3.5 rounded-full shadow-lg shadow-[#006E1C]/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
+                  className="w-full bg-[#006E1C] hover:bg-[#005313] text-white font-extrabold text-xs sm:text-xs py-3.5 px-4 rounded-full shadow-lg shadow-[#006E1C]/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-1.5 whitespace-nowrap"
                 >
                   <span>Book Visit (₹449)</span>
                   <span>🩺</span>
@@ -223,18 +223,18 @@ export default function StitchMasterUI() {
 
                 <a
                   href="tel:+918800813462"
-                  className="bg-[#BA1A1A] hover:bg-[#93000A] text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-full shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
+                  className="w-full bg-[#BA1A1A] hover:bg-[#93000A] text-white font-extrabold text-xs sm:text-xs py-3.5 px-4 rounded-full shadow-md hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-1.5 whitespace-nowrap"
                 >
-                  <span>📞 Call SOS: 8800813462</span>
+                  <span>📞 Call SOS</span>
                 </a>
 
                 <a
                   href="https://wa.me/918800813462"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-white border-2 border-[#006E1C] text-[#006E1C] hover:bg-emerald-50 font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-full shadow-xs hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
+                  className="w-full bg-white border-2 border-[#006E1C] text-[#006E1C] hover:bg-emerald-50 font-extrabold text-xs sm:text-xs py-3.5 px-4 rounded-full shadow-xs hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-1.5 whitespace-nowrap"
                 >
-                  <span>💬 WhatsApp Chat</span>
+                  <span>💬 WhatsApp</span>
                 </a>
               </div>
 
@@ -272,7 +272,7 @@ export default function StitchMasterUI() {
             </div>
 
             {/* HERO RIGHT COLUMN: HIGH-CONVERTING HERO QUERY FORM */}
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 order-1 lg:order-2">
               <div className="glass-panel-dark text-white rounded-[3rem] p-8 sm:p-10 space-y-6 shadow-2xl border border-white/15 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-[#006E1C]/20 rounded-full blur-2xl pointer-events-none" />
 
