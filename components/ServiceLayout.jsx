@@ -107,6 +107,13 @@ export default function ServiceLayout({ title, subtitle, children }) {
                 >
                   <span>📞 Call Vet: +91 88008 13462</span>
                 </a>
+
+                <a
+                  href="tel:+916387474595"
+                  className="w-full bg-[#1B1C1A] hover:bg-black border border-white/20 text-[#94F990] font-extrabold py-3.5 rounded-full text-xs flex items-center justify-center gap-2 transition-all shadow-md"
+                >
+                  <span>📞 Call Vet: +91 63874 74595</span>
+                </a>
               </div>
 
               <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2 text-[11px] text-[#BECAB9]">
