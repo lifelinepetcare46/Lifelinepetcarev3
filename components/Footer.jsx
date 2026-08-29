@@ -65,11 +65,16 @@ export default function Footer() {
       {/* MAIN STITCH FOOTER GRID */}
       <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
         <div className="col-span-1 md:col-span-2 space-y-4">
-          <div className="font-extrabold text-4xl sm:text-6xl text-[#FAF9F5] opacity-20 tracking-tighter leading-none font-sans">
-            Lifeline <br /> Pet Care
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-2xl bg-white/10 p-2 border border-white/15 overflow-hidden shrink-0">
+              <img src="/logo3.png" alt="Lifeline Pet Care Logo" className="w-full h-full object-contain" />
+            </div>
+            <div className="font-extrabold text-3xl sm:text-5xl text-[#FAF9F5] tracking-tight font-sans">
+              Lifeline <span className="text-[#94F990] italic font-serif">Pet Care</span>
+            </div>
           </div>
           <p className="text-sm text-[#BECAB9] max-w-md leading-relaxed">
-            Care that comes home. The modern, experimental spatial platform for doorstep veterinary excellence in Delhi NCR.
+            Care that comes home. The modern spatial platform for doorstep veterinary excellence in Delhi NCR.
           </p>
         </div>
 
