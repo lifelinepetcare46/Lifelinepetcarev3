@@ -74,7 +74,9 @@ export async function POST(req) {
     };
 
     // Send email to admin immediately
-    const emailPromise = transporter.sendMail(mailOptions);
+    const emailPromise = transporter.sendMail(mailOptions).catch(err => {
+      console.warn("Admin email delivery failed:", err.message);
+    });
 
     // Save to DB in parallel (non-blocking)
     const dbPromise = (async () => {
