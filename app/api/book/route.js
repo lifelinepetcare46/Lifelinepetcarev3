@@ -33,7 +33,7 @@ export async function POST(req) {
     const notes = body.notes || body.message || "";
 
     const targetUser = (process.env.EMAIL_USER || "lifelinepetcare46@gmail.com").trim();
-    const targetPass = (process.env.EMAIL_PASS || "ollwcplijmvmtsix").replace(/\s+/g, "").trim();
+    const targetPass = (process.env.EMAIL_PASS || "").replace(/\s+/g, "").trim();
     const adminEmail = (process.env.ADMIN_EMAIL || "lifelinepetcare46@gmail.com").trim();
 
     // 1️⃣ Fast, Rock-Solid Gmail Transporter
