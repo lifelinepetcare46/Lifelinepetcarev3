@@ -1,5 +1,5 @@
 export default async function sitemap() {
-  const baseUrl = "https://lifeline-pet-care-v3.vercel.app";
+  const baseUrl = "https://lifelinepetcare.in";
 
   const routes = [
     "",
